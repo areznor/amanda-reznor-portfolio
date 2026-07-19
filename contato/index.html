@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Amanda Reznor</title>
+<meta name="description" content="Get in touch with Amanda Reznor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0C0913;--violet:#9B6DFF;--violet-soft:#B99AFF;--silver:#C9C6D9;--silver-bright:#EDECF4;--mist:#8B86A0;--line:rgba(201,198,217,.14);--grotesk:'Space Grotesk',system-ui,sans-serif;--serif:'Cormorant Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--grotesk);background:var(--void);color:var(--silver);min-height:100vh;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--violet-soft);text-decoration:none}
+a:hover{color:var(--silver-bright)}
+.wrap{max-width:560px;margin:0 auto;padding:48px 28px 80px}
+.back{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.back:hover{color:var(--violet-soft)}
+h1{margin-top:48px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(2.4rem,6vw,3.4rem);color:var(--silver-bright);line-height:1.1}
+.lead{margin-top:14px;color:var(--mist);font-size:.95rem}
+form{margin-top:40px;display:grid;gap:22px}
+label{display:grid;gap:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+input,textarea{width:100%;background:#151020;border:1px solid var(--line);border-radius:6px;padding:14px 16px;color:var(--silver-bright);font-family:var(--grotesk);font-size:1rem;outline:none;transition:border-color .25s}
+input:focus,textarea:focus{border-color:var(--violet)}
+textarea{min-height:160px;resize:vertical}
+button{justify-self:start;margin-top:8px;padding:14px 28px;border:0;border-radius:2px;background:var(--violet);color:#0C0913;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .25s,transform .25s}
+button:hover{background:var(--violet-soft);transform:translateY(-1px)}
+.hint{margin-top:28px;font-size:.82rem;color:var(--mist)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← Amanda Reznor</a>
+    <h1>Entre em contato</h1>
+    <p class="lead">Nome, e-mail e mensagem — ao enviar, seu aplicativo de e-mail abre para <strong>amandareznor@hotmail.com</strong>.</p>
+    <form id="contactForm" novalidate>
+      <label>Nome<input type="text" name="name" required autocomplete="name" placeholder="Seu nome"></label>
+      <label>E-mail<input type="email" name="email" required autocomplete="email" placeholder="voce@email.com"></label>
+      <label>Mensagem<textarea name="message" required placeholder="Sua mensagem"></textarea></label>
+      <button type="submit">Enviar</button>
+    </form>
+    <p class="hint">Se o e-mail não abrir automaticamente, escreva para amandareznor@hotmail.com.</p>
+  </div>
+<script>
+const TO='amandareznor@hotmail.com';
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const fd=new FormData(this);
+  const name=(fd.get('name')||'').toString().trim();
+  const email=(fd.get('email')||'').toString().trim();
+  const message=(fd.get('message')||'').toString().trim();
+  if(!name||!email||!message){alert('Preencha todos os campos.');return;}
+  const subject=encodeURIComponent('Contato pelo site — '+name);
+  const body=encodeURIComponent('Nome: '+name+'\nE-mail: '+email+'\n\n'+message);
+  window.location.href='mailto:'+TO+'?subject='+subject+'&body='+body;
+});
+</script>
+</body>
+</html>

@@ -70,18 +70,20 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 
 /* ---------- Split hero ---------- */
 .hero{position:relative;height:100vh;min-height:640px;display:flex;overflow:hidden}
-.panel{position:relative;flex:1;display:flex;align-items:flex-end;cursor:pointer;transition:flex 0.85s cubic-bezier(.6,.05,.2,1);overflow:hidden}
-.hero:has(.panel-c:hover) .panel-c,.hero:has(.panel-u:hover) .panel-u{flex:1.6}
+.panel{position:relative;flex:1 1 50%;display:flex;align-items:flex-end;cursor:pointer;overflow:hidden}
 .panel-c{background:linear-gradient(160deg,#17141F 0%,#0F0C16 70%)}
 .panel-c::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,198,217,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,198,217,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 30% 70%,#000 30%,transparent 75%)}
 .panel-u{background:radial-gradient(ellipse at 70% 30%,#2A1846 0%,#170F28 55%,#100A1C 100%)}
-.panel-u::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 25%,rgba(155,109,255,.28),transparent 45%);pointer-events:none}
+.panel-u::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 25%,rgba(155,109,255,.28),transparent 45%);pointer-events:none;transition:background .45s ease}
+.hero:has(.panel-u:hover) .panel-u::before{background:radial-gradient(circle at 70% 30%,rgba(155,109,255,.42),transparent 52%)}
 .stars{position:absolute;inset:0;pointer-events:none}
 .stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--violet-soft);opacity:.7;animation:float 9s ease-in-out infinite}
 .stars i:nth-child(2n){width:2px;height:2px;opacity:.45;animation-duration:12s}
 .stars i:nth-child(3n){animation-delay:-4s}
 @keyframes float{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-26px);opacity:.9}}
-.panel-inner{position:relative;z-index:2;padding:0 clamp(28px,5vw,72px) clamp(46px,8vh,90px)}
+.panel-inner{position:relative;z-index:2;padding:0 clamp(28px,5vw,72px) clamp(46px,8vh,90px);transition:transform .75s cubic-bezier(.6,.05,.2,1)}
+.hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateX(12px)}
+.hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateX(-12px)}
 .panel-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mist);margin-bottom:14px}
 .panel-c .panel-tag{color:#9A96AC}
 .panel-u .panel-tag{color:var(--violet-soft)}
@@ -178,8 +180,15 @@ section{padding:110px 0;position:relative}
 .vale-quote::after{content:"”";color:var(--violet-soft)}
 .vale-desc{margin-top:22px;max-width:560px;color:var(--mist)}
 .vale-works{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.vale-work{border:1px solid var(--line);border-radius:8px;padding:20px 22px;background:rgba(12,9,19,.5);transition:border-color .3s,transform .3s}
+.vale-work{border:1px solid var(--line);border-radius:8px;padding:20px 22px;background:rgba(12,9,19,.5);transition:border-color .3s,transform .3s;text-decoration:none;color:inherit;display:block}
 .vale-work:hover{border-color:rgba(155,109,255,.5);transform:translateY(-3px)}
+.books-note{margin-top:36px;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--mist);text-align:center}
+.books-note a{color:var(--violet-soft);font-style:normal}
+.words-links{margin-top:36px;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+.words-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);border-bottom:1px solid rgba(155,109,255,.35);padding-bottom:3px}
+.words-links a:hover{color:var(--silver-bright)}
+.to-top{display:inline-block;margin-top:48px;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);opacity:.7;transition:opacity .25s,color .25s}
+.to-top:hover{opacity:1;color:var(--violet-soft)}
 .vale-work b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.2rem;color:var(--silver-bright);display:block}
 .vale-work span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft)}
 
@@ -204,7 +213,9 @@ section{padding:110px 0;position:relative}
 .stage p{margin-top:12px;color:var(--mist);font-size:.93rem;max-width:380px}
 .stage .stage-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:10px}
 .stage a{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
-.eq{position:absolute;top:34px;left:36px;display:flex;gap:5px;align-items:flex-end;height:34px}
+.eq{position:absolute;top:34px;left:36px;display:flex;gap:5px;align-items:flex-end;height:34px;z-index:1}
+.stage-music .panel-copy,.stage-music > div:last-child{position:relative;z-index:2;padding-left:72px}
+@media(max-width:520px){.stage-music > div:last-child{padding-left:0;padding-top:44px}}
 .eq i{width:4px;background:var(--violet);border-radius:2px;animation:eq 1.1s ease-in-out infinite}
 .eq i:nth-child(1){height:40%;animation-delay:0s}
 .eq i:nth-child(2){height:90%;animation-delay:.15s}
@@ -253,7 +264,8 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
 @media(max-width:760px){
   .hero{flex-direction:column;height:auto;min-height:100vh}
   .panel{min-height:46vh}
-  .hero:has(.panel-c:hover) .panel-c,.hero:has(.panel-u:hover) .panel-u{flex:1.25}
+  .hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateY(-8px)}
+  .hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateY(-8px)}
   .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(155,109,255,.5),transparent)}
   .hero-name{top:50%}
   .hero-name h1{white-space:normal;font-size:clamp(2.6rem,13vw,4rem)}
@@ -284,7 +296,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <li><a href="#vale" data-i18n="nav.universe">Universe</a></li>
       <li><a href="#words" data-i18n="nav.tales">Tales</a></li>
       <li><a href="#stagezone" data-i18n="nav.stage">Stage</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="contato/index.html" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang" id="lang">
@@ -367,6 +379,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
           </div>
           <div class="quest-links">
             <a href="https://www.youtube.com/watch?v=ydvog9UwMPw" target="_blank" rel="noopener">Gameplay</a>
+            <a href="https://store.steampowered.com/app/1551680/Sleeping_Dragon/" target="_blank" rel="noopener">Steam</a>
             <a href="https://www.facebook.com/sleepingdragongame/" target="_blank" rel="noopener" data-i18n="games.site">Site</a>
           </div>
         </div>
@@ -394,6 +407,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         <div class="xp-bar"><div class="xp-fill"></div></div>
       </div>
     </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -414,7 +428,6 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         <span class="book-kind" data-i18n="books.2.kind">Short stories &amp; poems · horror</span>
         <p data-i18n="books.2.desc">Seven dark tales adrift — steampunk, queer horror and colonial sorcery — with a poem between each story to drift the reader further.</p>
         <a href="https://www.amazon.com.br/Noite-Deriva-contos-poemas-sombrios-ebook/dp/B071S6R4HN" target="_blank" rel="noopener" data-i18n="books.buy">Where to find ↗</a>
-        <a href="https://lua-nova.netlify.app/" target="_blank" rel="noopener" style="display:block;margin-top:10px" data-i18n="books.luanova">Lua Nova ↗</a>
       </article>
       <article class="book reveal">
         <span class="book-year">Fora da Caixa · 2019 · 224p</span>
@@ -424,6 +437,8 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         <a href="https://www.amazon.com.br/Sala-Cirurgia-V%C3%A1rios-Autores/dp/8590689379" target="_blank" rel="noopener" data-i18n="books.buy">Where to find ↗</a>
       </article>
     </div>
+    <p class="books-note reveal"><span data-i18n="books.luanova.note">For the full catalogue of publications, visit</span> <a href="https://lua-nova.netlify.app/" target="_blank" rel="noopener">Lua Nova Editora ↗</a></p>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -445,6 +460,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         <div><b>∞</b><span data-i18n="radio.s3">worlds created</span></div>
       </div>
     </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -457,8 +473,8 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <p class="vale-quote" data-i18n="vale.quote">They shall come to fear the shadows of the day.</p>
       <p class="vale-desc" data-i18n="vale.desc">The Valley of Secrets is a place — as real as you or me, and as real as what inhabits our imagination. Every story waters the Valley; these are its gates.</p>
       <div class="vale-works">
-        <div class="vale-work"><b>Delenda</b><span>Madras · 2015</span></div>
-        <a class="vale-work" href="https://www.facebook.com/castelformia" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block"><b>Castelformia e a Ordem de Omnia</b><span data-i18n="vale.wip">In development</span></a>
+        <a class="vale-work" href="https://www.facebook.com/serievaledossegredos" target="_blank" rel="noopener"><b>Delenda</b><span>Madras · 2015</span></a>
+        <a class="vale-work" href="https://www.facebook.com/castelformia" target="_blank" rel="noopener"><b>Castelformia e a Ordem de Omnia</b><span data-i18n="vale.wip">In development</span></a>
         <div class="vale-work"><b>Maré Negra</b><span data-i18n="vale.wip">In development</span></div>
       </div>
       <div class="quest-links" style="margin-top:28px;flex-wrap:wrap">
@@ -469,6 +485,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         <a href="https://www.facebook.com/groups/valedossegredos/" target="_blank" rel="noopener" data-i18n="vale.fanclub">Fan club ↗</a>
       </div>
     </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -492,6 +509,11 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <div class="antho"><b>Contos de Tarot</b><span>Insensati · 2020 · A Fuga de Valeriano</span></div>
       <div class="antho"><b>23 Formas de Morrer</b><span>Amélie · 2020 · Nunca mais Adeline</span></div>
     </div>
+    <div class="words-links reveal">
+      <a href="https://www.wattpad.com/user/AmandaReznor" target="_blank" rel="noopener" data-i18n="words.wattpad">Read on Wattpad ↗</a>
+      <a href="https://www.skoob.com.br/pt/author/4162" target="_blank" rel="noopener" data-i18n="words.skoob">Shelf on Skoob ↗</a>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -502,7 +524,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <div class="stage stage-music reveal">
         <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div>
-          <p class="stage-tag" data-i18n="music.tag">Songwriter</p>
+          <p class="stage-tag" data-i18n="music.tag">Compositions</p>
           <h3 data-i18n="music.title">Music</h3>
           <p data-i18n="music.desc">Over one hundred original compositions — lyric and melody as another door into the Valley.</p>
           <a href="https://open.spotify.com/artist/7zOleL8rjHZicE8l7tkD2n" target="_blank" rel="noopener" data-i18n="music.cta">Listen ↗</a>
@@ -523,6 +545,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
         </div>
       </div>
     </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
 </section>
 
@@ -533,7 +556,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <div class="reveal">
         <p class="zone-label" data-i18n="foot.eyebrow">Contact</p>
         <h2 style="margin-top:14px"><span data-i18n="foot.head1">Every world begins with</span> <span class="rz" data-i18n="foot.head2">a word.</span></h2>
-        <a class="foot-mail" href="mailto:ab.murtinho@hotmail.com">ab.murtinho@hotmail.com</a>
+        <a class="foot-mail" href="contato/index.html" data-i18n="foot.contact">Get in touch</a>
       </div>
       <div class="foot-links reveal">
         <a href="https://www.instagram.com/amandareznor" target="_blank" rel="noopener">Instagram ↗</a>
@@ -548,7 +571,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       </div>
     </div>
     <div class="bridge reveal">
-      <p><span data-i18n="foot.bridge">In academia and technology, I sign as</span> <a href="amandabritto/" data-i18n="foot.bridge.name">Amanda Britto →</a></p>
+      <p><span data-i18n="foot.bridge">In academia and technology, I sign as</span> <a href="amandabritto/index.html" data-i18n="foot.bridge.name">Amanda Britto →</a></p>
     </div>
     <p class="credits">© 2026 Amanda Reznor · <span data-i18n="foot.tag">worlds under construction</span></p>
   </div>
@@ -578,7 +601,7 @@ const I18N={
   'games.3.desc':'Web3 P2E project — bilingual lore, whitepaper and GDD documentation, character design and weekly content for site and marketing.',
   'games.xp':'Achievements unlocked — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finalist','m.bestbr':'Best Brazilian Game',
-  'books.title':'Published Books','books.buy':'Where to find ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Published Books','books.buy':'Where to find ↗','books.luanova.note':'For the full catalogue of publications, visit',
   'books.1.kind':'Novel · dark fantasy','books.1.desc':"Cláudia Blaise's eighteenth birthday opens a labyrinth of charm, mystery and death — the first gate into the Valley of Secrets.",
   'books.2.kind':'Short stories & poems · horror','books.2.desc':'Seven dark tales adrift — steampunk, queer horror and colonial sorcery — with a poem between each story to drift the reader further.',
   'books.3.kind':'Anthology · organizer','books.3.desc':'Organized anthology featuring the photonovel and the short story "O Graal de Barro" — surgery on the strange, in collective form.',
@@ -587,12 +610,12 @@ const I18N={
   'vale.title':'The Valley of Secrets','vale.quote':'They shall come to fear the shadows of the day.',
   'vale.desc':'The Valley of Secrets is a place — as real as you or me, and as real as what inhabits our imagination. Every story waters the Valley; these are its gates.',
   'vale.wip':'In development','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
-  'words.title':'Tales & Poems','w.books':'solo books','w.tales':'short stories','w.poems':'poems','w.articles':'articles','w.anthologies':'anthologies','w.first':'1st place',
+  'words.title':'Tales & Poems','w.books':'solo books','w.tales':'short stories','w.poems':'poems','w.articles':'articles','w.anthologies':'anthologies','w.first':'1st place','words.wattpad':'Read on Wattpad ↗','words.skoob':'Shelf on Skoob ↗',
   'stage.title':'Music & Image',
-  'music.tag':'Songwriter','music.title':'Music','music.desc':'Over one hundred original compositions — lyric and melody as another door into the Valley.','music.cta':'Listen ↗',
+  'music.tag':'Compositions','music.title':'Music','music.desc':'Over one hundred original compositions — lyric and melody as another door into the Valley.','music.cta':'Listen ↗',
   'image.tag':'Model & Actress','image.title':'Image','image.desc':'Photographic and performance work — the body as narrative, the frame as page.','image.cta':'Portfolio ↗',
-  'foot.eyebrow':'Contact','foot.head1':'Every world begins with','foot.head2':'a word.',
-  'foot.bridge':'In academia and technology, I sign as','foot.bridge.name':'Amanda Britto →','foot.tag':'worlds under construction'
+  'foot.eyebrow':'Contact','foot.head1':'Every world begins with','foot.head2':'a word.','foot.contact':'Get in touch',
+  'foot.bridge':'In academia and technology, I sign as','foot.bridge.name':'Amanda Britto →','foot.tag':'worlds under construction','to.top':'↑ Top'
  },
  pt:{
   'nav.games':'Games','nav.books':'Livros','nav.radio':'Rádio','nav.universe':'Universo','nav.tales':'Contos','nav.stage':'Palco','nav.contact':'Contato',
@@ -607,7 +630,7 @@ const I18N={
   'games.3.desc':'Projeto Web3 P2E — lore bilíngue, whitepaper e documentação de GDD, concepção de personagens e conteúdo semanal para site e marketing.',
   'games.xp':'Conquistas desbloqueadas — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finalista','m.bestbr':'Melhor Jogo Brasileiro',
-  'books.title':'Livros Publicados','books.buy':'Onde encontrar ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Livros Publicados','books.buy':'Onde encontrar ↗','books.luanova.note':'Para o catálogo completo de publicações, visite',
   'books.1.kind':'Romance · fantasia sombria','books.1.desc':'O aniversário de dezoito anos de Cláudia Blaise abre um labirinto de encantos, mistério e morte — o primeiro portal do Vale dos Segredos.',
   'books.2.kind':'Contos & poemas · horror','books.2.desc':'Sete contos sombrios à deriva — steampunk, horror queer e feitiçaria colonial — com um poema entre cada conto para derivar ainda mais o leitor.',
   'books.3.kind':'Antologia · organizadora','books.3.desc':'Antologia organizada com a fotonovela e o conto "O Graal de Barro" — uma cirurgia no estranho, em forma coletiva.',
@@ -616,12 +639,12 @@ const I18N={
   'vale.title':'O Vale dos Segredos','vale.quote':'Passarão a temer as sombras do dia.',
   'vale.desc':'O Vale dos Segredos é um lugar — tão real quanto eu ou você e o que habita o nosso imaginário. Cada história rega o Vale; estes são os seus portais.',
   'vale.wip':'Em desenvolvimento','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fã-clube ↗',
-  'words.title':'Contos & Poemas','w.books':'livros solo','w.tales':'contos','w.poems':'poemas','w.articles':'artigos','w.anthologies':'antologias','w.first':'1º lugar',
+  'words.title':'Contos & Poemas','w.books':'livros solo','w.tales':'contos','w.poems':'poemas','w.articles':'artigos','w.anthologies':'antologias','w.first':'1º lugar','words.wattpad':'LEIA no Wattpad ↗','words.skoob':'ESTANTE no Skoob ↗',
   'stage.title':'Música & Imagem',
-  'music.tag':'Compositora','music.title':'Música','music.desc':'Mais de cem composições originais — letra e melodia como outra porta de entrada para o Vale.','music.cta':'Ouvir ↗',
+  'music.tag':'Composições','music.title':'Música','music.desc':'Mais de cem composições originais — letra e melodia como outra porta de entrada para o Vale.','music.cta':'Ouvir ↗',
   'image.tag':'Modelo & Atriz','image.title':'Imagem','image.desc':'Trabalhos fotográficos e de atuação — o corpo como narrativa, o enquadramento como página.','image.cta':'Portfólio ↗',
-  'foot.eyebrow':'Contato','foot.head1':'Todo mundo começa com','foot.head2':'uma palavra.',
-  'foot.bridge':'Na academia e na tecnologia, assino como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos em construção'
+  'foot.eyebrow':'Contato','foot.head1':'Todo mundo começa com','foot.head2':'uma palavra.','foot.contact':'Entre em contato',
+  'foot.bridge':'Na academia e na tecnologia, assino como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos em construção','to.top':'↑ Topo'
  },
  fr:{
   'nav.games':'Jeux','nav.books':'Livres','nav.radio':'Radio','nav.universe':'Univers','nav.tales':'Contes','nav.stage':'Scène','nav.contact':'Contact',
@@ -636,7 +659,7 @@ const I18N={
   'games.3.desc':'Projet Web3 P2E — lore bilingue, whitepaper et documentation GDD, conception de personnages et contenu hebdomadaire pour le site et le marketing.',
   'games.xp':'Succès débloqués — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finaliste','m.bestbr':'Meilleur jeu brésilien',
-  'books.title':'Livres publiés','books.buy':'Où trouver ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Livres publiés','books.buy':'Où trouver ↗','books.luanova.note':'Pour le catalogue complet des publications, visitez',
   'books.1.kind':'Roman · fantasy sombre','books.1.desc':'Le dix-huitième anniversaire de Cláudia Blaise ouvre un labyrinthe de charmes, de mystère et de mort — la première porte de la Vallée des Secrets.',
   'books.2.kind':'Nouvelles & poèmes · horreur','books.2.desc':'Sept contes sombres à la dérive — steampunk, horreur queer et sorcellerie coloniale — avec un poème entre chaque récit pour faire dériver le lecteur.',
   'books.3.kind':'Anthologie · organisatrice','books.3.desc':'Anthologie organisée avec le roman-photo et la nouvelle « O Graal de Barro » — une chirurgie de l\u2019étrange, en forme collective.',
@@ -645,12 +668,12 @@ const I18N={
   'vale.title':'La Vallée des Secrets','vale.quote':'Ils apprendront à craindre les ombres du jour.',
   'vale.desc':'La Vallée des Secrets est un lieu — aussi réel que vous et moi, et que ce qui habite notre imaginaire. Chaque histoire irrigue la Vallée ; en voici les portes.',
   'vale.wip':'En développement','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
-  'words.title':'Contes & Poèmes','w.books':'livres solo','w.tales':'nouvelles','w.poems':'poèmes','w.articles':'articles','w.anthologies':'anthologies','w.first':'1re place',
+  'words.title':'Contes & Poèmes','w.books':'livres solo','w.tales':'nouvelles','w.poems':'poèmes','w.articles':'articles','w.anthologies':'anthologies','w.first':'1re place','words.wattpad':'Lire sur Wattpad ↗','words.skoob':'Étagère sur Skoob ↗',
   'stage.title':'Musique & Image',
-  'music.tag':'Compositrice','music.title':'Musique','music.desc':'Plus de cent compositions originales — paroles et mélodie comme une autre porte vers la Vallée.','music.cta':'Écouter ↗',
+  'music.tag':'Compositions','music.title':'Musique','music.desc':'Plus de cent compositions originales — paroles et mélodie comme une autre porte vers la Vallée.','music.cta':'Écouter ↗',
   'image.tag':'Mannequin & Actrice','image.title':'Image','image.desc':'Travaux photographiques et de jeu — le corps comme récit, le cadre comme page.','image.cta':'Portfolio ↗',
-  'foot.eyebrow':'Contact','foot.head1':'Tout monde commence par','foot.head2':'un mot.',
-  'foot.bridge':'Dans le monde académique et la tech, je signe','foot.bridge.name':'Amanda Britto →','foot.tag':'mondes en construction'
+  'foot.eyebrow':'Contact','foot.head1':'Tout monde commence par','foot.head2':'un mot.','foot.contact':'Me contacter',
+  'foot.bridge':'Dans le monde académique et la tech, je signe','foot.bridge.name':'Amanda Britto →','foot.tag':'mondes en construction','to.top':'↑ Haut'
  },
  es:{
   'nav.games':'Juegos','nav.books':'Libros','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Cuentos','nav.stage':'Escenario','nav.contact':'Contacto',
@@ -665,7 +688,7 @@ const I18N={
   'games.3.desc':'Proyecto Web3 P2E — lore bilingüe, whitepaper y documentación GDD, diseño de personajes y contenido semanal para sitio y marketing.',
   'games.xp':'Logros desbloqueados — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finalista','m.bestbr':'Mejor juego brasileño',
-  'books.title':'Libros publicados','books.buy':'Dónde encontrar ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Libros publicados','books.buy':'Dónde encontrar ↗','books.luanova.note':'Para el catálogo completo de publicaciones, visita',
   'books.1.kind':'Novela · fantasía oscura','books.1.desc':'El decimoctavo cumpleaños de Cláudia Blaise abre un laberinto de encantos, misterio y muerte — la primera puerta del Valle de los Secretos.',
   'books.2.kind':'Cuentos & poemas · horror','books.2.desc':'Siete cuentos oscuros a la deriva — steampunk, horror queer y hechicería colonial — con un poema entre cada relato para hacer derivar al lector.',
   'books.3.kind':'Antología · organizadora','books.3.desc':'Antología organizada con la fotonovela y el cuento «O Graal de Barro» — una cirugía de lo extraño, en forma colectiva.',
@@ -674,12 +697,12 @@ const I18N={
   'vale.title':'El Valle de los Secretos','vale.quote':'Aprenderán a temer las sombras del día.',
   'vale.desc':'El Valle de los Secretos es un lugar — tan real como tú o yo, y como lo que habita nuestro imaginario. Cada historia riega el Valle; estas son sus puertas.',
   'vale.wip':'En desarrollo','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
-  'words.title':'Cuentos & Poemas','w.books':'libros en solitario','w.tales':'cuentos','w.poems':'poemas','w.articles':'artículos','w.anthologies':'antologías','w.first':'1er lugar',
+  'words.title':'Cuentos & Poemas','w.books':'libros en solitario','w.tales':'cuentos','w.poems':'poemas','w.articles':'artículos','w.anthologies':'antologías','w.first':'1er lugar','words.wattpad':'LEE en Wattpad ↗','words.skoob':'ESTANTE en Skoob ↗',
   'stage.title':'Música & Imagen',
-  'music.tag':'Compositora','music.title':'Música','music.desc':'Más de cien composiciones originales — letra y melodía como otra puerta hacia el Valle.','music.cta':'Escuchar ↗',
+  'music.tag':'Composiciones','music.title':'Música','music.desc':'Más de cien composiciones originales — letra y melodía como otra puerta hacia el Valle.','music.cta':'Escuchar ↗',
   'image.tag':'Modelo & Actriz','image.title':'Imagen','image.desc':'Trabajos fotográficos y de actuación — el cuerpo como narrativa, el encuadre como página.','image.cta':'Portafolio ↗',
-  'foot.eyebrow':'Contacto','foot.head1':'Todo mundo comienza con','foot.head2':'una palabra.',
-  'foot.bridge':'En la academia y la tecnología, firmo como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos en construcción'
+  'foot.eyebrow':'Contacto','foot.head1':'Todo mundo comienza con','foot.head2':'una palabra.','foot.contact':'Entre en contacto',
+  'foot.bridge':'En la academia y la tecnología, firmo como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos en construcción','to.top':'↑ Inicio'
  },
  it:{
   'nav.games':'Giochi','nav.books':'Libri','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Racconti','nav.stage':'Palco','nav.contact':'Contatti',
@@ -694,7 +717,7 @@ const I18N={
   'games.3.desc':'Progetto Web3 P2E — lore bilingue, whitepaper e documentazione GDD, design dei personaggi e contenuti settimanali per sito e marketing.',
   'games.xp':'Trofei sbloccati — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finalista','m.bestbr':'Miglior gioco brasiliano',
-  'books.title':'Libri pubblicati','books.buy':'Dove trovare ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Libri pubblicati','books.buy':'Dove trovare ↗','books.luanova.note':'Per il catalogo completo delle pubblicazioni, visita',
   'books.1.kind':'Romanzo · dark fantasy','books.1.desc':'Il diciottesimo compleanno di Cláudia Blaise apre un labirinto di incanti, mistero e morte — la prima porta della Valle dei Segreti.',
   'books.2.kind':'Racconti & poesie · horror','books.2.desc':'Sette racconti oscuri alla deriva — steampunk, horror queer e stregoneria coloniale — con una poesia tra ogni racconto per far derivare il lettore.',
   'books.3.kind':'Antologia · curatrice','books.3.desc':'Antologia curata con il fotoromanzo e il racconto «O Graal de Barro» — una chirurgia dello strano, in forma collettiva.',
@@ -703,12 +726,12 @@ const I18N={
   'vale.title':'La Valle dei Segreti','vale.quote':'Impareranno a temere le ombre del giorno.',
   'vale.desc':'La Valle dei Segreti è un luogo — reale quanto te o me, e quanto ciò che abita il nostro immaginario. Ogni storia irriga la Valle; queste sono le sue porte.',
   'vale.wip':'In sviluppo','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
-  'words.title':'Racconti & Poesie','w.books':'libri da solista','w.tales':'racconti','w.poems':'poesie','w.articles':'articoli','w.anthologies':'antologie','w.first':'1º posto',
+  'words.title':'Racconti & Poesie','w.books':'libri da solista','w.tales':'racconti','w.poems':'poesie','w.articles':'articoli','w.anthologies':'antologie','w.first':'1º posto','words.wattpad':'LEGGI su Wattpad ↗','words.skoob':'SCAFFALE su Skoob ↗',
   'stage.title':'Musica & Immagine',
-  'music.tag':'Compositrice','music.title':'Musica','music.desc':'Oltre cento composizioni originali — testo e melodia come un\u2019altra porta verso la Valle.','music.cta':'Ascolta ↗',
+  'music.tag':'Composizioni','music.title':'Musica','music.desc':'Oltre cento composizioni originali — testo e melodia come un\u2019altra porta verso la Valle.','music.cta':'Ascolta ↗',
   'image.tag':'Modella & Attrice','image.title':'Immagine','image.desc':'Lavori fotografici e di recitazione — il corpo come narrazione, l\u2019inquadratura come pagina.','image.cta':'Portfolio ↗',
-  'foot.eyebrow':'Contatti','foot.head1':'Ogni mondo inizia con','foot.head2':'una parola.',
-  'foot.bridge':'Nel mondo accademico e nella tecnologia firmo come','foot.bridge.name':'Amanda Britto →','foot.tag':'mondi in costruzione'
+  'foot.eyebrow':'Contatti','foot.head1':'Ogni mondo inizia con','foot.head2':'una parola.','foot.contact':'Contattami',
+  'foot.bridge':'Nel mondo accademico e nella tecnologia firmo come','foot.bridge.name':'Amanda Britto →','foot.tag':'mondi in costruzione','to.top':'↑ Inizio'
  },
  de:{
   'nav.games':'Spiele','nav.books':'Bücher','nav.radio':'Radio','nav.universe':'Universum','nav.tales':'Erzählungen','nav.stage':'Bühne','nav.contact':'Kontakt',
@@ -723,7 +746,7 @@ const I18N={
   'games.3.desc':'Web3-P2E-Projekt — zweisprachige Lore, Whitepaper und GDD-Dokumentation, Charakterdesign und wöchentliche Inhalte für Website und Marketing.',
   'games.xp':'Erfolge freigeschaltet — SBGames · BIG Festival · ProAC · Tokyo Game Show',
   'm.finalist':'Finalistin','m.bestbr':'Bestes brasilianisches Spiel',
-  'books.title':'Veröffentlichte Bücher','books.buy':'Wo zu finden ↗','books.luanova':'Lua Nova ↗',
+  'books.title':'Veröffentlichte Bücher','books.buy':'Wo zu finden ↗','books.luanova.note':'Für den vollständigen Veröffentlichungskatalog besuchen Sie',
   'books.1.kind':'Roman · Dark Fantasy','books.1.desc':'Cláudia Blaises achtzehnter Geburtstag öffnet ein Labyrinth aus Zauber, Geheimnis und Tod — das erste Tor ins Tal der Geheimnisse.',
   'books.2.kind':'Erzählungen & Gedichte · Horror','books.2.desc':'Sieben dunkle Erzählungen auf Drift — Steampunk, Queer-Horror und koloniale Hexerei — mit einem Gedicht zwischen jeder Geschichte.',
   'books.3.kind':'Anthologie · Herausgeberin','books.3.desc':'Herausgegebene Anthologie mit Fotoroman und der Erzählung „O Graal de Barro" — eine Chirurgie des Seltsamen, in kollektiver Form.',
@@ -732,12 +755,12 @@ const I18N={
   'vale.title':'Das Tal der Geheimnisse','vale.quote':'Sie werden die Schatten des Tages fürchten lernen.',
   'vale.desc':'Das Tal der Geheimnisse ist ein Ort — so real wie du oder ich, und wie das, was unsere Vorstellung bewohnt. Jede Geschichte bewässert das Tal; dies sind seine Tore.',
   'vale.wip':'In Entwicklung','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fanclub ↗',
-  'words.title':'Erzählungen & Gedichte','w.books':'Solo-Bücher','w.tales':'Erzählungen','w.poems':'Gedichte','w.articles':'Artikel','w.anthologies':'Anthologien','w.first':'1. Platz',
+  'words.title':'Erzählungen & Gedichte','w.books':'Solo-Bücher','w.tales':'Erzählungen','w.poems':'Gedichte','w.articles':'Artikel','w.anthologies':'Anthologien','w.first':'1. Platz','words.wattpad':'Auf Wattpad lesen ↗','words.skoob':'Regal auf Skoob ↗',
   'stage.title':'Musik & Bild',
-  'music.tag':'Komponistin','music.title':'Musik','music.desc':'Über hundert Originalkompositionen — Text und Melodie als weiteres Tor ins Tal.','music.cta':'Anhören ↗',
+  'music.tag':'Kompositionen','music.title':'Musik','music.desc':'Über hundert Originalkompositionen — Text und Melodie als weiteres Tor ins Tal.','music.cta':'Anhören ↗',
   'image.tag':'Model & Schauspielerin','image.title':'Bild','image.desc':'Fotografische und schauspielerische Arbeiten — der Körper als Erzählung, der Bildausschnitt als Seite.','image.cta':'Portfolio ↗',
-  'foot.eyebrow':'Kontakt','foot.head1':'Jede Welt beginnt mit','foot.head2':'einem Wort.',
-  'foot.bridge':'In Wissenschaft und Technologie unterschreibe ich als','foot.bridge.name':'Amanda Britto →','foot.tag':'Welten im Bau'
+  'foot.eyebrow':'Kontakt','foot.head1':'Jede Welt beginnt mit','foot.head2':'einem Wort.','foot.contact':'Kontakt aufnehmen',
+  'foot.bridge':'In Wissenschaft und Technologie unterschreibe ich als','foot.bridge.name':'Amanda Britto →','foot.tag':'Welten im Bau','to.top':'↑ Nach oben'
  }
 };
 
