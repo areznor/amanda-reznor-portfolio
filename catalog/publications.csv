@@ -1,6 +1,6 @@
 tag,title,date,link,cover
-books,Delenda e o Vale dos Segredos,2015,https://madras.com.br/delenda-e-o-vale-dos-segredos,
-books,Noite à Deriva,2017,https://www.amazon.com.br/Noite-Deriva-contos-poemas-sombrios-ebook/dp/B071S6R4HN,
+books,Delenda e o Vale dos Segredos,2015,https://madras.com.br/delenda-e-o-vale-dos-segredos,catalog/covers/delenda.jpg
+books,Noite à Deriva,2017,https://www.amazon.com.br/Noite-Deriva-contos-poemas-sombrios-ebook/dp/B071S6R4HN,catalog/covers/noite-a-deriva.jpg
 tales,A Dama dos Corvos,2011,,
 tales,A Lenda de Kauane,2011,,
 tales,O Ato de Antes,2011,,
@@ -13,23 +13,29 @@ poems,Poema — exemplo 1,2018,,
 poems,Poema — exemplo 2,2019,,
 articles,Artigo — exemplo 1,2017,,
 articles,Artigo — exemplo 2,2018,,
-anthologies,SteamPink,2011,,
-anthologies,VII Demônios — Ira,2011,,
-anthologies,Quente,2011,,
-anthologies,Piratas: Os Senhores das Águas Sombrias,2012,,
-anthologies,Vampiro: Um Livro Colaborativo,2017,,
-anthologies,"Eu, Monstro",2019,,
-anthologies,Contos de Tarot,2020,,
-anthologies,23 Formas de Morrer,2020,,
-anthologies,Sala de Cirurgia,2019,https://www.amazon.com.br/Sala-Cirurgia-V%C3%A1rios-Autores/dp/8590689379,
-skoob,Delenda e o Vale dos Segredos,2015,https://www.skoob.com.br/pt/author/4162,
-skoob,Noite à Deriva,2017,https://www.skoob.com.br/pt/author/4162,
-skoob,Sala de Cirurgia,2019,https://www.skoob.com.br/pt/author/4162,
-skoob,SteamPink,2011,https://www.skoob.com.br/pt/author/4162,
-skoob,VII Demônios — Ira,2011,https://www.skoob.com.br/pt/author/4162,
-skoob,Quente,2011,https://www.skoob.com.br/pt/author/4162,
-skoob,Piratas: Os Senhores das Águas Sombrias,2012,https://www.skoob.com.br/pt/author/4162,
-skoob,Vampiro: Um Livro Colaborativo,2017,https://www.skoob.com.br/pt/author/4162,
-skoob,"Eu, Monstro",2019,https://www.skoob.com.br/pt/author/4162,
-skoob,Contos de Tarot,2020,https://www.skoob.com.br/pt/author/4162,
-skoob,23 Formas de Morrer,2020,https://www.skoob.com.br/pt/author/4162,
+anthologies,SteamPink,2011,,catalog/covers/steampink.jpg
+anthologies,VII Demônios — Ira,2011,,catalog/covers/vii-demonios-ira.jpg
+anthologies,Quente,2011,,catalog/covers/quente.jpg
+anthologies,Piratas: Os Senhores das Águas Sombrias,2012,,catalog/covers/piratas.jpg
+anthologies,Vampiro: Um Livro Colaborativo,2017,,catalog/covers/vampiro.jpg
+anthologies,"Eu, Monstro",2019,,catalog/covers/eu-monstro.jpg
+anthologies,Contos de Tarot,2020,,catalog/covers/contos-de-tarot.jpg
+anthologies,23 Formas de Morrer,2020,,catalog/covers/23-formas-de-morrer.jpg
+anthologies,Sala de Cirurgia,2019,https://www.amazon.com.br/Sala-Cirurgia-V%C3%A1rios-Autores/dp/8590689379,catalog/covers/sala-de-cirurgia.jpg
+skoob,Delenda e o Vale dos Segredos,2015,https://www.skoob.com.br/pt/author/4162,catalog/covers/delenda.jpg
+skoob,Noite à Deriva,2017,https://www.skoob.com.br/pt/author/4162,catalog/covers/noite-a-deriva.jpg
+skoob,Sala de Cirurgia,2019,https://www.skoob.com.br/pt/author/4162,catalog/covers/sala-de-cirurgia.jpg
+skoob,SteamPink,2011,https://www.skoob.com.br/pt/author/4162,catalog/covers/steampink.jpg
+skoob,VII Demônios — Ira,2011,https://www.skoob.com.br/pt/author/4162,catalog/covers/vii-demonios-ira.jpg
+skoob,Quente,2011,https://www.skoob.com.br/pt/author/4162,catalog/covers/quente.jpg
+skoob,Piratas: Os Senhores das Águas Sombrias,2012,https://www.skoob.com.br/pt/author/4162,catalog/covers/piratas.jpg
+skoob,Vampiro: Um Livro Colaborativo,2017,https://www.skoob.com.br/pt/author/4162,catalog/covers/vampiro.jpg
+skoob,"Eu, Monstro",2019,https://www.skoob.com.br/pt/author/4162,catalog/covers/eu-monstro.jpg
+skoob,Contos de Tarot,2020,https://www.skoob.com.br/pt/author/4162,catalog/covers/contos-de-tarot.jpg
+skoob,23 Formas de Morrer,2020,https://www.skoob.com.br/pt/author/4162,catalog/covers/23-formas-de-morrer.jpg
+skoob,Greendeath,2011,https://www.skoob.com.br/pt/author/4162,catalog/covers/greendeath.jpg
+skoob,Somnium,2016,https://www.skoob.com.br/pt/author/4162,catalog/covers/somnium.jpg
+skoob,Escritos de Amor,,https://www.skoob.com.br/pt/author/4162,catalog/covers/escritos-de-amor.jpg
+skoob,Versos Vampíricos,,https://www.skoob.com.br/pt/author/4162,catalog/covers/versos-vampiricos.jpg
+skoob,Última Parada — Sessão Terror,,https://www.skoob.com.br/pt/author/4162,catalog/covers/ultima-parada.jpg
+skoob,VII Demônios — Gula,,https://www.skoob.com.br/pt/author/4162,catalog/covers/vii-demonios-gula.jpg

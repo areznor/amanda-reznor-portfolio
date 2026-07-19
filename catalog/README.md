@@ -10,15 +10,23 @@ O site lê um CSV com as colunas:
 | D      | `link` | URL da obra (opcional) |
 | E      | `cover`| URL da capa (opcional; carrossel Skoob) |
 
-## Tags aceitas
+## Planilha ativa
 
-**Contadores** (abaixo de Contos & Poemas):
+Contadores leem a coluna A da planilha:
 
-- `books` — livros solo
-- `tales` — contos
-- `poems` — poemas
-- `articles` — artigos
-- `anthologies` — antologias
+https://docs.google.com/spreadsheets/d/1Km1J_9mn0FMQL8nGyLE2rG6tne2iyA2MmpVsggRp_yI/edit?usp=sharing
+
+CSV: `.../export?format=csv`
+
+## Tags aceitas (coluna A)
+
+**Contadores** (abaixo de Contos & Poemas) — EN ou PT:
+
+- `books` / `Livro` — livros solo
+- `tales` / `Conto` — contos
+- `poems` / `Poema` — poemas
+- `articles` / `Artigo` — artigos
+- `anthologies` / `Antologia` — antologias
 
 **Carrossel Skoob:**
 
@@ -54,4 +62,4 @@ Enquanto `CATALOG_CSV_URL` estiver vazio, o site usa o arquivo local `catalog/pu
 
 - Não use vírgulas no título sem aspas (o Sheets exporta com aspas automaticamente).
 - Links do Skoob: abra o livro no Skoob → copie a URL da página do livro na coluna `link`.
-- Capas: URL pública de imagem (Drive “qualquer pessoa com o link” ou capa hospedada).
+- Capas: arquivos locais em `catalog/covers/` (exportados da pasta Drive). Na coluna `cover`, use o caminho relativo, ex.: `catalog/covers/delenda.jpg`.

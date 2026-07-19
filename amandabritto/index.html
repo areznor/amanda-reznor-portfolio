@@ -226,7 +226,7 @@ footer h2 i{color:#B49BE0;font-style:italic}
       <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
       <li><a href="#research" data-i18n="nav.research">Research</a></li>
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-      <li><a href="#writing" data-i18n="nav.writing">Writing</a></li>
+      <li><a href="#writing" data-i18n="nav.writing">Blog</a></li>
       <li><a href="#credentials" data-i18n="nav.credentials">Credentials</a></li>
       <li><a href="#talks" data-i18n="nav.talks">Talks</a></li>
       <li><a href="contato/index.html" data-i18n="nav.contact">Contact</a></li>
@@ -337,12 +337,12 @@ footer h2 i{color:#B49BE0;font-style:italic}
 
 <section id="writing">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">05</span><h2 data-i18n="writ.title">Writing</h2></div>
+    <div class="sec-head reveal"><span class="eyebrow">05</span><h2 data-i18n="writ.title">Blog</h2></div>
     <p class="writing-intro reveal" data-i18n="writ.intro">Essays and articles on technology, education, literature and where they meet — pulled live from the blog. New pieces appear here automatically.</p>
     <div class="filters reveal" id="filters"></div>
     <div class="posts" id="posts"></div>
     <div class="writing-all reveal">
-      <a class="btn btn-ghost" id="allPostsBtn" href="https://profamandabritto.blogspot.com/" target="_blank" rel="noopener" data-i18n="writ.all">All writing ↗</a>
+      <a class="btn btn-ghost" id="allPostsBtn" href="https://profamandabritto.blogspot.com/" target="_blank" rel="noopener" data-i18n="writ.all">Full blog ↗</a>
     </div>
     <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
   </div>
@@ -403,6 +403,37 @@ const BLOG_HOST='profamandabritto.blogspot.com';
 // Map Blogger labels -> site categories. Add posts with these labels in Blogger.
 const LABEL_MAP={tecnologia:'tech',educacao:'education',pesquisa:'research',dados:'tech',ia:'tech',literatura:'literature'};
 
+/* Local articles (shown ahead of Blogger feed). Empty = only Blogger posts. */
+const LOCAL_POSTS=[
+  {
+    title:'Hackathons e game jams: 48 horas, stacks reais e projetos premiados',
+    url:'artigos/hackathons-game-jams.html',
+    date:'2026-07-18',
+    excerpt:'Mimix VR, Kyle’s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis e mais — tecnologias e vitórias nas maratonas de Amanda Reznor Britto.',
+    image:'artigos/img/hackathons.svg',
+    category:'tech',
+    local:true
+  },
+  {
+    title:'Na mídia e na mesa: professora, autora, radiolocutora, mediadora',
+    url:'artigos/midias-palestras-mediacao.html',
+    date:'2026-07-17',
+    excerpt:'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek e os canais YouTube — a presença pública entre academia, jogos e literatura.',
+    image:'artigos/img/midias.svg',
+    category:'education',
+    local:true
+  },
+  {
+    title:'Delenda revisado, internacional e o mapa de seis livros do Vale',
+    url:'artigos/delenda-internacional.html',
+    date:'2026-07-16',
+    excerpt:'Relançamento em EN, FR e ES, e-book em PT-BR, Castelformia no prelo e a saga reestruturada em seis volumes — da Baixa à Alta Montanha.',
+    image:'artigos/img/delenda.svg',
+    category:'literature',
+    local:true
+  }
+];
+
 /* ============ i18n ============ */
 const LANGS=[
   {code:'en',flag:'🇬🇧',label:'English'},
@@ -413,7 +444,7 @@ const LANGS=[
   {code:'de',flag:'🇩🇪',label:'Deutsch'}
 ];
 const I18N={
- en:{'nav.about':'About','nav.experience':'Experience','nav.research':'Research','nav.projects':'Projects','nav.writing':'Writing','nav.credentials':'Credentials','nav.talks':'Talks','nav.contact':'Contact',
+ en:{'nav.about':'About','nav.experience':'Experience','nav.research':'Research','nav.projects':'Projects','nav.writing':'Blog','nav.credentials':'Credentials','nav.talks':'Talks','nav.contact':'Contact',
   'hero.eyebrow':'Academic & professional portfolio','hero.roles':'IT Professor <i>&</i> Data Analyst <i>&</i> Developer','hero.cta':'Get in touch',
   'stat.years':'years teaching higher ed.','stat.masters':"master's degrees (USP · CPS)",'stat.pubs':'technical publications','stat.awards':'dev competition awards',
   'about.title':'About',
@@ -438,15 +469,15 @@ const I18N={
   'proj.2.t':'Conversational interfaces','proj.2.d':'Design and development of chatbots with IBM Watson and Dialogflow (Google), from flow design to integration.',
   'proj.3.t':'Development competitions','proj.3.d':'Seven awards across hackathons and game jams — including Global Game Jam entries such as President Simulation Simulator.',
   'proj.4.t':'Courseware & instructional design','proj.4.d':'100+ technical productions: full course modules, program reviews and updates (117h analyzed for Fundação Bradesco), quizzes and video lessons.',
-  'writ.title':'Writing','writ.intro':'Essays and articles on technology, education, literature and where they meet — pulled live from the blog. New pieces appear here automatically.',
-  'writ.all':'All writing ↗',
+  'writ.title':'Blog','writ.intro':'Essays and articles on technology, education, literature and where they meet — pulled live from the blog. New pieces appear here automatically.',
+  'writ.all':'Full blog ↗',
   'filter.all':'All','filter.tech':'Technology','filter.education':'Education','filter.literature':'Literature','filter.research':'Research',
   'post.read':'Read','posts.loading':'Loading latest pieces…','posts.empty':'No pieces in this category yet.','posts.error':'Couldn\u2019t load the blog right now — visit it directly.',
   'cred.title':'Credentials','cred.prof':'Level 10 · Proficiency','cred.fr':'Francisation Québec','cred.more':'Verified badges on <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Talks & Media','talk.1':'Speaker · Metaverse: concepts and technologies · 2022','talk.2':'Moderator · An introductory approach · 2022','talk.3':'Moderator · FAM · 2023','talk.4':'Series host · QA, VFX, playtesting and gamification · 2020','talk.watch':'Watch ↗',
   'foot.eyebrow':'Contact','foot.head':'Shall we build something <i>together</i>?','foot.contact':'Get in touch','foot.bridge':'Beyond academia, I build worlds — fiction, games and art — as <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Top'
  },
- pt:{'nav.about':'Sobre','nav.experience':'Trajetória','nav.research':'Pesquisa','nav.projects':'Projetos','nav.writing':'Publicações','nav.credentials':'Credenciais','nav.talks':'Palestras','nav.contact':'Contato',
+ pt:{'nav.about':'Sobre','nav.experience':'Trajetória','nav.research':'Pesquisa','nav.projects':'Projetos','nav.writing':'Blog','nav.credentials':'Credenciais','nav.talks':'Palestras','nav.contact':'Contato',
   'hero.eyebrow':'Portfólio acadêmico & profissional','hero.roles':'Professora de TI <i>&</i> Analista de Dados <i>&</i> Desenvolvedora','hero.cta':'Entrar em contato',
   'stat.years':'anos de docência superior','stat.masters':'mestrados (USP · CPS)','stat.pubs':'produções técnicas','stat.awards':'prêmios em maratonas dev',
   'about.title':'Sobre',
@@ -471,15 +502,15 @@ const I18N={
   'proj.2.t':'Interfaces de conversação','proj.2.d':'Design e desenvolvimento de chatbots com IBM Watson e Dialogflow (Google), do desenho de fluxos à integração.',
   'proj.3.t':'Maratonas de desenvolvimento','proj.3.d':'Sete premiações em hackathons e game jams — entre elas participações na Global Game Jam com projetos como President Simulation Simulator.',
   'proj.4.t':'Conteúdo & design instrucional','proj.4.d':'Mais de 100 produções técnicas: disciplinas completas, revisões e atualizações de cursos (117h analisadas para a Fundação Bradesco), quizzes e videoaulas.',
-  'writ.title':'Publicações','writ.intro':'Ensaios e artigos sobre tecnologia, educação, literatura e onde esses mundos se encontram — puxados ao vivo do blog. Textos novos aparecem aqui automaticamente.',
-  'writ.all':'Todas as publicações ↗',
+  'writ.title':'Blog','writ.intro':'Ensaios e artigos sobre tecnologia, educação, literatura e onde esses mundos se encontram — puxados ao vivo do blog. Textos novos aparecem aqui automaticamente.',
+  'writ.all':'Todo o blog ↗',
   'filter.all':'Todos','filter.tech':'Tecnologia','filter.education':'Educação','filter.literature':'Literatura','filter.research':'Pesquisa',
   'post.read':'Ler','posts.loading':'Carregando os textos mais recentes…','posts.empty':'Ainda não há textos nesta categoria.','posts.error':'Não foi possível carregar o blog agora — acesse-o diretamente.',
   'cred.title':'Certificações & Credenciais','cred.prof':'Nível 10 · Proficiência','cred.fr':'Francisation Québec','cred.more':'Badges verificáveis no <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Palestras & Mídia','talk.1':'Conferencista · Metaverso: conceitos e tecnologias · 2022','talk.2':'Moderadora · Uma abordagem introdutória · 2022','talk.3':'Mediação · FAM · 2023','talk.4':'Mediadora da série · QA, VFX, playtest e gamificação · 2020','talk.watch':'Assistir ↗',
   'foot.eyebrow':'Contato','foot.head':'Vamos construir algo <i>juntos</i>?','foot.contact':'Entre em contato','foot.bridge':'Fora da academia, crio mundos — literatura, games e arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Topo'
  },
- fr:{'nav.about':'À propos','nav.experience':'Parcours','nav.research':'Recherche','nav.projects':'Projets','nav.writing':'Publications','nav.credentials':'Titres','nav.talks':'Conférences','nav.contact':'Contact',
+ fr:{'nav.about':'À propos','nav.experience':'Parcours','nav.research':'Recherche','nav.projects':'Projets','nav.writing':'Blog','nav.credentials':'Titres','nav.talks':'Conférences','nav.contact':'Contact',
   'hero.eyebrow':'Portfolio académique & professionnel','hero.roles':'Professeure en TI <i>&</i> Analyste de données <i>&</i> Développeuse','hero.cta':'Me contacter',
   'stat.years':'ans d\u2019enseignement supérieur','stat.masters':'maîtrises (USP · CPS)','stat.pubs':'publications techniques','stat.awards':'prix en hackathons',
   'about.title':'À propos',
@@ -504,15 +535,15 @@ const I18N={
   'proj.2.t':'Interfaces conversationnelles','proj.2.d':'Conception et développement de chatbots avec IBM Watson et Dialogflow (Google), du design des flux à l\u2019intégration.',
   'proj.3.t':'Compétitions de développement','proj.3.d':'Sept prix en hackathons et game jams — dont des participations à la Global Game Jam avec des projets comme President Simulation Simulator.',
   'proj.4.t':'Contenus & design pédagogique','proj.4.d':'Plus de 100 productions techniques : modules complets, révisions et mises à jour de cursus (117 h analysées pour la Fundação Bradesco), quiz et cours vidéo.',
-  'writ.title':'Publications','writ.intro':'Essais et articles sur la technologie, l\u2019éducation, la littérature et leurs points de rencontre — chargés en direct depuis le blog. Les nouveaux textes apparaissent ici automatiquement.',
-  'writ.all':'Toutes les publications ↗',
+  'writ.title':'Blog','writ.intro':'Essais et articles sur la technologie, l\u2019éducation, la littérature et leurs points de rencontre — chargés en direct depuis le blog. Les nouveaux textes apparaissent ici automatiquement.',
+  'writ.all':'Tout le blog ↗',
   'filter.all':'Tous','filter.tech':'Technologie','filter.education':'Éducation','filter.literature':'Littérature','filter.research':'Recherche',
   'post.read':'Lire','posts.loading':'Chargement des derniers textes…','posts.empty':'Aucun texte dans cette catégorie pour l\u2019instant.','posts.error':'Impossible de charger le blog pour le moment — consultez-le directement.',
   'cred.title':'Certifications & Titres','cred.prof':'Niveau 10 · Compétence','cred.fr':'Francisation Québec','cred.more':'Badges vérifiables sur <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Conférences & Médias','talk.1':'Conférencière · Métavers : concepts et technologies · 2022','talk.2':'Modératrice · Une approche introductive · 2022','talk.3':'Modération · FAM · 2023','talk.4':'Animatrice de la série · QA, VFX, playtest et ludification · 2020','talk.watch':'Regarder ↗',
   'foot.eyebrow':'Contact','foot.head':'Et si nous créions quelque chose <i>ensemble</i> ?','foot.contact':'Me contacter','foot.bridge':'En dehors du monde académique, je crée des univers — fiction, jeux et art — sous le nom d\u2019<a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Haut'
  },
- es:{'nav.about':'Perfil','nav.experience':'Trayectoria','nav.research':'Investigación','nav.projects':'Proyectos','nav.writing':'Publicaciones','nav.credentials':'Credenciales','nav.talks':'Charlas','nav.contact':'Contacto',
+ es:{'nav.about':'Perfil','nav.experience':'Trayectoria','nav.research':'Investigación','nav.projects':'Proyectos','nav.writing':'Blog','nav.credentials':'Credenciales','nav.talks':'Charlas','nav.contact':'Contacto',
   'hero.eyebrow':'Portafolio académico & profesional','hero.roles':'Profesora de TI <i>&</i> Analista de Datos <i>&</i> Desarrolladora','hero.cta':'Contactar',
   'stat.years':'años de docencia superior','stat.masters':'maestrías (USP · CPS)','stat.pubs':'producciones técnicas','stat.awards':'premios en hackatones',
   'about.title':'Perfil',
@@ -537,15 +568,15 @@ const I18N={
   'proj.2.t':'Interfaces conversacionales','proj.2.d':'Diseño y desarrollo de chatbots con IBM Watson y Dialogflow (Google), del diseño de flujos a la integración.',
   'proj.3.t':'Competencias de desarrollo','proj.3.d':'Siete premios en hackatones y game jams — entre ellos participaciones en la Global Game Jam con proyectos como President Simulation Simulator.',
   'proj.4.t':'Contenido & diseño instruccional','proj.4.d':'Más de 100 producciones técnicas: módulos completos, revisiones y actualizaciones de programas (117 h analizadas para la Fundação Bradesco), cuestionarios y videoclases.',
-  'writ.title':'Publicaciones','writ.intro':'Ensayos y artículos sobre tecnología, educación, literatura y los espacios donde se encuentran — cargados en vivo desde el blog. Los textos nuevos aparecen aquí automáticamente.',
-  'writ.all':'Todas las publicaciones ↗',
+  'writ.title':'Blog','writ.intro':'Ensayos y artículos sobre tecnología, educación, literatura y los espacios donde se encuentran — cargados en vivo desde el blog. Los textos nuevos aparecen aquí automáticamente.',
+  'writ.all':'Todo el blog ↗',
   'filter.all':'Todos','filter.tech':'Tecnología','filter.education':'Educación','filter.literature':'Literatura','filter.research':'Investigación',
   'post.read':'Leer','posts.loading':'Cargando los textos más recientes…','posts.empty':'Aún no hay textos en esta categoría.','posts.error':'No se pudo cargar el blog ahora — visítalo directamente.',
   'cred.title':'Certificaciones & Credenciales','cred.prof':'Nivel 10 · Competencia','cred.fr':'Francisation Québec','cred.more':'Insignias verificables en <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Charlas & Medios','talk.1':'Ponente · Metaverso: conceptos y tecnologías · 2022','talk.2':'Moderadora · Un enfoque introductorio · 2022','talk.3':'Moderación · FAM · 2023','talk.4':'Conductora de la serie · QA, VFX, playtest y gamificación · 2020','talk.watch':'Ver ↗',
   'foot.eyebrow':'Contacto','foot.head':'¿Construimos algo <i>juntos</i>?','foot.contact':'Entre en contacto','foot.bridge':'Fuera del ámbito académico, creo mundos — ficción, videojuegos y arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inicio'
  },
- it:{'nav.about':'Profilo','nav.experience':'Percorso','nav.research':'Ricerca','nav.projects':'Progetti','nav.writing':'Pubblicazioni','nav.credentials':'Titoli','nav.talks':'Conferenze','nav.contact':'Contatti',
+ it:{'nav.about':'Profilo','nav.experience':'Percorso','nav.research':'Ricerca','nav.projects':'Progetti','nav.writing':'Blog','nav.credentials':'Titoli','nav.talks':'Conferenze','nav.contact':'Contatti',
   'hero.eyebrow':'Portfolio accademico & professionale','hero.roles':'Docente di IT <i>&</i> Data Analyst <i>&</i> Sviluppatrice','hero.cta':'Contattami',
   'stat.years':'anni di docenza universitaria','stat.masters':'lauree magistrali (USP · CPS)','stat.pubs':'produzioni tecniche','stat.awards':'premi in hackathon',
   'about.title':'Profilo',
@@ -570,15 +601,15 @@ const I18N={
   'proj.2.t':'Interfacce conversazionali','proj.2.d':'Progettazione e sviluppo di chatbot con IBM Watson e Dialogflow (Google), dalla progettazione dei flussi all\u2019integrazione.',
   'proj.3.t':'Competizioni di sviluppo','proj.3.d':'Sette premi tra hackathon e game jam — comprese partecipazioni alla Global Game Jam con progetti come President Simulation Simulator.',
   'proj.4.t':'Contenuti & instructional design','proj.4.d':'Oltre 100 produzioni tecniche: moduli completi, revisioni e aggiornamenti di corsi (117 h analizzate per la Fundação Bradesco), quiz e videolezioni.',
-  'writ.title':'Pubblicazioni','writ.intro':'Saggi e articoli su tecnologia, educazione, letteratura e i loro punti di incontro — caricati in diretta dal blog. I nuovi testi compaiono qui automaticamente.',
-  'writ.all':'Tutte le pubblicazioni ↗',
+  'writ.title':'Blog','writ.intro':'Saggi e articoli su tecnologia, educazione, letteratura e i loro punti di incontro — caricati in diretta dal blog. I nuovi testi compaiono qui automaticamente.',
+  'writ.all':'Tutto il blog ↗',
   'filter.all':'Tutti','filter.tech':'Tecnologia','filter.education':'Educazione','filter.literature':'Letteratura','filter.research':'Ricerca',
   'post.read':'Leggi','posts.loading':'Caricamento dei testi più recenti…','posts.empty':'Ancora nessun testo in questa categoria.','posts.error':'Impossibile caricare il blog ora — visitalo direttamente.',
   'cred.title':'Certificazioni & Titoli','cred.prof':'Livello 10 · Competenza','cred.fr':'Francisation Québec','cred.more':'Badge verificabili su <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Conferenze & Media','talk.1':'Relatrice · Metaverso: concetti e tecnologie · 2022','talk.2':'Moderatrice · Un approccio introduttivo · 2022','talk.3':'Moderazione · FAM · 2023','talk.4':'Conduttrice della serie · QA, VFX, playtest e gamification · 2020','talk.watch':'Guarda ↗',
   'foot.eyebrow':'Contatti','foot.head':'Costruiamo qualcosa <i>insieme</i>?','foot.contact':'Contattami','foot.bridge':'Al di fuori dell\u2019ambito accademico creo mondi — narrativa, videogiochi e arte — come <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inizio'
  },
- de:{'nav.about':'Profil','nav.experience':'Werdegang','nav.research':'Forschung','nav.projects':'Projekte','nav.writing':'Publikationen','nav.credentials':'Qualifikationen','nav.talks':'Vorträge','nav.contact':'Kontakt',
+ de:{'nav.about':'Profil','nav.experience':'Werdegang','nav.research':'Forschung','nav.projects':'Projekte','nav.writing':'Blog','nav.credentials':'Qualifikationen','nav.talks':'Vorträge','nav.contact':'Kontakt',
   'hero.eyebrow':'Akademisches & berufliches Portfolio','hero.roles':'IT-Dozentin <i>&</i> Datenanalystin <i>&</i> Entwicklerin','hero.cta':'Kontakt aufnehmen',
   'stat.years':'Jahre Hochschullehre','stat.masters':'Masterabschlüsse (USP · CPS)','stat.pubs':'technische Publikationen','stat.awards':'Preise bei Hackathons',
   'about.title':'Profil',
@@ -603,8 +634,8 @@ const I18N={
   'proj.2.t':'Konversationsschnittstellen','proj.2.d':'Entwurf und Entwicklung von Chatbots mit IBM Watson und Dialogflow (Google), vom Flow-Design bis zur Integration.',
   'proj.3.t':'Entwicklungswettbewerbe','proj.3.d':'Sieben Auszeichnungen bei Hackathons und Game Jams — darunter Beiträge zum Global Game Jam wie President Simulation Simulator.',
   'proj.4.t':'Lehrinhalte & Instructional Design','proj.4.d':'Über 100 technische Produktionen: vollständige Module, Programmüberarbeitungen und -aktualisierungen (117 Std. für die Fundação Bradesco analysiert), Quizze und Videolektionen.',
-  'writ.title':'Publikationen','writ.intro':'Essays und Artikel über Technologie, Bildung, Literatur und ihre Schnittstellen — live aus dem Blog geladen. Neue Texte erscheinen hier automatisch.',
-  'writ.all':'Alle Publikationen ↗',
+  'writ.title':'Blog','writ.intro':'Essays und Artikel über Technologie, Bildung, Literatur und ihre Schnittstellen — live aus dem Blog geladen. Neue Texte erscheinen hier automatisch.',
+  'writ.all':'Zum Blog ↗',
   'filter.all':'Alle','filter.tech':'Technologie','filter.education':'Bildung','filter.literature':'Literatur','filter.research':'Forschung',
   'post.read':'Lesen','posts.loading':'Neueste Texte werden geladen…','posts.empty':'Noch keine Texte in dieser Kategorie.','posts.error':'Blog kann gerade nicht geladen werden — bitte direkt besuchen.',
   'cred.title':'Zertifikate & Qualifikationen','cred.prof':'Stufe 10 · Kompetenz','cred.fr':'Francisation Québec','cred.more':'Verifizierbare Badges auf <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
@@ -663,17 +694,38 @@ function stateHtml(txt){return `<div class="posts-state">${txt}</div>`;}
 
 function renderPosts(){
   const wrap=$('#posts');
-  if(POSTS===null && !POSTS_ERROR){
+  const feed=POSTS===null?null:(POSTS_ERROR?[]:POSTS);
+  if(feed===null){
+    /* Show local articles immediately while Blogger loads */
+    const early=LOCAL_POSTS.filter(p=>FILTER==='all'||p.category===FILTER);
+    if(early.length){
+      wrap.innerHTML='';
+      early.forEach(p=>{
+        const a=document.createElement('a');
+        a.className='post-card'; a.href=p.url;
+        a.innerHTML=`<div class="post-thumb"></div><div class="post-body-wrap">
+          <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
+          <h3>${p.title}</h3><p>${p.excerpt}</p><span class="post-link">${t('post.read')}</span></div>`;
+        wrap.appendChild(a);
+      });
+      const sk=document.createElement('div');
+      sk.className='skeleton';
+      wrap.appendChild(sk);
+      return;
+    }
     wrap.innerHTML='<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>';
     return;
   }
-  if(POSTS_ERROR){wrap.innerHTML=stateHtml(t('posts.error'));return;}
-  const list=POSTS.filter(p=>FILTER==='all'||p.category===FILTER).slice(0,6);
+  const merged=[...LOCAL_POSTS,...feed];
+  if(!merged.length){wrap.innerHTML=stateHtml(t('posts.error'));return;}
+  const list=merged.filter(p=>FILTER==='all'||p.category===FILTER).slice(0,9);
   if(!list.length){wrap.innerHTML=stateHtml(t('posts.empty'));return;}
   wrap.innerHTML='';
   list.forEach(p=>{
     const a=document.createElement('a');
-    a.className='post-card'; a.href=p.url; a.target='_blank'; a.rel='noopener';
+    a.className='post-card';
+    a.href=p.url;
+    if(!p.local){a.target='_blank'; a.rel='noopener';}
     const thumb=p.image?`<div class="post-thumb" style="background-image:url('${p.image}')"></div>`:`<div class="post-thumb"></div>`;
     a.innerHTML=`${thumb}<div class="post-body-wrap">
       <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
@@ -694,7 +746,7 @@ function loadBlogger(){
   const url=`https://${BLOG_HOST}/feeds/posts/default?alt=json&max-results=12`;
   const cb='__blogfeed_'+Date.now();
   const s=document.createElement('script');
-  const timeout=setTimeout(()=>{POSTS_ERROR=true;renderPosts();cleanup();},9000);
+  const timeout=setTimeout(()=>{POSTS_ERROR=true;POSTS=[];renderPosts();cleanup();},9000);
   function cleanup(){delete window[cb];s.remove();}
   window[cb]=function(json){
     clearTimeout(timeout); cleanup();
@@ -714,12 +766,12 @@ function loadBlogger(){
           category:categoryFromLabels(labels)
         };
       });
-      if(!POSTS.length)POSTS_ERROR=true;
-    }catch(err){POSTS_ERROR=true;}
+      if(!POSTS.length){POSTS_ERROR=true;POSTS=[];}
+    }catch(err){POSTS_ERROR=true;POSTS=[];}
     renderPosts();
   };
   s.src=url+'&callback='+cb;
-  s.onerror=()=>{clearTimeout(timeout);POSTS_ERROR=true;renderPosts();cleanup();};
+  s.onerror=()=>{clearTimeout(timeout);POSTS_ERROR=true;POSTS=[];renderPosts();cleanup();};
   document.body.appendChild(s);
 }
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio — Amanda Reznor</title>
+<meta name="description" content="Ensaios fotográficos de Amanda Reznor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0C0913;--violet:#9B6DFF;--violet-soft:#B99AFF;--silver:#C9C6D9;--silver-bright:#EDECF4;--mist:#8B86A0;--line:rgba(201,198,217,.14);--rose:#FF7B9C;--grotesk:'Space Grotesk',system-ui,sans-serif;--serif:'Cormorant Garamond',Georgia,serif;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--grotesk);background:var(--void);color:var(--silver);min-height:100vh;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--violet-soft);text-decoration:none}
+a:hover{color:var(--silver-bright)}
+.wrap{max-width:1100px;margin:0 auto;padding:48px 28px 96px}
+.back{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.back:hover{color:var(--violet-soft)}
+.hero{margin-top:56px;margin-bottom:56px}
+.eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(2.8rem,7vw,4.4rem);color:var(--silver-bright);line-height:1.05}
+.lead{margin-top:16px;max-width:540px;color:var(--mist);font-size:1.05rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.banner{position:relative;display:block;min-height:240px;border-radius:12px;overflow:hidden;border:1px solid var(--line);padding:36px 32px;background:radial-gradient(ellipse at 70% 20%,rgba(255,123,156,.22),transparent 55%),linear-gradient(160deg,#1A1228,#100A1C);transition:transform .35s,border-color .35s}
+.banner:nth-child(2){background:radial-gradient(ellipse at 30% 30%,rgba(155,109,255,.28),transparent 55%),linear-gradient(160deg,#171021,#0E0A16)}
+.banner:nth-child(3){background:radial-gradient(ellipse at 80% 60%,rgba(255,123,156,.18),transparent 50%),linear-gradient(145deg,#1C1430,#120C1E)}
+.banner:nth-child(4){background:radial-gradient(ellipse at 20% 80%,rgba(155,109,255,.22),transparent 50%),linear-gradient(165deg,#151020,#0C0913)}
+.banner:nth-child(5){background:radial-gradient(ellipse at 60% 10%,rgba(233,216,166,.14),transparent 50%),linear-gradient(160deg,#1A1524,#100A1C)}
+.banner:nth-child(6){background:radial-gradient(ellipse at 40% 40%,rgba(255,123,156,.2),transparent 55%),linear-gradient(150deg,#18122A,#0E0A16)}
+.banner:hover{transform:translateY(-4px);border-color:rgba(255,123,156,.45)}
+.banner .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.banner h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--silver-bright);line-height:1.15}
+.banner p{margin-top:12px;max-width:320px;font-size:.9rem;color:var(--mist)}
+.banner .cta{display:inline-block;margin-top:22px;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--silver-bright)}
+.note{margin-top:40px;font-size:.85rem;color:var(--mist);max-width:640px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../index.html">← Amanda Reznor</a>
+    <header class="hero">
+      <p class="eyebrow">Imagem</p>
+      <h1>Portfólio fotográfico</h1>
+      <p class="lead">Ensaios e séries fotográficas — o corpo como narrativa, o enquadramento como página. Cada banner abre o álbum correspondente no Facebook.</p>
+    </header>
+    <div class="grid">
+      <a class="banner" href="https://www.facebook.com/AmandaReznor" target="_blank" rel="noopener">
+        <p class="tag">Ensaio</p>
+        <h2>Retratos &amp; presença</h2>
+        <p>Estudos de luz e expressão — a imagem como personagem do Vale.</p>
+        <span class="cta">Abrir álbum ↗</span>
+      </a>
+      <a class="banner" href="https://www.facebook.com/writer.amandareznor" target="_blank" rel="noopener">
+        <p class="tag">Editorial</p>
+        <h2>Moda &amp; narrativa</h2>
+        <p>Ensaios editoriais em que o figurino e o gesto contam a história.</p>
+        <span class="cta">Abrir álbum ↗</span>
+      </a>
+      <a class="banner" href="https://www.facebook.com/AmandaReznor" target="_blank" rel="noopener">
+        <p class="tag">Personagem</p>
+        <h2>Cosplay &amp; mundos</h2>
+        <p>Transformações visuais alinhadas a personagens e universos ficcionais.</p>
+        <span class="cta">Abrir álbum ↗</span>
+      </a>
+      <a class="banner" href="https://www.facebook.com/writer.amandareznor" target="_blank" rel="noopener">
+        <p class="tag">Cena</p>
+        <h2>Atuação &amp; stills</h2>
+        <p>Frames de performance — o corpo em cena, entre teatro e câmera.</p>
+        <span class="cta">Abrir álbum ↗</span>
+      </a>
+      <a class="banner" href="https://www.facebook.com/AmandaReznor" target="_blank" rel="noopener">
+        <p class="tag">Série</p>
+        <h2>Luz &amp; sombra</h2>
+        <p>Séries monocromáticas e contrastes que ecoam a atmosfera do Escuso.</p>
+        <span class="cta">Abrir álbum ↗</span>
+      </a>
+      <a class="banner" href="https://www.instagram.com/amandareznor" target="_blank" rel="noopener">
+        <p class="tag">Feed</p>
+        <h2>Instagram</h2>
+        <p>Atualizações visuais e bastidores dos ensaios.</p>
+        <span class="cta">Abrir perfil ↗</span>
+      </a>
+    </div>
+    <p class="note">Os banners apontam para álbuns e perfis públicos no Facebook/Instagram. Substitua cada link pelo álbum específico do ensaio quando os URLs dos álbuns estiverem definidos.</p>
+  </div>
+</body>
+</html>
