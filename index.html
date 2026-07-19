@@ -51,7 +51,11 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 .nav-links{display:flex;gap:24px;align-items:center;list-style:none}
 .nav-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
 .nav-links a:hover{color:var(--violet-soft)}
-.nav-right{display:flex;align-items:center;gap:8px}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-bridge{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--mist);white-space:nowrap;transition:color .25s}
+.nav-bridge:hover{color:var(--violet-soft)}
+.nav-bridge .am{font-family:var(--grotesk);font-weight:600;letter-spacing:.02em;text-transform:lowercase}
+.nav-bridge .bt{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft);letter-spacing:.02em;text-transform:lowercase}
 .lang{position:relative}
 .lang-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--silver);transition:border-color .25s}
 .lang-btn:hover{border-color:var(--violet)}
@@ -295,18 +299,31 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
   .antho-list{columns:1}
 }
 @media(max-width:760px){
-  .hero{flex-direction:column;height:auto;min-height:100vh}
-  .panel{min-height:46vh}
-  .panel{flex:1 1 auto;width:100%;max-width:none}
-  .panel-c{justify-content:flex-start}
-  .panel-c .panel-inner{text-align:left;margin-left:0;margin-right:auto;max-width:none}
+  /* Nome primeiro; Carreira | Universo em duas colunas abaixo */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto 1fr;
+    grid-template-areas:"name name" "career universe";
+    height:auto;min-height:100vh;align-content:stretch;
+  }
+  .hero-name{
+    grid-area:name;position:relative;left:auto;top:auto;transform:none;
+    z-index:4;padding:96px 24px 28px;mix-blend-mode:normal;
+    background:linear-gradient(180deg,#120E1B 0%,#0C0913 100%);
+  }
+  .hero-name h1{white-space:normal;font-size:clamp(2.6rem,12vw,3.6rem)}
+  .hero-roles{transform:none;flex-wrap:wrap;row-gap:8px;justify-content:center}
+  .panel{width:100%;max-width:none;min-width:0;min-height:42vh;flex:none}
+  .panel-c{grid-area:career;justify-content:flex-start;border-right:1px solid rgba(155,109,255,.28)}
+  .panel-u{grid-area:universe}
+  .panel-c .panel-inner,.panel-u .panel-inner{text-align:left;margin:0;max-width:none;padding:28px 18px 36px}
   .panel-c .panel-sub{margin-left:0}
-  .panel-c.is-hot > .panel-inner{transform:translateX(-10px)}
-  .panel-u.is-hot > .panel-inner{transform:translateX(10px)}
-  .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(155,109,255,.5),transparent)}
-  .hero-name{top:50%}
-  .hero-name h1{white-space:normal;font-size:clamp(2.6rem,13vw,4rem)}
-  .hero-roles{transform:translateX(0.5em);flex-wrap:wrap;row-gap:8px}
+  .panel-title{font-size:clamp(1.45rem,5vw,1.9rem)}
+  .panel-c.is-hot > .panel-inner{transform:translateX(-6px)}
+  .panel-u.is-hot > .panel-inner{transform:translateX(6px)}
+  .seam{display:none}
+  .scroll-hint{display:none}
   .shelf,.vale-works{grid-template-columns:1fr}
   .level,.level:nth-child(even){grid-template-columns:70px 1fr}
   .level:nth-child(even) .node{order:0}
@@ -317,6 +334,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
   .nav-links.open{display:flex}
   .nav-links li{width:100%;text-align:center;padding:10px 0}
   .burger{display:block}
+  .nav-bridge{font-size:.62rem}
 }
 </style>
 </head>
@@ -337,6 +355,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       <li><a href="contato/index.html" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <a class="nav-bridge" href="britto/" title="Amanda Britto"><span class="am">amanda</span> <span class="bt">britto</span></a>
       <div class="lang" id="lang">
         <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
           <span class="flag" id="curFlag">🇬🇧</span><span id="curCode">EN</span><span class="caret"></span>
@@ -606,7 +625,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
       </div>
     </div>
     <div class="bridge reveal">
-      <p><span data-i18n="foot.bridge">In academia and technology, I sign as</span> <a href="amandabritto/index.html" data-i18n="foot.bridge.name">Amanda Britto →</a></p>
+      <p><span data-i18n="foot.bridge">In academia and technology, I sign as</span> <a href="britto/" data-i18n="foot.bridge.name">Amanda Britto →</a></p>
     </div>
     <p class="credits">© 2026 Amanda Reznor · <span data-i18n="foot.tag">worlds under construction</span></p>
   </div>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F4F4F7">
+<title>Amanda Britto — IT Professor · Data Analyst · Developer</title>
+<meta name="description" content="Academic and professional portfolio of Amanda Britto: IT teaching and coordination, data analysis, research and development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ice:#F4F4F7;--silver:#E7E7ED;--silver-deep:#D4D4DE;
+  --ink:#1D1B24;--ink-soft:#4A4756;--purple:#4E2E7F;--purple-soft:#6C4BA6;--lilac:#8C86A3;
+  --line:rgba(29,27,36,.14);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light only;background:var(--ice)}
+body{font-family:var(--sans);background:var(--ice);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--purple);color:#fff}
+a{color:var(--purple);text-decoration:none;transition:color .25s}
+a:hover{color:var(--purple-soft)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(244,244,247,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 6px 30px rgba(29,27,36,.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1080px;margin:0 auto;padding:0 28px}
+.monogram{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.monogram em{font-style:italic;color:var(--purple)}
+.nav-links{display:flex;gap:24px;align-items:center;list-style:none}
+.nav-links a{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+.nav-links a:hover{color:var(--purple)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-bridge{font-family:var(--serif);font-size:.95rem;font-weight:600;letter-spacing:.08em;color:var(--purple);white-space:nowrap;transition:color .25s}
+.nav-bridge:hover{color:var(--purple-soft)}
+
+.lang{position:relative}
+.lang-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink);transition:border-color .25s}
+.lang-btn:hover{border-color:var(--purple)}
+.lang-btn .flag{font-size:.95rem;line-height:1}
+.lang-btn .caret{width:7px;height:7px;border-right:1.5px solid var(--lilac);border-bottom:1.5px solid var(--lilac);transform:rotate(45deg);margin-top:-3px;transition:transform .25s}
+.lang.open .lang-btn .caret{transform:rotate(-135deg);margin-top:2px}
+.lang-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:180px;background:#FBFBFD;border:1px solid var(--line);box-shadow:0 20px 50px rgba(29,27,36,.14);border-radius:4px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .22s;z-index:60}
+.lang.open .lang-menu{opacity:1;visibility:visible;transform:none}
+.lang-menu button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;padding:10px 12px;cursor:pointer;font-family:var(--sans);font-size:.86rem;color:var(--ink);border-radius:3px;text-align:left;transition:background .2s}
+.lang-menu button:hover{background:rgba(78,46,127,.06)}
+.lang-menu button.active{color:var(--purple);font-weight:600}
+.lang-menu button .flag{font-size:1.05rem}
+.lang-menu button small{margin-left:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--lilac)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px 0;transition:.3s}
+
+header{padding:140px 28px 84px;position:relative}
+.hero-frame{max-width:1024px;margin:0 auto;border:1px solid var(--line);outline:1px solid var(--line);outline-offset:6px;padding:clamp(48px,8vw,96px) clamp(24px,6vw,80px);text-align:center;background:radial-gradient(ellipse at 20% 0%,rgba(78,46,127,.05),transparent 55%),radial-gradient(ellipse at 85% 100%,rgba(140,134,163,.10),transparent 55%),linear-gradient(180deg,#FBFBFD 0%,var(--ice) 100%)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--purple)}
+.hero-rule{width:56px;height:1px;background:var(--purple);margin:26px auto;opacity:.5}
+h1{font-family:var(--serif);font-size:clamp(3rem,8.5vw,5.6rem);font-weight:500;line-height:1.02;letter-spacing:.01em;background:linear-gradient(120deg,#3B3946 0%,#8F8CA0 38%,#2A2833 55%,#77738C 78%,#3B3946 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-roles{margin-top:26px;font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--ink-soft);font-weight:400}
+.hero-roles i{color:var(--purple);font-weight:500;font-style:normal}
+.hero-loc{margin-top:20px;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac)}
+.hero-cta{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 30px;border-radius:2px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;transition:all .3s}
+.btn-solid{background:var(--purple);color:#fff;border:1px solid var(--purple)}
+.btn-solid:hover{background:var(--purple-soft);border-color:var(--purple-soft);color:#fff;transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple)}
+.catalog{max-width:1024px;margin:56px auto 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.catalog div{padding:22px 12px;text-align:center;border-right:1px solid var(--line)}
+.catalog div:last-child{border-right:0}
+.catalog b{display:block;font-family:var(--serif);font-size:2.1rem;font-weight:600;color:var(--ink);line-height:1}
+.catalog span{display:block;margin-top:8px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+
+section{padding:96px 0}
+section.tinted{background:linear-gradient(180deg,var(--silver) 0%,var(--ice) 100%)}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:52px}
+.sec-head .eyebrow{white-space:nowrap}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.7rem);font-weight:500;line-height:1.1}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-6px)}
+
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+.about-text p{margin-bottom:18px;color:var(--ink-soft);font-size:1.02rem}
+.about-text strong{color:var(--ink);font-weight:600}
+.ficha{border:1px solid var(--line);background:#FBFBFD;padding:30px;box-shadow:0 20px 50px rgba(29,27,36,.05)}
+.ficha h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--purple);margin-bottom:20px}
+.ficha dl{display:grid;gap:14px}
+.ficha dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)}
+.ficha dd{font-size:.92rem;color:var(--ink);margin-top:2px}
+
+.timeline{position:relative;max-width:780px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--purple),var(--silver-deep));transform-origin:top;transform:scaleY(var(--draw,0));transition:transform 1.4s ease}
+.timeline.drawn::before{--draw:1}
+.t-item{position:relative;padding:0 0 44px 44px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{content:"";position:absolute;left:0;top:7px;width:15px;height:15px;border-radius:50%;border:1px solid var(--purple);background:var(--ice)}
+.t-item:first-child::before{background:var(--purple)}
+.t-year{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--purple)}
+.t-item h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin:6px 0 2px}
+.t-item h4{font-size:.86rem;font-weight:500;color:var(--lilac);margin-bottom:10px;letter-spacing:.02em}
+.t-item p{color:var(--ink-soft);font-size:.95rem;max-width:640px}
+
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:60px}
+.edu-grid article{background:var(--ice);padding:26px 28px}
+.edu-grid .t-year{color:var(--lilac)}
+.edu-grid h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:6px 0 2px}
+.edu-grid p{font-size:.85rem;color:var(--ink-soft)}
+
+.pub-list{border-top:1px solid var(--line)}
+.pub{display:grid;grid-template-columns:110px 1fr auto;gap:26px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--line);transition:background .3s}
+.pub:hover{background:rgba(78,46,127,.035)}
+.pub-year{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--purple)}
+.pub h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.25}
+.pub p{font-size:.88rem;color:var(--lilac);margin-top:5px}
+.pub-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);border:1px solid var(--line);padding:6px 14px;border-radius:99px;white-space:nowrap;cursor:pointer;transition:all .25s}
+.pub-tag::after{content:"↗";font-size:.7rem;opacity:.6;transition:transform .25s,opacity .25s}
+.pub-tag:hover{color:#fff;background:var(--purple);border-color:var(--purple)}
+.pub-tag:hover::after{opacity:1;transform:translate(1px,-1px)}
+.pub-more{margin-top:28px;font-size:.9rem}
+
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.proj{border:1px solid var(--line);background:#FBFBFD;padding:34px 32px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.proj::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--purple),transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .45s}
+.proj:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(29,27,36,.08)}
+.proj:hover::before{transform:scaleX(1)}
+.proj-num{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;color:var(--lilac)}
+.proj h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin:12px 0 10px}
+.proj p{font-size:.93rem;color:var(--ink-soft)}
+.proj-stack{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.proj-stack span{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;color:var(--purple);background:rgba(78,46,127,.07);padding:4px 10px;border-radius:2px}
+
+/* WRITING (Blogger feed) */
+.writing-intro{max-width:640px;color:var(--ink-soft);margin-bottom:34px;font-size:1.02rem}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.filters button{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);background:transparent;color:var(--ink-soft);padding:8px 16px;border-radius:99px;cursor:pointer;transition:all .25s}
+.filters button:hover{border-color:var(--purple);color:var(--purple)}
+.filters button.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;min-height:120px}
+.post-card{display:flex;flex-direction:column;border:1px solid var(--line);background:#FBFBFD;overflow:hidden;transition:transform .3s,box-shadow .3s;text-align:left}
+.post-card:hover{transform:translateY(-4px);box-shadow:0 22px 55px rgba(29,27,36,.08)}
+.post-thumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--silver),var(--silver-deep));background-size:cover;background-position:center}
+.post-body-wrap{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.post-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.post-cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+.post-date{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--lilac)}
+.post-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.22;margin-bottom:10px}
+.post-card p{font-size:.9rem;color:var(--ink-soft);flex:1}
+.post-link{margin-top:18px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);display:inline-flex;align-items:center;gap:6px}
+.post-link::after{content:"↗"}
+.posts-state{grid-column:1/-1;text-align:center;padding:50px 0;color:var(--lilac);font-family:var(--serif);font-size:1.3rem;font-style:italic}
+.skeleton{grid-column:auto;border:1px solid var(--line);background:#FBFBFD;height:340px;position:relative;overflow:hidden}
+.skeleton::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:translateX(-100%);animation:sk 1.4s infinite}
+@keyframes sk{100%{transform:translateX(100%)}}
+.writing-all{margin-top:36px;text-align:center}
+
+/* Credentials — interactive badges */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.badge{position:relative;display:flex;align-items:center;gap:16px;border:1px solid var(--line);background:#FBFBFD;padding:20px 22px;border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:default}
+.badge::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 0%,rgba(78,46,127,.10),transparent 60%);opacity:0;transition:opacity .35s}
+.badge:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 20px 44px rgba(78,46,127,.14)}
+.badge:hover::before{opacity:1}
+.badge:hover .badge-medal{transform:rotate(-8deg) scale(1.06)}
+.badge-medal{position:relative;flex:none;width:46px;height:46px;border-radius:50%;background:conic-gradient(from 220deg,var(--purple),var(--lilac),var(--purple-soft),var(--purple));display:grid;place-items:center;transition:transform .4s;box-shadow:inset 0 0 0 3px rgba(255,255,255,.7)}
+.badge-medal span{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.05rem}
+.badge-info b{display:block;font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.25}
+.badge-info small{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--lilac);text-transform:uppercase}
+
+.talk-list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.talk{background:var(--ice);padding:22px 26px;display:flex;justify-content:space-between;gap:20px;align-items:baseline;transition:background .3s}
+.talk:hover{background:#FBFBFD}
+.talk h3{font-family:var(--serif);font-size:1.15rem;font-weight:600}
+.talk p{font-size:.82rem;color:var(--lilac);margin-top:3px}
+.talk a{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+
+footer{background:var(--ink);color:#CFCBDD;padding:96px 0 46px;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% -10%,rgba(108,75,166,.28),transparent 55%);pointer-events:none}
+.foot-grid{position:relative;display:grid;grid-template-columns:1.4fr 1fr;gap:60px}
+footer h2{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.1rem);font-weight:500;color:#F2F1F7;line-height:1.12}
+footer h2 i{color:#B49BE0;font-style:italic}
+.foot-mail{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:.95rem;letter-spacing:.04em;color:#F2F1F7;border-bottom:1px solid rgba(180,155,224,.5);padding-bottom:4px}
+.foot-mail:hover{color:#B49BE0}
+.foot-links{display:grid;gap:12px;align-content:start}
+.foot-links a{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#9A93B5}
+.foot-links a:hover{color:#F2F1F7}
+.bridge{position:relative;margin-top:70px;padding-top:34px;border-top:1px solid rgba(207,203,221,.14);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.bridge p{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:#9A93B5}
+.bridge a{color:#B49BE0;font-style:normal}
+.bridge a:hover{color:#F2F1F7}
+.credits{position:relative;margin-top:40px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#5E5975}
+.to-top{display:block;width:fit-content;margin:40px 0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lilac);opacity:.75;transition:opacity .25s,color .25s;text-align:right}
+.to-top:hover{opacity:1;color:var(--purple)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .timeline::before{transform:scaleY(1);transition:none}
+  .proj,.btn,.post-card,.badge,.badge-medal{transition:none}
+  .skeleton::after{animation:none}
+}
+@media(max-width:900px){
+  .about-grid,.foot-grid{grid-template-columns:1fr}
+  .proj-grid,.edu-grid{grid-template-columns:1fr}
+  .posts{grid-template-columns:1fr}
+  .catalog{grid-template-columns:repeat(2,1fr)}
+  .catalog div:nth-child(2){border-right:0}
+  .catalog div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .pub{grid-template-columns:70px 1fr;row-gap:8px}
+  .pub-tag{grid-column:2;justify-self:start;margin-top:2px}
+}
+@media(max-width:760px){
+  html,body{background:var(--ice);color:var(--ink)}
+  nav{background:rgba(244,244,247,.94)}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--ice);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:10px 0 18px;display:none;z-index:40}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%;text-align:center;padding:10px 0}
+  .nav-links a{color:var(--ink-soft)}
+  .burger{display:block}
+  .burger span{background:var(--ink)}
+  header{padding-top:110px;background:var(--ice)}
+  .hero-frame{background:radial-gradient(ellipse at 20% 0%,rgba(78,46,127,.05),transparent 55%),linear-gradient(180deg,#FBFBFD 0%,var(--ice) 100%);color:var(--ink)}
+  h1{-webkit-text-fill-color:transparent}
+  section,.wrap,.about-text,.ficha,.proj,.post-card,.badge,.talk,.edu-grid article{background:inherit;color:var(--ink)}
+  section{background:var(--ice)}
+  section.tinted{background:linear-gradient(180deg,var(--silver) 0%,var(--ice) 100%)}
+  .ficha,.proj,.post-card,.badge{background:#FBFBFD}
+  .edu-grid article,.talk{background:var(--ice)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="monogram" href="#top">A<em>·</em>B</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#research" data-i18n="nav.research">Research</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#writing" data-i18n="nav.writing">Blog</a></li>
+      <li><a href="#credentials" data-i18n="nav.credentials">Credentials</a></li>
+      <li><a href="#talks" data-i18n="nav.talks">Talks</a></li>
+      <li><a href="contato/index.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-bridge" href="../index.html" title="Amanda Reznor">AR</a>
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="flag" id="curFlag">🇬🇧</span><span id="curCode">EN</span><span class="caret"></span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="menu"></div>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-frame">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Academic &amp; professional portfolio</p>
+    <div class="hero-rule"></div>
+    <h1>Amanda Britto</h1>
+    <p class="hero-roles" data-i18n-html="hero.roles">IT Professor <i>&amp;</i> Data Analyst <i>&amp;</i> Developer</p>
+    <p class="hero-loc">Montréal · QC · Canada&nbsp;&nbsp;/&nbsp;&nbsp;São Paulo · SP · Brazil</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="https://www.linkedin.com/in/amandareznor/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="contato/index.html" data-i18n="hero.cta">Get in touch</a>
+    </div>
+  </div>
+  <div class="catalog reveal">
+    <div><b>7+</b><span data-i18n="stat.years">years teaching higher ed.</span></div>
+    <div><b>2</b><span data-i18n="stat.masters">master's degrees (USP · CPS)</span></div>
+    <div><b>100+</b><span data-i18n="stat.pubs">technical publications</span></div>
+    <div><b>7</b><span data-i18n="stat.awards">dev competition awards</span></div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">01</span><h2 data-i18n="about.title">About</h2></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n-html="about.p1">I am an Information Technology professional with extensive higher-education experience, having served as <strong>professor and IT program coordinator</strong> at institutions such as FMU, FAM, Impacta, UNICAP and UniBTA. My path combines the classroom, academic management and hands-on technology projects.</p>
+        <p data-i18n-html="about.p2">I work with <strong>Python for data analysis and machine learning</strong>, tools such as <strong>Power BI</strong>, and the design of <strong>conversational interfaces</strong> (IBM Watson and Dialogflow). As an <strong>ad hoc evaluator for INEP</strong> (Brazil&rsquo;s Ministry of Education), I spent three years helping assess and improve national higher-education standards in IT.</p>
+        <p data-i18n-html="about.p3">My background pairs two master&rsquo;s degrees &mdash; <strong>Comparative Literature (USP)</strong> and <strong>Professional Education (Centro Paula Souza)</strong> &mdash; with a bachelor&rsquo;s in Computer Science: a rare blend across technology, education and language.</p>
+      </div>
+      <aside class="ficha reveal">
+        <h3 data-i18n="about.facts">Quick facts</h3>
+        <dl>
+          <div><dt data-i18n="about.skills">Core skills</dt><dd>Python · SQL · HTML/CSS/JS · Unity/C# · Power BI · Prompt Engineering</dd></div>
+          <div><dt data-i18n="about.langs">Languages</dt><dd data-i18n="about.langs.v">Portuguese (native) · English (fluent) · French &amp; Spanish (functional)</dd></div>
+          <div><dt data-i18n="about.fields">Fields</dt><dd data-i18n="about.fields.v">Teaching · Coordination · Data analysis · EdTech · Technical content</dd></div>
+          <div><dt data-i18n="about.based">Based in</dt><dd>Montréal (QC) · São Paulo (SP)</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="experience" class="tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">02</span><h2 data-i18n="exp.title">Experience</h2></div>
+    <div class="timeline" id="timeline">
+      <div class="t-item reveal"><span class="t-year">2018 — 2025</span><h3 data-i18n="exp.1.role">IT Professor &amp; Program Coordinator</h3><h4>FMU · FAM · Impacta · UNICAP · UniBTA</h4><p data-i18n="exp.1.desc">Teaching, academic production and learning assessment across IT programs. As coordinator at FAM, I led the Technology programs: metrics and outcomes, institutional documentation, multidisciplinary team management and cross-department mediation.</p></div>
+      <div class="t-item reveal"><span class="t-year">2020 — 2023</span><h3 data-i18n="exp.2.role">Ad Hoc Evaluator</h3><h4>INEP · Ministry of Education (Brazil)</h4><p data-i18n="exp.2.desc">Technical and pedagogical collaboration in standing committees evaluating Brazilian higher education in the field of Information Technology.</p></div>
+      <div class="t-item reveal"><span class="t-year">2019 — 2023</span><h3 data-i18n="exp.3.role">Instructional Content Author</h3><h4>VG Educacional · Rede Ânima · Fundação Bradesco · HEP</h4><p data-i18n="exp.3.desc">Validation and production of higher-education courseware: 30+ technical productions across IT, Data Science, Digital Games, Design and Communication.</p></div>
+      <div class="t-item reveal"><span class="t-year">2016 — 2018</span><h3 data-i18n="exp.4.role">Radio Host &amp; Content Producer</h3><h4>Rádio Geek · São Paulo</h4><p data-i18n="exp.4.desc">Host and producer of the weekly literary show Criador de Mundos: 60+ episodes across video and podcast.</p></div>
+      <div class="t-item reveal"><span class="t-year">2013</span><h3 data-i18n="exp.5.role">Web Developer</h3><h4>UNINOVE · Projeto Oficina de Sites</h4><p data-i18n="exp.5.desc">Built websites and blogs for NGOs partnered with the university outreach project.</p></div>
+    </div>
+    <div class="edu-grid reveal">
+      <article><span class="t-year">2019 — 2023</span><h3 data-i18n="edu.1">M.A. · Comparative Literature</h3><p>Universidade de São Paulo — USP</p></article>
+      <article><span class="t-year">2016 — 2017</span><h3 data-i18n="edu.2">M.Sc. · Professional Education</h3><p>Centro Paula Souza — CEETEPS</p></article>
+      <article><span class="t-year">2020 — 2024</span><h3 data-i18n="edu.3">B.Sc. · Computer Science</h3><p>Centro Universitário FMU</p></article>
+      <article><span class="t-year">2015 — 2016</span><h3 data-i18n="edu.4">Grad. Cert. · Digital Games</h3><p>Centro Universitário FMU</p></article>
+      <article><span class="t-year">2022 — 2023</span><h3 data-i18n="edu.5">Grad. Cert. · General &amp; Industrial Chemistry</h3><p>Unyleya</p></article>
+      <article><span class="t-year">2011 — 2013</span><h3 data-i18n="edu.6">A.Sc. · Internet Systems</h3><p>Universidade Nove de Julho — UNINOVE</p></article>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">03</span><h2 data-i18n="res.title">Research &amp; Publications</h2></div>
+    <div class="pub-list reveal">
+      <div class="pub"><span class="pub-year">2023</span><div><h3 data-i18n="res.1.t">Artificial Intelligence as a resource for children&rsquo;s book illustration</h3><p data-i18n="res.1.s">Book chapter · Children&rsquo;s and YA literature: languages of the imaginary — FFLCH/USP</p></div><a class="pub-tag" href="https://scholar.google.com/citations?hl=pt-BR&amp;user=qNOqkkgAAAAJ" target="_blank" rel="noopener" data-i18n="tag.chapter">Chapter</a></div>
+      <div class="pub"><span class="pub-year">2023</span><div><h3 data-i18n="res.2.t">Machinery: dehumanization and dystopia in Gonçalo M. Tavares and Valter Hugo Mãe</h3><p data-i18n="res.2.s">Master&rsquo;s thesis · Comparative Studies of Portuguese-Language Literatures — USP</p></div><a class="pub-tag" href="https://doi.org/10.11606/d.8.2023.tde-15082023-114437" target="_blank" rel="noopener" data-i18n="tag.thesis">Thesis</a></div>
+      <div class="pub"><span class="pub-year">2018</span><div><h3 data-i18n="res.3.t">Gamification at School: a comparative study of student motivation</h3><p data-i18n="res.3.s">Article · Psicologia da Educação (online journal)</p></div><a class="pub-tag" href="https://scholar.google.com/citations?hl=pt-BR&amp;user=qNOqkkgAAAAJ" target="_blank" rel="noopener" data-i18n="tag.article">Article</a></div>
+      <div class="pub"><span class="pub-year">2017</span><div><h3 data-i18n="res.4.t">Motivational impact on learning: case studies in Professional Education</h3><p data-i18n="res.4.s">Master&rsquo;s thesis · Management &amp; Development of Professional Education — CPS</p></div><a class="pub-tag" href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener" data-i18n="tag.thesis">Thesis</a></div>
+    </div>
+    <p class="pub-more reveal" data-i18n-html="res.more"></p>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="projects" class="tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">04</span><h2 data-i18n="proj.title">Technology Projects</h2></div>
+    <div class="proj-grid">
+      <article class="proj reveal"><span class="proj-num">DATA / ML</span><h3 data-i18n="proj.1.t">Data analysis &amp; machine learning</h3><p data-i18n="proj.1.d">Python projects for data analysis and ML — including an applied study on the Olist dataset (Kaggle) with clustering and analytics in Spark and Power BI.</p><div class="proj-stack"><span>Python</span><span>Spark</span><span>Power BI</span><span>Kaggle</span></div></article>
+      <article class="proj reveal"><span class="proj-num">CONVERSATIONAL AI</span><h3 data-i18n="proj.2.t">Conversational interfaces</h3><p data-i18n="proj.2.d">Design and development of chatbots with IBM Watson and Dialogflow (Google), from flow design to integration.</p><div class="proj-stack"><span>IBM Watson</span><span>Dialogflow</span><span>NLP</span></div></article>
+      <article class="proj reveal"><span class="proj-num">COMPETITIONS</span><h3 data-i18n="proj.3.t">Development competitions</h3><p data-i18n="proj.3.d">Seven awards across hackathons and game jams — including Global Game Jam entries such as President Simulation Simulator.</p><div class="proj-stack"><span>Unity</span><span>C#</span><span>Game Jams</span></div></article>
+      <article class="proj reveal"><span class="proj-num">EDTECH</span><h3 data-i18n="proj.4.t">Courseware &amp; instructional design</h3><p data-i18n="proj.4.d">100+ technical productions: full course modules, program reviews and updates (117h analyzed for Fundação Bradesco), quizzes and video lessons.</p><div class="proj-stack"><span>EaD</span><span>Gamification</span><span>Learning UX</span></div></article>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">05</span><h2 data-i18n="writ.title">Blog</h2></div>
+    <p class="writing-intro reveal" data-i18n="writ.intro">Essays and articles on technology, education, literature and where they meet — pulled live from the blog. New pieces appear here automatically.</p>
+    <div class="filters reveal" id="filters"></div>
+    <div class="posts" id="posts"></div>
+    <div class="writing-all reveal">
+      <a class="btn btn-ghost" id="allPostsBtn" href="https://profamandabritto.blogspot.com/" target="_blank" rel="noopener" data-i18n="writ.all">Full blog ↗</a>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="credentials" class="tinted">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">06</span><h2 data-i18n="cred.title">Credentials</h2></div>
+    <div class="badges reveal">
+      <div class="badge"><div class="badge-medal"><span>G</span></div><div class="badge-info"><b>Google Data Analytics</b><small>Google · 2023</small></div></div>
+      <div class="badge"><div class="badge-medal"><span>☁</span></div><div class="badge-info"><b>Cloud Computing Foundations</b><small>Google</small></div></div>
+      <div class="badge"><div class="badge-medal"><span>AI</span></div><div class="badge-info"><b>Prompt Engineering</b><small>Coursera</small></div></div>
+      <div class="badge"><div class="badge-medal"><span>10</span></div><div class="badge-info"><b>CELPIP — English</b><small data-i18n="cred.prof">Level 10 · Proficiency</small></div></div>
+      <div class="badge"><div class="badge-medal"><span>8</span></div><div class="badge-info"><b data-i18n="cred.fr">Francisation Québec</b><small>MIFI · Level 8</small></div></div>
+    </div>
+    <p class="pub-more reveal" data-i18n-html="cred.more"></p>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<section id="talks">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">07</span><h2 data-i18n="talk.title">Talks &amp; Media</h2></div>
+    <div class="talk-list reveal">
+      <div class="talk"><div><h3>Metaverse Innovation Talks</h3><p data-i18n="talk.1">Speaker · Metaverse: concepts and technologies · 2022</p></div></div>
+      <div class="talk"><div><h3>TI Talks #3 — Blockchain</h3><p data-i18n="talk.2">Moderator · An introductory approach · 2022</p></div></div>
+      <div class="talk"><div><h3>SciLab — Digital Signal Processing</h3><p data-i18n="talk.3">Moderator · FAM · 2023</p></div><a href="https://www.youtube.com/watch?v=RyznFJXif3g" target="_blank" rel="noopener" data-i18n="talk.watch">Watch ↗</a></div>
+      <div class="talk"><div><h3>Impacta Game Hour</h3><p data-i18n="talk.4">Series host · QA, VFX, playtesting and gamification · 2020</p></div><a href="https://www.youtube.com/watch?v=_ByUcKyA8ig" target="_blank" rel="noopener" data-i18n="talk.watch">Watch ↗</a></div>
+    </div>
+    <a class="to-top" href="#top" data-i18n="to.top">↑ Top</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="reveal">
+        <p class="eyebrow" style="color:#B49BE0" data-i18n="foot.eyebrow">Contact</p>
+        <h2 style="margin-top:18px" data-i18n-html="foot.head">Shall we build something <i>together</i>?</h2>
+        <a class="foot-mail" href="contato/index.html" data-i18n="foot.contact">Get in touch</a>
+      </div>
+      <div class="foot-links reveal">
+        <a href="https://www.linkedin.com/in/amandareznor/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://www.youtube.com/@profamandabritto" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">Lattes ↗</a>
+        <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>
+      </div>
+    </div>
+    <div class="bridge reveal"><p data-i18n-html="foot.bridge">Beyond academia, I build worlds — fiction, games and art — as <a href="../index.html">Amanda Reznor →</a></p></div>
+    <p class="credits">© 2026 Amanda Britto · Montréal — São Paulo</p>
+  </div>
+</footer>
+
+<script>
+/* ============ Config ============ */
+// Your Blogger blog. The site reads its public JSON feed (free, no server).
+const BLOG_HOST='profamandabritto.blogspot.com';
+// Map Blogger labels -> site categories. Add posts with these labels in Blogger.
+const LABEL_MAP={tecnologia:'tech',educacao:'education',pesquisa:'research',dados:'tech',ia:'tech',literatura:'literature'};
+
+/* Local articles (shown ahead of Blogger feed). Empty = only Blogger posts. */
+const LOCAL_POSTS=[
+  {
+    title:'Hackathons e game jams: 48 horas, stacks reais e projetos premiados',
+    url:'artigos/hackathons-game-jams.html',
+    date:'2026-07-18',
+    excerpt:'Mimix VR, Kyle’s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis e mais — tecnologias e vitórias nas maratonas de Amanda Reznor Britto.',
+    image:'artigos/img/hackathons.svg',
+    category:'tech',
+    local:true
+  },
+  {
+    title:'Na mídia e na mesa: professora, autora, radiolocutora, mediadora',
+    url:'artigos/midias-palestras-mediacao.html',
+    date:'2026-07-17',
+    excerpt:'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek e os canais YouTube — a presença pública entre academia, jogos e literatura.',
+    image:'artigos/img/midias.svg',
+    category:'education',
+    local:true
+  },
+  {
+    title:'Delenda revisado, internacional e o mapa de seis livros do Vale',
+    url:'artigos/delenda-internacional.html',
+    date:'2026-07-16',
+    excerpt:'Relançamento em EN, FR e ES, e-book em PT-BR, Castelformia no prelo e a saga reestruturada em seis volumes — da Baixa à Alta Montanha.',
+    image:'artigos/img/delenda.svg',
+    category:'literature',
+    local:true
+  }
+];
+
+/* ============ i18n ============ */
+const LANGS=[
+  {code:'en',flag:'🇬🇧',label:'English'},
+  {code:'pt',flag:'🇧🇷',label:'Português'},
+  {code:'fr',flag:'🇫🇷',label:'Français'},
+  {code:'es',flag:'🇪🇸',label:'Español'},
+  {code:'it',flag:'🇮🇹',label:'Italiano'},
+  {code:'de',flag:'🇩🇪',label:'Deutsch'}
+];
+const I18N={
+ en:{'nav.about':'About','nav.experience':'Experience','nav.research':'Research','nav.projects':'Projects','nav.writing':'Blog','nav.credentials':'Credentials','nav.talks':'Talks','nav.contact':'Contact',
+  'hero.eyebrow':'Academic & professional portfolio','hero.roles':'IT Professor <i>&</i> Data Analyst <i>&</i> Developer','hero.cta':'Get in touch',
+  'stat.years':'years teaching higher ed.','stat.masters':"master's degrees (USP · CPS)",'stat.pubs':'technical publications','stat.awards':'dev competition awards',
+  'about.title':'About',
+  'about.p1':'I am an Information Technology professional with extensive higher-education experience, having served as <strong>professor and IT program coordinator</strong> at institutions such as FMU, FAM, Impacta, UNICAP and UniBTA. My path combines the classroom, academic management and hands-on technology projects.',
+  'about.p2':'I work with <strong>Python for data analysis and machine learning</strong>, tools such as <strong>Power BI</strong>, and the design of <strong>conversational interfaces</strong> (IBM Watson and Dialogflow). As an <strong>ad hoc evaluator for INEP</strong> (Brazil\u2019s Ministry of Education), I spent three years helping assess and improve national higher-education standards in IT.',
+  'about.p3':'My background pairs two master\u2019s degrees \u2014 <strong>Comparative Literature (USP)</strong> and <strong>Professional Education (Centro Paula Souza)</strong> \u2014 with a bachelor\u2019s in Computer Science: a rare blend across technology, education and language.',
+  'about.facts':'Quick facts','about.skills':'Core skills','about.langs':'Languages','about.langs.v':'Portuguese (native) · English (fluent) · French & Spanish (functional)','about.fields':'Fields','about.fields.v':'Teaching · Coordination · Data analysis · EdTech · Technical content','about.based':'Based in',
+  'exp.title':'Experience','exp.1.role':'IT Professor & Program Coordinator','exp.1.desc':'Teaching, academic production and learning assessment across IT programs. As coordinator at FAM, I led the Technology programs: metrics and outcomes, institutional documentation, multidisciplinary team management and cross-department mediation.',
+  'exp.2.role':'Ad Hoc Evaluator','exp.2.desc':'Technical and pedagogical collaboration in standing committees evaluating Brazilian higher education in the field of Information Technology.',
+  'exp.3.role':'Instructional Content Author','exp.3.desc':'Validation and production of higher-education courseware: 30+ technical productions across IT, Data Science, Digital Games, Design and Communication.',
+  'exp.4.role':'Radio Host & Content Producer','exp.4.desc':'Host and producer of the weekly literary show Criador de Mundos: 60+ episodes across video and podcast.',
+  'exp.5.role':'Web Developer','exp.5.desc':'Built websites and blogs for NGOs partnered with the university outreach project.',
+  'edu.1':'M.A. · Comparative Literature','edu.2':'M.Sc. · Professional Education','edu.3':'B.Sc. · Computer Science','edu.4':'Grad. Cert. · Digital Games','edu.5':'Grad. Cert. · General & Industrial Chemistry','edu.6':'A.Sc. · Internet Systems',
+  'res.title':'Research & Publications',
+  'res.1.t':'Artificial Intelligence as a resource for children\u2019s book illustration','res.1.s':'Book chapter · Children\u2019s and YA literature: languages of the imaginary — FFLCH/USP',
+  'res.2.t':'Machinery: dehumanization and dystopia in Gonçalo M. Tavares and Valter Hugo Mãe','res.2.s':'Master\u2019s thesis · Comparative Studies of Portuguese-Language Literatures — USP',
+  'res.3.t':'Gamification at School: a comparative study of student motivation','res.3.s':'Article · Psicologia da Educação (online journal)',
+  'res.4.t':'Motivational impact on learning: case studies in Professional Education','res.4.s':'Master\u2019s thesis · Management & Development of Professional Education — CPS',
+  'res.more':'Full record — articles, chapters, courseware and talks — on the <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">Lattes CV ↗</a>',
+  'tag.chapter':'Chapter','tag.thesis':'Thesis','tag.article':'Article',
+  'proj.title':'Technology Projects','proj.1.t':'Data analysis & machine learning','proj.1.d':'Python projects for data analysis and ML — including an applied study on the Olist dataset (Kaggle) with clustering and analytics in Spark and Power BI.',
+  'proj.2.t':'Conversational interfaces','proj.2.d':'Design and development of chatbots with IBM Watson and Dialogflow (Google), from flow design to integration.',
+  'proj.3.t':'Development competitions','proj.3.d':'Seven awards across hackathons and game jams — including Global Game Jam entries such as President Simulation Simulator.',
+  'proj.4.t':'Courseware & instructional design','proj.4.d':'100+ technical productions: full course modules, program reviews and updates (117h analyzed for Fundação Bradesco), quizzes and video lessons.',
+  'writ.title':'Blog','writ.intro':'Essays and articles on technology, education, literature and where they meet — pulled live from the blog. New pieces appear here automatically.',
+  'writ.all':'Full blog ↗',
+  'filter.all':'All','filter.tech':'Technology','filter.education':'Education','filter.literature':'Literature','filter.research':'Research',
+  'post.read':'Read','posts.loading':'Loading latest pieces…','posts.empty':'No pieces in this category yet.','posts.error':'Couldn\u2019t load the blog right now — visit it directly.',
+  'cred.title':'Credentials','cred.prof':'Level 10 · Proficiency','cred.fr':'Francisation Québec','cred.more':'Verified badges on <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Talks & Media','talk.1':'Speaker · Metaverse: concepts and technologies · 2022','talk.2':'Moderator · An introductory approach · 2022','talk.3':'Moderator · FAM · 2023','talk.4':'Series host · QA, VFX, playtesting and gamification · 2020','talk.watch':'Watch ↗',
+  'foot.eyebrow':'Contact','foot.head':'Shall we build something <i>together</i>?','foot.contact':'Get in touch','foot.bridge':'Beyond academia, I build worlds — fiction, games and art — as <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Top'
+ },
+ pt:{'nav.about':'Sobre','nav.experience':'Trajetória','nav.research':'Pesquisa','nav.projects':'Projetos','nav.writing':'Blog','nav.credentials':'Credenciais','nav.talks':'Palestras','nav.contact':'Contato',
+  'hero.eyebrow':'Portfólio acadêmico & profissional','hero.roles':'Professora de TI <i>&</i> Analista de Dados <i>&</i> Desenvolvedora','hero.cta':'Entrar em contato',
+  'stat.years':'anos de docência superior','stat.masters':'mestrados (USP · CPS)','stat.pubs':'produções técnicas','stat.awards':'prêmios em maratonas dev',
+  'about.title':'Sobre',
+  'about.p1':'Sou profissional de Tecnologia da Informação com vasta experiência em Ensino Superior, atuando como <strong>professora e coordenadora de cursos de TI</strong> em instituições como FMU, FAM, Impacta, UNICAP e UniBTA. Minha trajetória une sala de aula, gestão acadêmica e desenvolvimento de projetos reais de tecnologia.',
+  'about.p2':'Trabalho com <strong>Python para análise de dados e aprendizado de máquina</strong>, ferramentas como <strong>Power BI</strong> e design de <strong>interfaces de conversação</strong> (IBM Watson e Dialogflow). Como <strong>avaliadora ad hoc do INEP/MEC</strong>, colaborei por três anos com a avaliação e a melhoria dos padrões do ensino superior brasileiro na área de TI.',
+  'about.p3':'Minha formação combina dois mestrados — <strong>Literatura Comparada (USP)</strong> e <strong>Educação Profissional (Centro Paula Souza)</strong> — com bacharelado em Ciência da Computação: um repertório raro que atravessa tecnologia, educação e linguagem.',
+  'about.facts':'Ficha técnica','about.skills':'Competências','about.langs':'Idiomas','about.langs.v':'Português (nativa) · Inglês (fluente) · Francês e Espanhol (funcional)','about.fields':'Atuação','about.fields.v':'Docência · Coordenação · Análise de dados · EdTech · Conteúdo técnico','about.based':'Base',
+  'exp.title':'Trajetória','exp.1.role':'Docente & Coordenadora de TI','exp.1.desc':'Ensino, produção acadêmica e acompanhamento de aprendizagem em cursos de TI. Como coordenadora na FAM, respondi pelos cursos de Tecnologia: métricas e resultados, documentação institucional, gestão de equipe multidisciplinar e mediação entre departamentos.',
+  'exp.2.role':'Avaliadora Ad Hoc','exp.2.desc':'Colaboração técnica e pedagógica em comissões de avaliação permanente do ensino superior nacional na área de Tecnologia da Informação.',
+  'exp.3.role':'Professora Conteudista','exp.3.desc':'Validação e produção de conteúdo didático para o ensino superior: mais de 30 produções técnicas em TI, Ciência de Dados, Jogos Digitais, Design e Comunicação.',
+  'exp.4.role':'Locutora & Produtora de Conteúdo','exp.4.desc':'Apresentação e produção do programa literário semanal Criador de Mundos: mais de 60 programas em vídeo e podcast.',
+  'exp.5.role':'Desenvolvedora Web','exp.5.desc':'Desenvolvimento de sites e blogues para ONGs conveniadas ao projeto de extensão universitária.',
+  'edu.1':'Mestrado · Literatura Comparada','edu.2':'Mestrado · Educação Profissional','edu.3':'Bacharelado · Ciência da Computação','edu.4':'Especialização · Jogos Digitais','edu.5':'Especialização · Química Geral e Industrial','edu.6':'Tecnologia · Sistemas para Internet',
+  'res.title':'Pesquisa & Publicações',
+  'res.1.t':'A Inteligência Artificial como recurso para ilustração de livros infantis','res.1.s':'Capítulo de livro · Literatura infantil e juvenil: linguagens do imaginário — FFLCH/USP',
+  'res.2.t':'Maquinaria: desumanização e distopia em Gonçalo M. Tavares e Valter Hugo Mãe','res.2.s':'Dissertação de Mestrado · Estudos Comparados de Literaturas de Língua Portuguesa — USP',
+  'res.3.t':'Gamificação na Escola: estudo comparativo para identificar a motivação de discentes','res.3.s':'Artigo · Psicologia da Educação (online)',
+  'res.4.t':'Impacto motivacional no aprendizado: estudos de caso em Educação Profissional','res.4.s':'Dissertação de Mestrado · Gestão e Desenvolvimento da Educação Profissional — CPS',
+  'res.more':'Produção completa — artigos, capítulos, materiais didáticos e apresentações — no <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">Currículo Lattes ↗</a>',
+  'tag.chapter':'Capítulo','tag.thesis':'Dissertação','tag.article':'Artigo',
+  'proj.title':'Projetos de Tecnologia','proj.1.t':'Análise de dados & aprendizado de máquina','proj.1.d':'Projetos com Python para análise de dados e ML — incluindo estudo aplicado sobre a base Olist (Kaggle) com clustering e analytics em Spark e Power BI.',
+  'proj.2.t':'Interfaces de conversação','proj.2.d':'Design e desenvolvimento de chatbots com IBM Watson e Dialogflow (Google), do desenho de fluxos à integração.',
+  'proj.3.t':'Maratonas de desenvolvimento','proj.3.d':'Sete premiações em hackathons e game jams — entre elas participações na Global Game Jam com projetos como President Simulation Simulator.',
+  'proj.4.t':'Conteúdo & design instrucional','proj.4.d':'Mais de 100 produções técnicas: disciplinas completas, revisões e atualizações de cursos (117h analisadas para a Fundação Bradesco), quizzes e videoaulas.',
+  'writ.title':'Blog','writ.intro':'Ensaios e artigos sobre tecnologia, educação, literatura e onde esses mundos se encontram — puxados ao vivo do blog. Textos novos aparecem aqui automaticamente.',
+  'writ.all':'Todo o blog ↗',
+  'filter.all':'Todos','filter.tech':'Tecnologia','filter.education':'Educação','filter.literature':'Literatura','filter.research':'Pesquisa',
+  'post.read':'Ler','posts.loading':'Carregando os textos mais recentes…','posts.empty':'Ainda não há textos nesta categoria.','posts.error':'Não foi possível carregar o blog agora — acesse-o diretamente.',
+  'cred.title':'Certificações & Credenciais','cred.prof':'Nível 10 · Proficiência','cred.fr':'Francisation Québec','cred.more':'Badges verificáveis no <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Palestras & Mídia','talk.1':'Conferencista · Metaverso: conceitos e tecnologias · 2022','talk.2':'Moderadora · Uma abordagem introdutória · 2022','talk.3':'Mediação · FAM · 2023','talk.4':'Mediadora da série · QA, VFX, playtest e gamificação · 2020','talk.watch':'Assistir ↗',
+  'foot.eyebrow':'Contato','foot.head':'Vamos construir algo <i>juntos</i>?','foot.contact':'Entre em contato','foot.bridge':'Fora da academia, crio mundos — literatura, games e arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Topo'
+ },
+ fr:{'nav.about':'À propos','nav.experience':'Parcours','nav.research':'Recherche','nav.projects':'Projets','nav.writing':'Blog','nav.credentials':'Titres','nav.talks':'Conférences','nav.contact':'Contact',
+  'hero.eyebrow':'Portfolio académique & professionnel','hero.roles':'Professeure en TI <i>&</i> Analyste de données <i>&</i> Développeuse','hero.cta':'Me contacter',
+  'stat.years':'ans d\u2019enseignement supérieur','stat.masters':'maîtrises (USP · CPS)','stat.pubs':'publications techniques','stat.awards':'prix en hackathons',
+  'about.title':'À propos',
+  'about.p1':'Je suis une professionnelle des technologies de l\u2019information forte d\u2019une vaste expérience dans l\u2019enseignement supérieur, ayant exercé comme <strong>professeure et coordinatrice de programmes en TI</strong> dans des établissements tels que FMU, FAM, Impacta, UNICAP et UniBTA. Mon parcours réunit l\u2019enseignement, la gestion académique et des projets technologiques concrets.',
+  'about.p2':'Je travaille avec <strong>Python pour l\u2019analyse de données et l\u2019apprentissage automatique</strong>, des outils comme <strong>Power BI</strong>, et la conception d\u2019<strong>interfaces conversationnelles</strong> (IBM Watson et Dialogflow). Comme <strong>évaluatrice ad hoc pour l\u2019INEP</strong> (ministère brésilien de l\u2019Éducation), j\u2019ai contribué pendant trois ans à évaluer et améliorer les normes nationales de l\u2019enseignement supérieur en TI.',
+  'about.p3':'Ma formation associe deux maîtrises — <strong>Littérature comparée (USP)</strong> et <strong>Éducation professionnelle (Centro Paula Souza)</strong> — à une licence en informatique : un profil rare, à la croisée de la technologie, de l\u2019éducation et du langage.',
+  'about.facts':'En bref','about.skills':'Compétences','about.langs':'Langues','about.langs.v':'Portugais (langue maternelle) · Anglais (courant) · Français et Espagnol (fonctionnels)','about.fields':'Domaines','about.fields.v':'Enseignement · Coordination · Analyse de données · EdTech · Contenu technique','about.based':'Basée à',
+  'exp.title':'Parcours','exp.1.role':'Professeure & Coordinatrice TI','exp.1.desc':'Enseignement, production académique et suivi des apprentissages dans les programmes de TI. Comme coordinatrice à la FAM, j\u2019ai dirigé les programmes de technologie : indicateurs et résultats, documentation institutionnelle, gestion d\u2019équipe pluridisciplinaire et médiation entre services.',
+  'exp.2.role':'Évaluatrice ad hoc','exp.2.desc':'Collaboration technique et pédagogique au sein de commissions permanentes évaluant l\u2019enseignement supérieur brésilien dans le domaine des technologies de l\u2019information.',
+  'exp.3.role':'Autrice de contenus pédagogiques','exp.3.desc':'Validation et production de contenus pour l\u2019enseignement supérieur : plus de 30 productions techniques en TI, science des données, jeux vidéo, design et communication.',
+  'exp.4.role':'Animatrice radio & productrice','exp.4.desc':'Animation et production de l\u2019émission littéraire hebdomadaire Criador de Mundos : plus de 60 épisodes en vidéo et podcast.',
+  'exp.5.role':'Développeuse web','exp.5.desc':'Création de sites et de blogs pour des ONG partenaires du projet universitaire d\u2019extension.',
+  'edu.1':'Maîtrise · Littérature comparée','edu.2':'Maîtrise · Éducation professionnelle','edu.3':'Licence · Informatique','edu.4':'Spécialisation · Jeux vidéo','edu.5':'Spécialisation · Chimie générale et industrielle','edu.6':'DUT · Systèmes pour Internet',
+  'res.title':'Recherche & Publications',
+  'res.1.t':'L\u2019intelligence artificielle comme ressource pour l\u2019illustration de livres jeunesse','res.1.s':'Chapitre d\u2019ouvrage · Littérature jeunesse : langages de l\u2019imaginaire — FFLCH/USP',
+  'res.2.t':'Machinerie : déshumanisation et dystopie chez Gonçalo M. Tavares et Valter Hugo Mãe','res.2.s':'Mémoire de maîtrise · Études comparées des littératures de langue portugaise — USP',
+  'res.3.t':'La ludification à l\u2019école : étude comparative de la motivation des élèves','res.3.s':'Article · Psicologia da Educação (revue en ligne)',
+  'res.4.t':'Impact motivationnel sur l\u2019apprentissage : études de cas en éducation professionnelle','res.4.s':'Mémoire de maîtrise · Gestion et développement de l\u2019éducation professionnelle — CPS',
+  'res.more':'Production complète — articles, chapitres, contenus pédagogiques et conférences — sur le <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">CV Lattes ↗</a>',
+  'tag.chapter':'Chapitre','tag.thesis':'Mémoire','tag.article':'Article',
+  'proj.title':'Projets technologiques','proj.1.t':'Analyse de données & apprentissage automatique','proj.1.d':'Projets Python pour l\u2019analyse de données et le ML — dont une étude appliquée sur le jeu de données Olist (Kaggle) avec clustering et analytique sous Spark et Power BI.',
+  'proj.2.t':'Interfaces conversationnelles','proj.2.d':'Conception et développement de chatbots avec IBM Watson et Dialogflow (Google), du design des flux à l\u2019intégration.',
+  'proj.3.t':'Compétitions de développement','proj.3.d':'Sept prix en hackathons et game jams — dont des participations à la Global Game Jam avec des projets comme President Simulation Simulator.',
+  'proj.4.t':'Contenus & design pédagogique','proj.4.d':'Plus de 100 productions techniques : modules complets, révisions et mises à jour de cursus (117 h analysées pour la Fundação Bradesco), quiz et cours vidéo.',
+  'writ.title':'Blog','writ.intro':'Essais et articles sur la technologie, l\u2019éducation, la littérature et leurs points de rencontre — chargés en direct depuis le blog. Les nouveaux textes apparaissent ici automatiquement.',
+  'writ.all':'Tout le blog ↗',
+  'filter.all':'Tous','filter.tech':'Technologie','filter.education':'Éducation','filter.literature':'Littérature','filter.research':'Recherche',
+  'post.read':'Lire','posts.loading':'Chargement des derniers textes…','posts.empty':'Aucun texte dans cette catégorie pour l\u2019instant.','posts.error':'Impossible de charger le blog pour le moment — consultez-le directement.',
+  'cred.title':'Certifications & Titres','cred.prof':'Niveau 10 · Compétence','cred.fr':'Francisation Québec','cred.more':'Badges vérifiables sur <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Conférences & Médias','talk.1':'Conférencière · Métavers : concepts et technologies · 2022','talk.2':'Modératrice · Une approche introductive · 2022','talk.3':'Modération · FAM · 2023','talk.4':'Animatrice de la série · QA, VFX, playtest et ludification · 2020','talk.watch':'Regarder ↗',
+  'foot.eyebrow':'Contact','foot.head':'Et si nous créions quelque chose <i>ensemble</i> ?','foot.contact':'Me contacter','foot.bridge':'En dehors du monde académique, je crée des univers — fiction, jeux et art — sous le nom d\u2019<a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Haut'
+ },
+ es:{'nav.about':'Perfil','nav.experience':'Trayectoria','nav.research':'Investigación','nav.projects':'Proyectos','nav.writing':'Blog','nav.credentials':'Credenciales','nav.talks':'Charlas','nav.contact':'Contacto',
+  'hero.eyebrow':'Portafolio académico & profesional','hero.roles':'Profesora de TI <i>&</i> Analista de Datos <i>&</i> Desarrolladora','hero.cta':'Contactar',
+  'stat.years':'años de docencia superior','stat.masters':'maestrías (USP · CPS)','stat.pubs':'producciones técnicas','stat.awards':'premios en hackatones',
+  'about.title':'Perfil',
+  'about.p1':'Soy profesional de Tecnología de la Información con amplia experiencia en Educación Superior, habiendo ejercido como <strong>profesora y coordinadora de programas de TI</strong> en instituciones como FMU, FAM, Impacta, UNICAP y UniBTA. Mi trayectoria une el aula, la gestión académica y proyectos tecnológicos reales.',
+  'about.p2':'Trabajo con <strong>Python para análisis de datos y aprendizaje automático</strong>, herramientas como <strong>Power BI</strong> y el diseño de <strong>interfaces conversacionales</strong> (IBM Watson y Dialogflow). Como <strong>evaluadora ad hoc del INEP</strong> (Ministerio de Educación de Brasil), colaboré durante tres años en la evaluación y mejora de los estándares nacionales de educación superior en TI.',
+  'about.p3':'Mi formación combina dos maestrías — <strong>Literatura Comparada (USP)</strong> y <strong>Educación Profesional (Centro Paula Souza)</strong> — con una licenciatura en Ciencias de la Computación: un perfil poco común entre tecnología, educación y lenguaje.',
+  'about.facts':'Ficha','about.skills':'Competencias','about.langs':'Idiomas','about.langs.v':'Portugués (nativa) · Inglés (fluido) · Francés y Español (funcionales)','about.fields':'Áreas','about.fields.v':'Docencia · Coordinación · Análisis de datos · EdTech · Contenido técnico','about.based':'Base',
+  'exp.title':'Trayectoria','exp.1.role':'Docente & Coordinadora de TI','exp.1.desc':'Docencia, producción académica y seguimiento del aprendizaje en programas de TI. Como coordinadora en la FAM, dirigí los programas de Tecnología: métricas y resultados, documentación institucional, gestión de equipo multidisciplinar y mediación entre departamentos.',
+  'exp.2.role':'Evaluadora Ad Hoc','exp.2.desc':'Colaboración técnica y pedagógica en comisiones permanentes de evaluación de la educación superior brasileña en el área de Tecnología de la Información.',
+  'exp.3.role':'Autora de Contenidos','exp.3.desc':'Validación y producción de material didáctico para educación superior: más de 30 producciones técnicas en TI, Ciencia de Datos, Videojuegos, Diseño y Comunicación.',
+  'exp.4.role':'Locutora & Productora de Contenido','exp.4.desc':'Presentación y producción del programa literario semanal Criador de Mundos: más de 60 episodios en video y pódcast.',
+  'exp.5.role':'Desarrolladora Web','exp.5.desc':'Desarrollo de sitios y blogs para ONG asociadas al proyecto universitario de extensión.',
+  'edu.1':'Maestría · Literatura Comparada','edu.2':'Maestría · Educación Profesional','edu.3':'Licenciatura · Ciencias de la Computación','edu.4':'Especialización · Videojuegos','edu.5':'Especialización · Química General e Industrial','edu.6':'Técnico Superior · Sistemas para Internet',
+  'res.title':'Investigación & Publicaciones',
+  'res.1.t':'La Inteligencia Artificial como recurso para la ilustración de libros infantiles','res.1.s':'Capítulo de libro · Literatura infantil y juvenil: lenguajes del imaginario — FFLCH/USP',
+  'res.2.t':'Maquinaria: deshumanización y distopía en Gonçalo M. Tavares y Valter Hugo Mãe','res.2.s':'Tesis de maestría · Estudios Comparados de Literaturas de Lengua Portuguesa — USP',
+  'res.3.t':'Gamificación en la Escuela: estudio comparativo de la motivación del alumnado','res.3.s':'Artículo · Psicologia da Educação (revista en línea)',
+  'res.4.t':'Impacto motivacional en el aprendizaje: estudios de caso en Educación Profesional','res.4.s':'Tesis de maestría · Gestión y Desarrollo de la Educación Profesional — CPS',
+  'res.more':'Producción completa — artículos, capítulos, materiales didácticos y ponencias — en el <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">CV Lattes ↗</a>',
+  'tag.chapter':'Capítulo','tag.thesis':'Tesis','tag.article':'Artículo',
+  'proj.title':'Proyectos Tecnológicos','proj.1.t':'Análisis de datos & aprendizaje automático','proj.1.d':'Proyectos con Python para análisis de datos y ML — incluyendo un estudio aplicado sobre el conjunto Olist (Kaggle) con clustering y analítica en Spark y Power BI.',
+  'proj.2.t':'Interfaces conversacionales','proj.2.d':'Diseño y desarrollo de chatbots con IBM Watson y Dialogflow (Google), del diseño de flujos a la integración.',
+  'proj.3.t':'Competencias de desarrollo','proj.3.d':'Siete premios en hackatones y game jams — entre ellos participaciones en la Global Game Jam con proyectos como President Simulation Simulator.',
+  'proj.4.t':'Contenido & diseño instruccional','proj.4.d':'Más de 100 producciones técnicas: módulos completos, revisiones y actualizaciones de programas (117 h analizadas para la Fundação Bradesco), cuestionarios y videoclases.',
+  'writ.title':'Blog','writ.intro':'Ensayos y artículos sobre tecnología, educación, literatura y los espacios donde se encuentran — cargados en vivo desde el blog. Los textos nuevos aparecen aquí automáticamente.',
+  'writ.all':'Todo el blog ↗',
+  'filter.all':'Todos','filter.tech':'Tecnología','filter.education':'Educación','filter.literature':'Literatura','filter.research':'Investigación',
+  'post.read':'Leer','posts.loading':'Cargando los textos más recientes…','posts.empty':'Aún no hay textos en esta categoría.','posts.error':'No se pudo cargar el blog ahora — visítalo directamente.',
+  'cred.title':'Certificaciones & Credenciales','cred.prof':'Nivel 10 · Competencia','cred.fr':'Francisation Québec','cred.more':'Insignias verificables en <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Charlas & Medios','talk.1':'Ponente · Metaverso: conceptos y tecnologías · 2022','talk.2':'Moderadora · Un enfoque introductorio · 2022','talk.3':'Moderación · FAM · 2023','talk.4':'Conductora de la serie · QA, VFX, playtest y gamificación · 2020','talk.watch':'Ver ↗',
+  'foot.eyebrow':'Contacto','foot.head':'¿Construimos algo <i>juntos</i>?','foot.contact':'Entre en contacto','foot.bridge':'Fuera del ámbito académico, creo mundos — ficción, videojuegos y arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inicio'
+ },
+ it:{'nav.about':'Profilo','nav.experience':'Percorso','nav.research':'Ricerca','nav.projects':'Progetti','nav.writing':'Blog','nav.credentials':'Titoli','nav.talks':'Conferenze','nav.contact':'Contatti',
+  'hero.eyebrow':'Portfolio accademico & professionale','hero.roles':'Docente di IT <i>&</i> Data Analyst <i>&</i> Sviluppatrice','hero.cta':'Contattami',
+  'stat.years':'anni di docenza universitaria','stat.masters':'lauree magistrali (USP · CPS)','stat.pubs':'produzioni tecniche','stat.awards':'premi in hackathon',
+  'about.title':'Profilo',
+  'about.p1':'Sono una professionista dell\u2019Information Technology con una vasta esperienza nell\u2019istruzione superiore, avendo lavorato come <strong>docente e coordinatrice di corsi IT</strong> in istituzioni come FMU, FAM, Impacta, UNICAP e UniBTA. Il mio percorso unisce l\u2019aula, la gestione accademica e progetti tecnologici concreti.',
+  'about.p2':'Lavoro con <strong>Python per l\u2019analisi dei dati e il machine learning</strong>, strumenti come <strong>Power BI</strong> e la progettazione di <strong>interfacce conversazionali</strong> (IBM Watson e Dialogflow). Come <strong>valutatrice ad hoc per l\u2019INEP</strong> (Ministero dell\u2019Istruzione brasiliano), ho contribuito per tre anni a valutare e migliorare gli standard nazionali dell\u2019istruzione superiore in ambito IT.',
+  'about.p3':'La mia formazione unisce due lauree magistrali — <strong>Letteratura Comparata (USP)</strong> ed <strong>Educazione Professionale (Centro Paula Souza)</strong> — a una laurea in Informatica: un profilo raro, tra tecnologia, educazione e linguaggio.',
+  'about.facts':'In breve','about.skills':'Competenze','about.langs':'Lingue','about.langs.v':'Portoghese (madrelingua) · Inglese (fluente) · Francese e Spagnolo (funzionali)','about.fields':'Ambiti','about.fields.v':'Docenza · Coordinamento · Analisi dati · EdTech · Contenuti tecnici','about.based':'Sede',
+  'exp.title':'Percorso','exp.1.role':'Docente & Coordinatrice IT','exp.1.desc':'Insegnamento, produzione accademica e monitoraggio dell\u2019apprendimento nei corsi IT. Come coordinatrice alla FAM ho guidato i corsi di Tecnologia: metriche e risultati, documentazione istituzionale, gestione di un team multidisciplinare e mediazione tra i reparti.',
+  'exp.2.role':'Valutatrice Ad Hoc','exp.2.desc':'Collaborazione tecnica e pedagogica in commissioni permanenti di valutazione dell\u2019istruzione superiore brasiliana nel campo dell\u2019Information Technology.',
+  'exp.3.role':'Autrice di Contenuti Didattici','exp.3.desc':'Validazione e produzione di materiali per l\u2019istruzione superiore: oltre 30 produzioni tecniche in IT, Data Science, Videogiochi, Design e Comunicazione.',
+  'exp.4.role':'Conduttrice Radio & Produttrice','exp.4.desc':'Conduzione e produzione del programma letterario settimanale Criador de Mundos: oltre 60 episodi tra video e podcast.',
+  'exp.5.role':'Sviluppatrice Web','exp.5.desc':'Realizzazione di siti e blog per ONG partner del progetto universitario di divulgazione.',
+  'edu.1':'Laurea Magistrale · Letteratura Comparata','edu.2':'Laurea Magistrale · Educazione Professionale','edu.3':'Laurea · Informatica','edu.4':'Specializzazione · Videogiochi','edu.5':'Specializzazione · Chimica Generale e Industriale','edu.6':'Laurea Breve · Sistemi per Internet',
+  'res.title':'Ricerca & Pubblicazioni',
+  'res.1.t':'L\u2019Intelligenza Artificiale come risorsa per l\u2019illustrazione di libri per bambini','res.1.s':'Capitolo di libro · Letteratura per l\u2019infanzia: linguaggi dell\u2019immaginario — FFLCH/USP',
+  'res.2.t':'Macchinari: disumanizzazione e distopia in Gonçalo M. Tavares e Valter Hugo Mãe','res.2.s':'Tesi di laurea magistrale · Studi Comparati delle Letterature di Lingua Portoghese — USP',
+  'res.3.t':'Gamification a Scuola: studio comparativo sulla motivazione degli studenti','res.3.s':'Articolo · Psicologia da Educação (rivista online)',
+  'res.4.t':'Impatto motivazionale sull\u2019apprendimento: casi di studio nell\u2019Educazione Professionale','res.4.s':'Tesi di laurea magistrale · Gestione e Sviluppo dell\u2019Educazione Professionale — CPS',
+  'res.more':'Produzione completa — articoli, capitoli, materiali didattici e conferenze — sul <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">CV Lattes ↗</a>',
+  'tag.chapter':'Capitolo','tag.thesis':'Tesi','tag.article':'Articolo',
+  'proj.title':'Progetti Tecnologici','proj.1.t':'Analisi dati & machine learning','proj.1.d':'Progetti in Python per analisi dati e ML — tra cui uno studio applicato sul dataset Olist (Kaggle) con clustering e analytics in Spark e Power BI.',
+  'proj.2.t':'Interfacce conversazionali','proj.2.d':'Progettazione e sviluppo di chatbot con IBM Watson e Dialogflow (Google), dalla progettazione dei flussi all\u2019integrazione.',
+  'proj.3.t':'Competizioni di sviluppo','proj.3.d':'Sette premi tra hackathon e game jam — comprese partecipazioni alla Global Game Jam con progetti come President Simulation Simulator.',
+  'proj.4.t':'Contenuti & instructional design','proj.4.d':'Oltre 100 produzioni tecniche: moduli completi, revisioni e aggiornamenti di corsi (117 h analizzate per la Fundação Bradesco), quiz e videolezioni.',
+  'writ.title':'Blog','writ.intro':'Saggi e articoli su tecnologia, educazione, letteratura e i loro punti di incontro — caricati in diretta dal blog. I nuovi testi compaiono qui automaticamente.',
+  'writ.all':'Tutto il blog ↗',
+  'filter.all':'Tutti','filter.tech':'Tecnologia','filter.education':'Educazione','filter.literature':'Letteratura','filter.research':'Ricerca',
+  'post.read':'Leggi','posts.loading':'Caricamento dei testi più recenti…','posts.empty':'Ancora nessun testo in questa categoria.','posts.error':'Impossibile caricare il blog ora — visitalo direttamente.',
+  'cred.title':'Certificazioni & Titoli','cred.prof':'Livello 10 · Competenza','cred.fr':'Francisation Québec','cred.more':'Badge verificabili su <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Conferenze & Media','talk.1':'Relatrice · Metaverso: concetti e tecnologie · 2022','talk.2':'Moderatrice · Un approccio introduttivo · 2022','talk.3':'Moderazione · FAM · 2023','talk.4':'Conduttrice della serie · QA, VFX, playtest e gamification · 2020','talk.watch':'Guarda ↗',
+  'foot.eyebrow':'Contatti','foot.head':'Costruiamo qualcosa <i>insieme</i>?','foot.contact':'Contattami','foot.bridge':'Al di fuori dell\u2019ambito accademico creo mondi — narrativa, videogiochi e arte — come <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inizio'
+ },
+ de:{'nav.about':'Profil','nav.experience':'Werdegang','nav.research':'Forschung','nav.projects':'Projekte','nav.writing':'Blog','nav.credentials':'Qualifikationen','nav.talks':'Vorträge','nav.contact':'Kontakt',
+  'hero.eyebrow':'Akademisches & berufliches Portfolio','hero.roles':'IT-Dozentin <i>&</i> Datenanalystin <i>&</i> Entwicklerin','hero.cta':'Kontakt aufnehmen',
+  'stat.years':'Jahre Hochschullehre','stat.masters':'Masterabschlüsse (USP · CPS)','stat.pubs':'technische Publikationen','stat.awards':'Preise bei Hackathons',
+  'about.title':'Profil',
+  'about.p1':'Ich bin IT-Fachfrau mit umfangreicher Erfahrung in der Hochschulbildung und war als <strong>Dozentin und Studiengangskoordinatorin für IT</strong> an Einrichtungen wie FMU, FAM, Impacta, UNICAP und UniBTA tätig. Mein Weg verbindet Lehre, akademisches Management und praxisnahe Technologieprojekte.',
+  'about.p2':'Ich arbeite mit <strong>Python für Datenanalyse und maschinelles Lernen</strong>, Werkzeugen wie <strong>Power BI</strong> und dem Entwurf von <strong>Konversationsschnittstellen</strong> (IBM Watson und Dialogflow). Als <strong>Ad-hoc-Gutachterin für INEP</strong> (brasilianisches Bildungsministerium) habe ich drei Jahre lang an der Bewertung und Verbesserung nationaler Hochschulstandards im IT-Bereich mitgewirkt.',
+  'about.p3':'Meine Ausbildung verbindet zwei Masterabschlüsse — <strong>Vergleichende Literaturwissenschaft (USP)</strong> und <strong>Berufsbildung (Centro Paula Souza)</strong> — mit einem Bachelor in Informatik: ein seltenes Profil zwischen Technologie, Bildung und Sprache.',
+  'about.facts':'Kurzprofil','about.skills':'Kernkompetenzen','about.langs':'Sprachen','about.langs.v':'Portugiesisch (Muttersprache) · Englisch (fließend) · Französisch & Spanisch (funktional)','about.fields':'Bereiche','about.fields.v':'Lehre · Koordination · Datenanalyse · EdTech · Fachinhalte','about.based':'Standort',
+  'exp.title':'Werdegang','exp.1.role':'IT-Dozentin & Studiengangskoordinatorin','exp.1.desc':'Lehre, akademische Produktion und Lernbegleitung in IT-Studiengängen. Als Koordinatorin an der FAM leitete ich die Technologie-Studiengänge: Kennzahlen und Ergebnisse, institutionelle Dokumentation, Leitung eines interdisziplinären Teams und Vermittlung zwischen Abteilungen.',
+  'exp.2.role':'Ad-hoc-Gutachterin','exp.2.desc':'Fachliche und pädagogische Mitarbeit in ständigen Kommissionen zur Bewertung der brasilianischen Hochschulbildung im Bereich Informationstechnologie.',
+  'exp.3.role':'Autorin für Lehrinhalte','exp.3.desc':'Validierung und Produktion von Hochschullehrmaterial: über 30 technische Produktionen in IT, Data Science, digitalen Spielen, Design und Kommunikation.',
+  'exp.4.role':'Radiomoderatorin & Content-Produzentin','exp.4.desc':'Moderation und Produktion der wöchentlichen Literatursendung Criador de Mundos: über 60 Folgen als Video und Podcast.',
+  'exp.5.role':'Webentwicklerin','exp.5.desc':'Erstellung von Websites und Blogs für NGOs im Rahmen des universitären Outreach-Projekts.',
+  'edu.1':'Master · Vergleichende Literaturwissenschaft','edu.2':'Master · Berufsbildung','edu.3':'Bachelor · Informatik','edu.4':'Aufbaustudium · Digitale Spiele','edu.5':'Aufbaustudium · Allgemeine & Industrielle Chemie','edu.6':'Diplom · Internetsysteme',
+  'res.title':'Forschung & Publikationen',
+  'res.1.t':'Künstliche Intelligenz als Ressource für die Illustration von Kinderbüchern','res.1.s':'Buchkapitel · Kinder- und Jugendliteratur: Sprachen des Imaginären — FFLCH/USP',
+  'res.2.t':'Maschinerie: Entmenschlichung und Dystopie bei Gonçalo M. Tavares und Valter Hugo Mãe','res.2.s':'Masterarbeit · Vergleichende Studien portugiesischsprachiger Literaturen — USP',
+  'res.3.t':'Gamification in der Schule: eine vergleichende Studie zur Motivation von Lernenden','res.3.s':'Artikel · Psicologia da Educação (Online-Zeitschrift)',
+  'res.4.t':'Motivationale Wirkung auf das Lernen: Fallstudien in der Berufsbildung','res.4.s':'Masterarbeit · Management & Entwicklung der Berufsbildung — CPS',
+  'res.more':'Vollständiges Verzeichnis — Artikel, Kapitel, Lehrmaterial und Vorträge — im <a href="https://lattes.cnpq.br/0643998598745047" target="_blank" rel="noopener">Lattes-Lebenslauf ↗</a>',
+  'tag.chapter':'Kapitel','tag.thesis':'Abschlussarbeit','tag.article':'Artikel',
+  'proj.title':'Technologieprojekte','proj.1.t':'Datenanalyse & maschinelles Lernen','proj.1.d':'Python-Projekte für Datenanalyse und ML — darunter eine angewandte Studie zum Olist-Datensatz (Kaggle) mit Clustering und Analytik in Spark und Power BI.',
+  'proj.2.t':'Konversationsschnittstellen','proj.2.d':'Entwurf und Entwicklung von Chatbots mit IBM Watson und Dialogflow (Google), vom Flow-Design bis zur Integration.',
+  'proj.3.t':'Entwicklungswettbewerbe','proj.3.d':'Sieben Auszeichnungen bei Hackathons und Game Jams — darunter Beiträge zum Global Game Jam wie President Simulation Simulator.',
+  'proj.4.t':'Lehrinhalte & Instructional Design','proj.4.d':'Über 100 technische Produktionen: vollständige Module, Programmüberarbeitungen und -aktualisierungen (117 Std. für die Fundação Bradesco analysiert), Quizze und Videolektionen.',
+  'writ.title':'Blog','writ.intro':'Essays und Artikel über Technologie, Bildung, Literatur und ihre Schnittstellen — live aus dem Blog geladen. Neue Texte erscheinen hier automatisch.',
+  'writ.all':'Zum Blog ↗',
+  'filter.all':'Alle','filter.tech':'Technologie','filter.education':'Bildung','filter.literature':'Literatur','filter.research':'Forschung',
+  'post.read':'Lesen','posts.loading':'Neueste Texte werden geladen…','posts.empty':'Noch keine Texte in dieser Kategorie.','posts.error':'Blog kann gerade nicht geladen werden — bitte direkt besuchen.',
+  'cred.title':'Zertifikate & Qualifikationen','cred.prof':'Stufe 10 · Kompetenz','cred.fr':'Francisation Québec','cred.more':'Verifizierbare Badges auf <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
+  'talk.title':'Vorträge & Medien','talk.1':'Rednerin · Metaverse: Konzepte und Technologien · 2022','talk.2':'Moderatorin · Eine Einführung · 2022','talk.3':'Moderation · FAM · 2023','talk.4':'Reihen-Moderatorin · QA, VFX, Playtesting und Gamification · 2020','talk.watch':'Ansehen ↗',
+  'foot.eyebrow':'Kontakt','foot.head':'Bauen wir etwas <i>gemeinsam</i>?','foot.contact':'Kontakt aufnehmen','foot.bridge':'Außerhalb der Wissenschaft erschaffe ich Welten — Belletristik, Spiele und Kunst — als <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Nach oben'
+ }
+};
+
+let LANG='en', FILTER='all', POSTS=null, POSTS_ERROR=false;
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+function t(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;}
+
+function applyI18n(){
+  $$('[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
+  $$('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.getAttribute('data-i18n-html')));
+  document.documentElement.lang=LANG;
+  renderFilters(); renderPosts();
+}
+function setLang(code){
+  LANG=code;
+  const meta=LANGS.find(l=>l.code===code);
+  $('#curFlag').textContent=meta.flag; $('#curCode').textContent=code.toUpperCase();
+  $$('#langMenu button').forEach(b=>b.classList.toggle('active',b.dataset.code===code));
+  try{localStorage.setItem('ab_lang',code);}catch(e){}
+  applyI18n();
+}
+const menu=$('#langMenu');
+LANGS.forEach(l=>{
+  const b=document.createElement('button');
+  b.dataset.code=l.code; b.setAttribute('role','menuitem');
+  b.innerHTML=`<span class="flag">${l.flag}</span>${l.label}<small>${l.code.toUpperCase()}</small>`;
+  b.onclick=()=>{setLang(l.code);closeLang();};
+  menu.appendChild(b);
+});
+const langWrap=$('#lang'),langBtn=$('#langBtn');
+function openLang(){langWrap.classList.add('open');langBtn.setAttribute('aria-expanded','true');}
+function closeLang(){langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');}
+langBtn.onclick=e=>{e.stopPropagation();langWrap.classList.contains('open')?closeLang():openLang();};
+document.addEventListener('click',e=>{if(!langWrap.contains(e.target))closeLang();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLang();});
+
+/* Writing filters */
+const CATS=['all','tech','education','research','literature'];
+function renderFilters(){
+  const f=$('#filters'); f.innerHTML='';
+  CATS.forEach(c=>{
+    const b=document.createElement('button');
+    b.textContent=t('filter.'+c); b.dataset.cat=c;
+    b.classList.toggle('active',c===FILTER);
+    b.onclick=()=>{FILTER=c;renderFilters();renderPosts();};
+    f.appendChild(b);
+  });
+}
+function fmtDate(d){try{return new Date(d).toLocaleDateString(LANG,{year:'numeric',month:'short'});}catch(e){return d;}}
+function stateHtml(txt){return `<div class="posts-state">${txt}</div>`;}
+
+function renderPosts(){
+  const wrap=$('#posts');
+  const feed=POSTS===null?null:(POSTS_ERROR?[]:POSTS);
+  if(feed===null){
+    /* Show local articles immediately while Blogger loads */
+    const early=LOCAL_POSTS.filter(p=>FILTER==='all'||p.category===FILTER);
+    if(early.length){
+      wrap.innerHTML='';
+      early.forEach(p=>{
+        const a=document.createElement('a');
+        a.className='post-card'; a.href=p.url;
+        a.innerHTML=`<div class="post-thumb"></div><div class="post-body-wrap">
+          <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
+          <h3>${p.title}</h3><p>${p.excerpt}</p><span class="post-link">${t('post.read')}</span></div>`;
+        wrap.appendChild(a);
+      });
+      const sk=document.createElement('div');
+      sk.className='skeleton';
+      wrap.appendChild(sk);
+      return;
+    }
+    wrap.innerHTML='<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>';
+    return;
+  }
+  const merged=[...LOCAL_POSTS,...feed];
+  if(!merged.length){wrap.innerHTML=stateHtml(t('posts.error'));return;}
+  const list=merged.filter(p=>FILTER==='all'||p.category===FILTER).slice(0,9);
+  if(!list.length){wrap.innerHTML=stateHtml(t('posts.empty'));return;}
+  wrap.innerHTML='';
+  list.forEach(p=>{
+    const a=document.createElement('a');
+    a.className='post-card';
+    a.href=p.url;
+    if(!p.local){a.target='_blank'; a.rel='noopener';}
+    const thumb=p.image?`<div class="post-thumb" style="background-image:url('${p.image}')"></div>`:`<div class="post-thumb"></div>`;
+    a.innerHTML=`${thumb}<div class="post-body-wrap">
+      <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
+      <h3>${p.title}</h3><p>${p.excerpt}</p><span class="post-link">${t('post.read')}</span></div>`;
+    wrap.appendChild(a);
+  });
+}
+
+/* Blogger feed → posts. Free public JSON feed, no server. */
+function categoryFromLabels(labels){
+  for(const l of labels){const key=l.toLowerCase().trim();if(LABEL_MAP[key])return LABEL_MAP[key];}
+  return 'tech';
+}
+function stripHtml(html){const d=document.createElement('div');d.innerHTML=html;return (d.textContent||'').replace(/\s+/g,' ').trim();}
+function firstImage(html){const m=/<img[^>]+src=["']([^"']+)["']/i.exec(html||'');return m?m[1]:'';}
+
+function loadBlogger(){
+  const url=`https://${BLOG_HOST}/feeds/posts/default?alt=json&max-results=12`;
+  const cb='__blogfeed_'+Date.now();
+  const s=document.createElement('script');
+  const timeout=setTimeout(()=>{POSTS_ERROR=true;POSTS=[];renderPosts();cleanup();},9000);
+  function cleanup(){delete window[cb];s.remove();}
+  window[cb]=function(json){
+    clearTimeout(timeout); cleanup();
+    try{
+      const entries=(json.feed&&json.feed.entry)||[];
+      POSTS=entries.map(e=>{
+        const labels=(e.category||[]).map(c=>c.term);
+        const link=(e.link||[]).find(l=>l.rel==='alternate');
+        const content=(e.content&&e.content.$t)||(e.summary&&e.summary.$t)||'';
+        const img=(e.media$thumbnail&&e.media$thumbnail.url)?e.media$thumbnail.url.replace(/\/s72-c\//,'/s640/'):firstImage(content);
+        return{
+          title:(e.title&&e.title.$t)||'—',
+          url:link?link.href:`https://${BLOG_HOST}`,
+          date:(e.published&&e.published.$t)||'',
+          excerpt:stripHtml(content).slice(0,150)+'…',
+          image:img,
+          category:categoryFromLabels(labels)
+        };
+      });
+      if(!POSTS.length){POSTS_ERROR=true;POSTS=[];}
+    }catch(err){POSTS_ERROR=true;POSTS=[];}
+    renderPosts();
+  };
+  s.src=url+'&callback='+cb;
+  s.onerror=()=>{clearTimeout(timeout);POSTS_ERROR=true;POSTS=[];renderPosts();cleanup();};
+  document.body.appendChild(s);
+}
+
+/* Init */
+(function init(){
+  let start='en';
+  try{const sv=localStorage.getItem('ab_lang');if(sv&&LANGS.some(l=>l.code===sv))start=sv;}catch(e){}
+  setLang(start);
+  loadBlogger();
+})();
+
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+const burger=$('#burger'),links=$('#navLinks');
+burger.onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+const tl=$('#timeline');
+if(tl){new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){tl.classList.add('drawn');o.unobserve(tl);}}),{threshold:.15}).observe(tl);}
+</script>
+</body>
+</html>

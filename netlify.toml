@@ -13,3 +13,13 @@
   for = "/catalog/covers/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+[[redirects]]
+  from = "/amandabritto"
+  to = "/britto"
+  status = 301
+
+[[redirects]]
+  from = "/amandabritto/*"
+  to = "/britto/:splat"
+  status = 301

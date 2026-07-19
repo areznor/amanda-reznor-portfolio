@@ -3,16 +3,18 @@
 Site unificado do portfolio criativo e acadêmico.
 
 - **Home** (`/`): [Amanda Reznor](index.html) — escritora, narrative & game designer
-- **Currículo** (`/amandabritto`): [Amanda Britto](amandabritto/index.html) — professora de TI, analista de dados, desenvolvedora
+- **Currículo** (`/britto`): [Amanda Britto](britto/index.html) — professora de TI, analista de dados, desenvolvedora
 
 ## Estrutura
 
 ```
 index.html
-amandabritto/index.html
+britto/index.html
+portfolio/index.html
+contato/index.html
 ```
 
-Hospedagem estática: `amandabritto/index.html` responde em `/amandabritto`.
+`/amandabritto` redireciona para `/britto` (Netlify + páginas stub).
 
 ## Local
 
