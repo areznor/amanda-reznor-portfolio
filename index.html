@@ -82,8 +82,7 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 .stars i:nth-child(3n){animation-delay:-4s}
 @keyframes float{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-26px);opacity:.9}}
 .panel-inner{position:relative;z-index:2;padding:0 clamp(28px,5vw,72px) clamp(46px,8vh,90px);transition:transform .75s cubic-bezier(.6,.05,.2,1)}
-.hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateX(12px)}
-.hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateX(-12px)}
+.hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateX(-10px)}
 .panel-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mist);margin-bottom:14px}
 .panel-c .panel-tag{color:#9A96AC}
 .panel-u .panel-tag{color:var(--violet-soft)}
@@ -101,7 +100,9 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 .hero-name h1{font-size:clamp(3rem,9vw,6.4rem);line-height:.95;color:#fff;white-space:nowrap}
 .hero-name .am{font-family:var(--grotesk);font-weight:700;letter-spacing:-.02em;color:#E8E6F2}
 .hero-name .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft)}
-.hero-name p{margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--mist)}
+.hero-roles{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--mist);transform:translateX(18%);white-space:nowrap}
+.hero-roles .role-a,.hero-roles .role-b{letter-spacing:.28em}
+.hero-roles .role-dot{display:inline-block;width:.35em;height:.35em;margin:0 1.1em;border-radius:50%;background:var(--mist);flex-shrink:0;transform:translateY(-1px)}
 .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--mist);animation:hint 2.4s ease-in-out infinite}
 @keyframes hint{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,6px);opacity:1}}
 
@@ -187,7 +188,7 @@ section{padding:110px 0;position:relative}
 .words-links{margin-top:36px;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
 .words-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);border-bottom:1px solid rgba(155,109,255,.35);padding-bottom:3px}
 .words-links a:hover{color:var(--silver-bright)}
-.to-top{display:inline-block;margin-top:48px;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);opacity:.7;transition:opacity .25s,color .25s}
+.to-top{display:block;width:fit-content;margin:48px 0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);opacity:.7;transition:opacity .25s,color .25s;text-align:right}
 .to-top:hover{opacity:1;color:var(--violet-soft)}
 .vale-work b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.2rem;color:var(--silver-bright);display:block}
 .vale-work span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft)}
@@ -198,7 +199,7 @@ section{padding:110px 0;position:relative}
 .counter-strip div:last-child{border-right:0}
 .counter-strip b{display:block;font-family:var(--serif);font-style:italic;font-weight:600;font-size:2.2rem;color:var(--silver-bright);line-height:1}
 .counter-strip span{display:block;margin-top:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
-.antho-list{columns:2;column-gap:44px;max-width:900px}
+.antho-list{columns:2;column-gap:44px;max-width:900px;margin-left:auto;margin-right:auto;text-align:left}
 .antho{break-inside:avoid;padding:16px 0;border-bottom:1px solid var(--line)}
 .antho b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.15rem;color:var(--silver-bright)}
 .antho span{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--mist);margin-top:4px}
@@ -264,11 +265,11 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
 @media(max-width:760px){
   .hero{flex-direction:column;height:auto;min-height:100vh}
   .panel{min-height:46vh}
-  .hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateY(-8px)}
   .hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateY(-8px)}
   .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(155,109,255,.5),transparent)}
   .hero-name{top:50%}
   .hero-name h1{white-space:normal;font-size:clamp(2.6rem,13vw,4rem)}
+  .hero-roles{transform:none;flex-wrap:wrap;row-gap:8px}
   .shelf,.vale-works{grid-template-columns:1fr}
   .level,.level:nth-child(even){grid-template-columns:70px 1fr}
   .level:nth-child(even) .node{order:0}
@@ -332,7 +333,7 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
   <div class="seam"></div>
   <div class="hero-name">
     <h1><span class="am">amanda</span> <span class="rz">reznor</span></h1>
-    <p data-i18n="hero.roles">writer · narrative &amp; game designer</p>
+    <p class="hero-roles"><span class="role-a" data-i18n="hero.role.a">writer</span><span class="role-dot" aria-hidden="true"></span><span class="role-b" data-i18n="hero.role.b">narrative &amp; game designer</span></p>
   </div>
   <div class="scroll-hint">▼</div>
 </div>
@@ -592,7 +593,7 @@ const I18N={
   'nav.games':'Games','nav.books':'Books','nav.radio':'Radio','nav.universe':'Universe','nav.tales':'Tales','nav.stage':'Stage','nav.contact':'Contact',
   'hero.c.tag':'The industry','hero.c.title':'Career','hero.c.sub':'Award-winning games, published books, radio and press.','hero.c.cta':'Enter',
   'hero.u.tag':'The worlds','hero.u.title':'Universe','hero.u.sub':'The Valley of Secrets, dark tales, music and image.','hero.u.cta':'Descend',
-  'hero.roles':'writer · narrative & game designer',
+  'hero.role.a':'writer','hero.role.b':'narrative & game designer',
   'zone.c':'Career — the industry','zone.u':'Universe — the worlds',
   'games.title':'Games','games.intro':'Three worlds shipped as narrative & game designer — follow the trail and collect the achievements.',
   'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Site',
@@ -621,7 +622,7 @@ const I18N={
   'nav.games':'Games','nav.books':'Livros','nav.radio':'Rádio','nav.universe':'Universo','nav.tales':'Contos','nav.stage':'Palco','nav.contact':'Contato',
   'hero.c.tag':'A indústria','hero.c.title':'Carreira','hero.c.sub':'Jogos premiados, livros publicados, rádio e imprensa.','hero.c.cta':'Entrar',
   'hero.u.tag':'Os mundos','hero.u.title':'Universo','hero.u.sub':'O Vale dos Segredos, contos sombrios, música e imagem.','hero.u.cta':'Descer',
-  'hero.roles':'escritora · narrative & game designer',
+  'hero.role.a':'escritora','hero.role.b':'narrative & game designer',
   'zone.c':'Carreira — a indústria','zone.u':'Universo — os mundos',
   'games.title':'Games','games.intro':'Três mundos entregues como narrative & game designer — siga a trilha e colecione as conquistas.',
   'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Site',
@@ -650,7 +651,7 @@ const I18N={
   'nav.games':'Jeux','nav.books':'Livres','nav.radio':'Radio','nav.universe':'Univers','nav.tales':'Contes','nav.stage':'Scène','nav.contact':'Contact',
   'hero.c.tag':'L\u2019industrie','hero.c.title':'Carrière','hero.c.sub':'Jeux primés, livres publiés, radio et presse.','hero.c.cta':'Entrer',
   'hero.u.tag':'Les mondes','hero.u.title':'Univers','hero.u.sub':'La Vallée des Secrets, contes sombres, musique et image.','hero.u.cta':'Descendre',
-  'hero.roles':'écrivaine · narrative & game designer',
+  'hero.role.a':'écrivaine','hero.role.b':'narrative & game designer',
   'zone.c':'Carrière — l\u2019industrie','zone.u':'Univers — les mondes',
   'games.title':'Jeux','games.intro':'Trois mondes livrés comme narrative & game designer — suivez le sentier et collectionnez les succès.',
   'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Bande-annonce','games.site':'Site',
@@ -679,7 +680,7 @@ const I18N={
   'nav.games':'Juegos','nav.books':'Libros','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Cuentos','nav.stage':'Escenario','nav.contact':'Contacto',
   'hero.c.tag':'La industria','hero.c.title':'Carrera','hero.c.sub':'Juegos premiados, libros publicados, radio y prensa.','hero.c.cta':'Entrar',
   'hero.u.tag':'Los mundos','hero.u.title':'Universo','hero.u.sub':'El Valle de los Secretos, cuentos oscuros, música e imagen.','hero.u.cta':'Descender',
-  'hero.roles':'escritora · narrative & game designer',
+  'hero.role.a':'escritora','hero.role.b':'narrative & game designer',
   'zone.c':'Carrera — la industria','zone.u':'Universo — los mundos',
   'games.title':'Juegos','games.intro':'Tres mundos entregados como narrative & game designer — sigue el sendero y colecciona los logros.',
   'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Tráiler','games.site':'Sitio',
@@ -708,7 +709,7 @@ const I18N={
   'nav.games':'Giochi','nav.books':'Libri','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Racconti','nav.stage':'Palco','nav.contact':'Contatti',
   'hero.c.tag':'L\u2019industria','hero.c.title':'Carriera','hero.c.sub':'Giochi premiati, libri pubblicati, radio e stampa.','hero.c.cta':'Entra',
   'hero.u.tag':'I mondi','hero.u.title':'Universo','hero.u.sub':'La Valle dei Segreti, racconti oscuri, musica e immagine.','hero.u.cta':'Scendi',
-  'hero.roles':'scrittrice · narrative & game designer',
+  'hero.role.a':'scrittrice','hero.role.b':'narrative & game designer',
   'zone.c':'Carriera — l\u2019industria','zone.u':'Universo — i mondi',
   'games.title':'Giochi','games.intro':'Tre mondi consegnati come narrative & game designer — segui il sentiero e colleziona i trofei.',
   'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Sito',
@@ -737,7 +738,7 @@ const I18N={
   'nav.games':'Spiele','nav.books':'Bücher','nav.radio':'Radio','nav.universe':'Universum','nav.tales':'Erzählungen','nav.stage':'Bühne','nav.contact':'Kontakt',
   'hero.c.tag':'Die Industrie','hero.c.title':'Karriere','hero.c.sub':'Preisgekrönte Spiele, veröffentlichte Bücher, Radio und Presse.','hero.c.cta':'Eintreten',
   'hero.u.tag':'Die Welten','hero.u.title':'Universum','hero.u.sub':'Das Tal der Geheimnisse, dunkle Erzählungen, Musik und Bild.','hero.u.cta':'Hinabsteigen',
-  'hero.roles':'Schriftstellerin · Narrative & Game Designerin',
+  'hero.role.a':'Schriftstellerin','hero.role.b':'Narrative & Game Designerin',
   'zone.c':'Karriere — die Industrie','zone.u':'Universum — die Welten',
   'games.title':'Spiele','games.intro':'Drei Welten als Narrative & Game Designerin — folge dem Pfad und sammle die Erfolge.',
   'games.role.nd':'Narrative Designerin','games.role.ngd':'Narrative / Game Designerin','games.trailer':'Trailer','games.site':'Website',
