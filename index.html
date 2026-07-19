@@ -82,7 +82,10 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 .stars i:nth-child(3n){animation-delay:-4s}
 @keyframes float{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-26px);opacity:.9}}
 .panel-inner{position:relative;z-index:2;padding:0 clamp(28px,5vw,72px) clamp(46px,8vh,90px);transition:transform .75s cubic-bezier(.6,.05,.2,1)}
-.hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateX(-10px)}
+/* Alinha o texto da Carreira com o monograma da nav (max 1240px + 28px) */
+.panel-c .panel-inner{padding-left:max(28px,calc((100vw - 1240px) / 2 + 28px))}
+.hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateX(14px)}
+.hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateX(-14px)}
 .panel-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mist);margin-bottom:14px}
 .panel-c .panel-tag{color:#9A96AC}
 .panel-u .panel-tag{color:var(--violet-soft)}
@@ -100,7 +103,7 @@ nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
 .hero-name h1{font-size:clamp(3rem,9vw,6.4rem);line-height:.95;color:#fff;white-space:nowrap}
 .hero-name .am{font-family:var(--grotesk);font-weight:700;letter-spacing:-.02em;color:#E8E6F2}
 .hero-name .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft)}
-.hero-roles{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--mist);transform:translateX(18%);white-space:nowrap}
+.hero-roles{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--mist);transform:translateX(calc(18% + 0.85em));white-space:nowrap}
 .hero-roles .role-a,.hero-roles .role-b{letter-spacing:.28em}
 .hero-roles .role-dot{display:inline-block;width:.35em;height:.35em;margin:0 1.1em;border-radius:50%;background:var(--mist);flex-shrink:0;transform:translateY(-1px)}
 .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--mist);animation:hint 2.4s ease-in-out infinite}
@@ -188,7 +191,7 @@ section{padding:110px 0;position:relative}
 .words-links{margin-top:36px;display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
 .words-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);border-bottom:1px solid rgba(155,109,255,.35);padding-bottom:3px}
 .words-links a:hover{color:var(--silver-bright)}
-.to-top{display:block;width:fit-content;margin:48px 0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);opacity:.7;transition:opacity .25s,color .25s;text-align:right}
+.to-top{display:block;width:fit-content;margin:48px 0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--silver);opacity:.85;transition:opacity .25s,color .25s;text-align:right}
 .to-top:hover{opacity:1;color:var(--violet-soft)}
 .vale-work b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.2rem;color:var(--silver-bright);display:block}
 .vale-work span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft)}
@@ -203,6 +206,19 @@ section{padding:110px 0;position:relative}
 .antho{break-inside:avoid;padding:16px 0;border-bottom:1px solid var(--line)}
 .antho b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.15rem;color:var(--silver-bright)}
 .antho span{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--mist);margin-top:4px}
+
+/* ---------- Skoob reel ---------- */
+.skoob-reel{position:relative;margin:8px 0 28px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.skoob-track{display:flex;gap:18px;width:max-content;animation:skoob-scroll 48s linear infinite}
+.skoob-reel:hover .skoob-track{animation-play-state:paused}
+@keyframes skoob-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.skoob-card{flex:0 0 168px;width:168px;text-decoration:none;color:inherit;display:block;transition:transform .3s,border-color .3s}
+.skoob-card:hover{transform:translateY(-6px)}
+.skoob-cover{aspect-ratio:2/3;border-radius:6px;border:1px solid var(--line);background:linear-gradient(160deg,#2A1846,#120C1E);display:flex;align-items:flex-end;padding:14px;overflow:hidden;position:relative}
+.skoob-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.skoob-cover span{position:relative;z-index:1;font-family:var(--serif);font-style:italic;font-size:.92rem;line-height:1.2;color:var(--silver-bright);text-shadow:0 2px 12px rgba(0,0,0,.75)}
+.skoob-meta{margin-top:10px;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+@media (prefers-reduced-motion:reduce){.skoob-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
 
 /* ---------- Music & Image ---------- */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:26px}
@@ -265,11 +281,13 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
 @media(max-width:760px){
   .hero{flex-direction:column;height:auto;min-height:100vh}
   .panel{min-height:46vh}
+  .hero:has(.panel-c:hover) .panel-c .panel-inner{transform:translateX(10px)}
   .hero:has(.panel-u:hover) .panel-u .panel-inner{transform:translateY(-8px)}
+  .panel-c .panel-inner{padding-left:28px}
   .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(155,109,255,.5),transparent)}
   .hero-name{top:50%}
   .hero-name h1{white-space:normal;font-size:clamp(2.6rem,13vw,4rem)}
-  .hero-roles{transform:none;flex-wrap:wrap;row-gap:8px}
+  .hero-roles{transform:translateX(0.5em);flex-wrap:wrap;row-gap:8px}
   .shelf,.vale-works{grid-template-columns:1fr}
   .level,.level:nth-child(even){grid-template-columns:70px 1fr}
   .level:nth-child(even) .node{order:0}
@@ -493,22 +511,15 @@ footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:v
 <section id="words" class="zone-u" style="padding-top:20px">
   <div class="wrap">
     <div class="sec-head reveal"><h2 class="h-serif" data-i18n="words.title">Tales &amp; Poems</h2></div>
-    <div class="counter-strip reveal">
-      <div><b>2</b><span data-i18n="w.books">solo books</span></div>
-      <div><b>25+</b><span data-i18n="w.tales">short stories</span></div>
-      <div><b>50+</b><span data-i18n="w.poems">poems</span></div>
-      <div><b>100+</b><span data-i18n="w.articles">articles</span></div>
-      <div><b>19+</b><span data-i18n="w.anthologies">anthologies</span></div>
+    <div class="counter-strip reveal" id="pubCounters">
+      <div><b data-count="books">2</b><span data-i18n="w.books">solo books</span></div>
+      <div><b data-count="tales">25+</b><span data-i18n="w.tales">short stories</span></div>
+      <div><b data-count="poems">50+</b><span data-i18n="w.poems">poems</span></div>
+      <div><b data-count="articles">100+</b><span data-i18n="w.articles">articles</span></div>
+      <div><b data-count="anthologies">19+</b><span data-i18n="w.anthologies">anthologies</span></div>
     </div>
-    <div class="antho-list reveal">
-      <div class="antho"><b>SteamPink</b><span>Estronho · 2011 · A Dama dos Corvos</span></div>
-      <div class="antho"><b>VII Demônios — Ira</b><span>Estronho · 2011 · A Lenda de Kauane</span></div>
-      <div class="antho"><b>Quente</b><span>Letra Exótica · 2011 · <span data-i18n="w.first">1st place</span> · O Ato de Antes</span></div>
-      <div class="antho"><b>Piratas: Os Senhores das Águas Sombrias</b><span>Literata · 2012 · O Inferno de Barbanegra</span></div>
-      <div class="antho"><b>Vampiro: Um Livro Colaborativo</b><span>Empíreo · 2017 · O Talismã de Tyet</span></div>
-      <div class="antho"><b>Eu, Monstro</b><span>Editorial Hope · 2019 · Monstro Paradoxal</span></div>
-      <div class="antho"><b>Contos de Tarot</b><span>Insensati · 2020 · A Fuga de Valeriano</span></div>
-      <div class="antho"><b>23 Formas de Morrer</b><span>Amélie · 2020 · Nunca mais Adeline</span></div>
+    <div class="skoob-reel reveal" id="skoobReel" aria-label="Skoob shelf">
+      <div class="skoob-track" id="skoobTrack"></div>
     </div>
     <div class="words-links reveal">
       <a href="https://www.wattpad.com/user/AmandaReznor" target="_blank" rel="noopener" data-i18n="words.wattpad">Read on Wattpad ↗</a>
@@ -840,6 +851,119 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 $$('.reveal').forEach(el=>io.observe(el));
 const trail=$('#trail');
 if(trail){new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){trail.classList.add('seen');o.unobserve(trail);}}),{threshold:.2}).observe(trail);}
+
+/* ============ Publications catalog (Google Sheet / CSV) ============ */
+/*
+  Cole aqui a URL CSV pública da planilha (Arquivo > Compartilhar > Publicar na web > CSV)
+  ou use: https://docs.google.com/spreadsheets/d/ID/export?format=csv&gid=0
+  Enquanto vazio, o site usa catalog/publications.csv local.
+*/
+const CATALOG_CSV_URL='';
+const CATALOG_FALLBACK='catalog/publications.csv';
+const COUNT_TAGS=['books','tales','poems','articles','anthologies'];
+
+const SKOOB_FALLBACK=[
+  {title:'Delenda e o Vale dos Segredos',date:'2015',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Noite à Deriva',date:'2017',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Sala de Cirurgia',date:'2019',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'SteamPink',date:'2011',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'VII Demônios — Ira',date:'2011',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Quente',date:'2011',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Piratas: Os Senhores das Águas Sombrias',date:'2012',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Vampiro: Um Livro Colaborativo',date:'2017',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Eu, Monstro',date:'2019',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'Contos de Tarot',date:'2020',link:'https://www.skoob.com.br/pt/author/4162'},
+  {title:'23 Formas de Morrer',date:'2020',link:'https://www.skoob.com.br/pt/author/4162'}
+];
+
+function parseCSV(text){
+  const rows=[]; let row=[], cell='', q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(c==='"' ){ if(q&&n==='"'){cell+='"';i++;} else q=!q; }
+    else if(c===',' && !q){ row.push(cell); cell=''; }
+    else if((c==='\n'||c==='\r') && !q){
+      if(c==='\r'&&n==='\n')i++;
+      row.push(cell); if(row.some(x=>x.trim())) rows.push(row);
+      row=[]; cell='';
+    } else cell+=c;
+  }
+  if(cell.length||row.length){ row.push(cell); if(row.some(x=>x.trim())) rows.push(row); }
+  if(!rows.length) return [];
+  const headers=rows[0].map(h=>h.trim().toLowerCase());
+  return rows.slice(1).map(r=>{
+    const o={}; headers.forEach((h,i)=>o[h]=(r[i]||'').trim());
+    return o;
+  }).filter(o=>o.tag||o.title);
+}
+
+function formatCount(n){ return n>=20 ? n+'+' : String(n); }
+
+function applyCounters(rows){
+  const counts={}; COUNT_TAGS.forEach(t=>counts[t]=0);
+  rows.forEach(r=>{
+    const tag=(r.tag||'').toLowerCase();
+    if(counts.hasOwnProperty(tag)) counts[tag]++;
+  });
+  COUNT_TAGS.forEach(tag=>{
+    const el=document.querySelector(`[data-count="${tag}"]`);
+    if(el && counts[tag]>0) el.textContent=formatCount(counts[tag]);
+  });
+}
+
+function renderSkoob(items){
+  const track=$('#skoobTrack'); if(!track) return;
+  const list=items.length ? items : SKOOB_FALLBACK;
+  const doubled=[...list,...list];
+  track.innerHTML='';
+  doubled.forEach(book=>{
+    const a=document.createElement('a');
+    a.className='skoob-card';
+    a.href=book.link||'https://www.skoob.com.br/pt/author/4162';
+    a.target='_blank'; a.rel='noopener';
+    a.title=book.title||'';
+    const cover=document.createElement('div');
+    cover.className='skoob-cover';
+    if(book.cover){
+      const img=document.createElement('img');
+      img.src=book.cover; img.alt=book.title||''; img.loading='lazy';
+      cover.appendChild(img);
+    }
+    const span=document.createElement('span');
+    span.textContent=book.title||'';
+    cover.appendChild(span);
+    a.appendChild(cover);
+    if(book.date){
+      const meta=document.createElement('div');
+      meta.className='skoob-meta';
+      meta.textContent=book.date;
+      a.appendChild(meta);
+    }
+    track.appendChild(a);
+  });
+}
+
+async function loadCatalog(){
+  const urls=[CATALOG_CSV_URL, CATALOG_FALLBACK].filter(Boolean);
+  let rows=null;
+  for(const url of urls){
+    try{
+      const res=await fetch(url,{cache:'no-store'});
+      if(!res.ok) continue;
+      rows=parseCSV(await res.text());
+      if(rows&&rows.length) break;
+    }catch(e){}
+  }
+  if(rows&&rows.length){
+    applyCounters(rows);
+    const skoob=rows.filter(r=>(r.tag||'').toLowerCase()==='skoob' && r.title)
+      .map(r=>({title:r.title,date:r.date||r.data||'',link:r.link||r.url||'https://www.skoob.com.br/pt/author/4162',cover:r.cover||r.capa||''}));
+    renderSkoob(skoob.length?skoob:SKOOB_FALLBACK);
+  } else {
+    renderSkoob(SKOOB_FALLBACK);
+  }
+}
+loadCatalog();
 </script>
 </body>
 </html>
