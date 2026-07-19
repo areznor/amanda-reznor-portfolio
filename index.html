@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanda Reznor — Writer · Narrative & Game Designer</title>
+<meta name="description" content="Amanda Reznor: writer, narrative & game designer. Books, award-winning games, radio, music and the Valley of Secrets universe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0C0913;          /* page background */
+  --coal:#131019;          /* carreira panel */
+  --coal-2:#1A1622;
+  --violet-deep:#1C1130;   /* universo panel */
+  --violet:#9B6DFF;
+  --violet-soft:#B99AFF;
+  --violet-dim:#5E48A8;
+  --silver:#C9C6D9;
+  --silver-bright:#EDECF4;
+  --mist:#8B86A0;
+  --line:rgba(201,198,217,.14);
+  --grotesk:'Space Grotesk',system-ui,sans-serif;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--grotesk);background:var(--void);color:var(--silver);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--violet);color:#0C0913}
+a{color:var(--violet-soft);text-decoration:none;transition:color .25s}
+a:hover{color:var(--silver-bright)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+/* ---------- Loader: typewriter ---------- */
+#loader{position:fixed;inset:0;z-index:200;background:var(--void);display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.type-line{font-family:var(--mono);font-size:clamp(1rem,3vw,1.4rem);letter-spacing:.14em;color:var(--silver)}
+.type-line .caret{display:inline-block;width:10px;height:1.2em;background:var(--violet);vertical-align:text-bottom;margin-left:4px;animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(12,9,19,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 8px 34px rgba(0,0,0,.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1240px;margin:0 auto;padding:0 28px}
+.monogram{font-size:1.1rem;letter-spacing:.06em;color:var(--silver-bright)}
+.monogram .am{font-family:var(--grotesk);font-weight:700}
+.monogram .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft)}
+.nav-links{display:flex;gap:24px;align-items:center;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.nav-links a:hover{color:var(--violet-soft)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang{position:relative}
+.lang-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--silver);transition:border-color .25s}
+.lang-btn:hover{border-color:var(--violet)}
+.lang-btn .flag{font-size:.95rem;line-height:1}
+.lang-btn .caret{width:7px;height:7px;border-right:1.5px solid var(--mist);border-bottom:1.5px solid var(--mist);transform:rotate(45deg);margin-top:-3px;transition:transform .25s}
+.lang.open .lang-btn .caret{transform:rotate(-135deg);margin-top:2px}
+.lang-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:180px;background:#181423;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.6);border-radius:6px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .22s;z-index:95}
+.lang.open .lang-menu{opacity:1;visibility:visible;transform:none}
+.lang-menu button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;padding:10px 12px;cursor:pointer;font-family:var(--grotesk);font-size:.86rem;color:var(--silver);border-radius:4px;text-align:left;transition:background .2s}
+.lang-menu button:hover{background:rgba(155,109,255,.12)}
+.lang-menu button.active{color:var(--violet-soft);font-weight:600}
+.lang-menu button .flag{font-size:1.05rem}
+.lang-menu button small{margin-left:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--mist)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--silver);margin:5px 0;transition:.3s}
+
+/* ---------- Split hero ---------- */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;overflow:hidden}
+.panel{position:relative;flex:1;display:flex;align-items:flex-end;cursor:pointer;transition:flex 0.85s cubic-bezier(.6,.05,.2,1);overflow:hidden}
+.hero:has(.panel-c:hover) .panel-c,.hero:has(.panel-u:hover) .panel-u{flex:1.6}
+.panel-c{background:linear-gradient(160deg,#17141F 0%,#0F0C16 70%)}
+.panel-c::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,198,217,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,198,217,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 30% 70%,#000 30%,transparent 75%)}
+.panel-u{background:radial-gradient(ellipse at 70% 30%,#2A1846 0%,#170F28 55%,#100A1C 100%)}
+.panel-u::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 25%,rgba(155,109,255,.28),transparent 45%);pointer-events:none}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--violet-soft);opacity:.7;animation:float 9s ease-in-out infinite}
+.stars i:nth-child(2n){width:2px;height:2px;opacity:.45;animation-duration:12s}
+.stars i:nth-child(3n){animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-26px);opacity:.9}}
+.panel-inner{position:relative;z-index:2;padding:0 clamp(28px,5vw,72px) clamp(46px,8vh,90px)}
+.panel-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mist);margin-bottom:14px}
+.panel-c .panel-tag{color:#9A96AC}
+.panel-u .panel-tag{color:var(--violet-soft)}
+.panel-title{font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;color:var(--silver-bright)}
+.panel-c .panel-title{font-family:var(--grotesk);font-weight:700;letter-spacing:-.01em}
+.panel-u .panel-title{font-family:var(--serif);font-style:italic;font-weight:500}
+.panel-sub{margin-top:14px;max-width:340px;font-size:.92rem;color:var(--mist)}
+.panel-cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--silver-bright)}
+.panel-cta::after{content:"↓";transition:transform .3s}
+.panel:hover .panel-cta::after{transform:translateY(4px)}
+.panel-c .panel-cta{color:#C9C6D9}
+.panel-u .panel-cta{color:var(--violet-soft)}
+.seam{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(155,109,255,.5),transparent);z-index:3;pointer-events:none}
+.hero-name{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:4;pointer-events:none;text-align:center;mix-blend-mode:screen}
+.hero-name h1{font-size:clamp(3rem,9vw,6.4rem);line-height:.95;color:#fff;white-space:nowrap}
+.hero-name .am{font-family:var(--grotesk);font-weight:700;letter-spacing:-.02em;color:#E8E6F2}
+.hero-name .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft)}
+.hero-name p{margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--mist)}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--mist);animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,6px);opacity:1}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0;position:relative}
+.zone-c{background:linear-gradient(180deg,var(--coal) 0%,var(--void) 100%)}
+.zone-u{background:radial-gradient(ellipse at 15% 0%,#231240 0%,var(--void) 60%)}
+.zone-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--violet-dim);margin-bottom:10px}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3rem);line-height:1.05;color:var(--silver-bright)}
+.h-grotesk{font-family:var(--grotesk);font-weight:700;letter-spacing:-.01em}
+.h-serif{font-family:var(--serif);font-style:italic;font-weight:500}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-8px)}
+.sec-intro{max-width:620px;color:var(--mist);margin:-30px 0 50px;font-size:1rem}
+
+/* ---------- Games trail (gamified) ---------- */
+.trail{position:relative;max-width:860px;margin:0 auto}
+.trail-svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.trail-path{fill:none;stroke:var(--violet-dim);stroke-width:2;stroke-dasharray:8 10;opacity:.85}
+.trail-path-glow{fill:none;stroke:var(--violet);stroke-width:2;filter:drop-shadow(0 0 6px rgba(155,109,255,.8))}
+.level{position:relative;display:grid;grid-template-columns:96px 1fr;gap:30px;margin-bottom:90px}
+.level:last-child{margin-bottom:0}
+.level:nth-child(even){grid-template-columns:1fr 96px}
+.level:nth-child(even) .node{order:2}
+.level:nth-child(even) .quest{order:1;text-align:right}
+.level:nth-child(even) .medals,.level:nth-child(even) .quest-links{justify-content:flex-end}
+.node{position:relative;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#2B2140,#171021);border:2px solid var(--violet-dim);display:grid;place-items:center;transition:transform .35s,border-color .35s,box-shadow .35s;z-index:2}
+.level:hover .node{transform:scale(1.08);border-color:var(--violet);box-shadow:0 0 34px rgba(155,109,255,.4)}
+.node b{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--violet-soft)}
+.node span{font-family:var(--grotesk);font-weight:700;font-size:1.5rem;color:var(--silver-bright);line-height:1}
+.quest{background:rgba(23,18,33,.75);border:1px solid var(--line);border-radius:10px;padding:30px 32px;backdrop-filter:blur(6px);transition:border-color .35s,transform .35s}
+.level:hover .quest{border-color:rgba(155,109,255,.5);transform:translateY(-3px)}
+.quest-meta{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.quest h3{font-family:var(--grotesk);font-weight:700;font-size:1.7rem;color:var(--silver-bright);margin:8px 0 4px;letter-spacing:-.01em}
+.quest-role{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-soft)}
+.quest p{margin-top:14px;font-size:.93rem;color:var(--mist)}
+.medals{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.medal{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:#E9D8A6;background:rgba(233,216,166,.08);border:1px solid rgba(233,216,166,.28);border-radius:99px;padding:5px 12px;transition:all .25s}
+.medal::before{content:"◆";font-size:.55rem;color:#E9D8A6}
+.medal:hover{background:rgba(233,216,166,.16);transform:translateY(-2px)}
+.quest-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}
+.quest-links a{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);border-bottom:1px solid rgba(155,109,255,.35);padding-bottom:3px}
+.quest-links a:hover{color:var(--silver-bright);border-color:var(--silver-bright)}
+.trail-xp{margin:70px auto 0;max-width:520px;text-align:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+.xp-bar{margin-top:12px;height:6px;border-radius:99px;background:#1E1830;overflow:hidden;border:1px solid var(--line)}
+.xp-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--violet-dim),var(--violet),#E9D8A6);transition:width 1.6s cubic-bezier(.2,.7,.3,1)}
+.trail.seen .xp-fill{width:100%}
+
+/* ---------- Books ---------- */
+.shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.book{position:relative;border:1px solid var(--line);border-radius:10px;background:linear-gradient(170deg,#191323,#120D1B);padding:34px 30px;overflow:hidden;transition:transform .35s,border-color .35s}
+.book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--violet),var(--violet-dim))}
+.book:hover{transform:translateY(-5px);border-color:rgba(155,109,255,.45)}
+.book-year{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--mist)}
+.book h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.7rem;color:var(--silver-bright);margin:10px 0 4px;line-height:1.1}
+.book-kind{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft)}
+.book p{margin-top:14px;font-size:.9rem;color:var(--mist)}
+.book a{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
+
+/* ---------- Radio / media ---------- */
+.radio-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center}
+.radio-card{border:1px solid var(--line);border-radius:12px;padding:40px;background:radial-gradient(ellipse at 20% 0%,rgba(155,109,255,.12),transparent 60%),#141019}
+.radio-card h3{font-family:var(--grotesk);font-weight:700;font-size:2rem;color:var(--silver-bright);letter-spacing:-.01em}
+.radio-card .on-air{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;color:#FF7B9C;margin-bottom:16px}
+.on-air i{width:8px;height:8px;border-radius:50%;background:#FF7B9C;animation:blink 1.6s steps(1) infinite}
+.radio-card p{margin-top:14px;color:var(--mist);font-size:.95rem}
+.radio-stats{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.radio-stats div{background:#151020;padding:22px 26px;display:flex;justify-content:space-between;align-items:baseline}
+.radio-stats b{font-family:var(--grotesk);font-weight:700;font-size:1.7rem;color:var(--silver-bright)}
+.radio-stats span{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+
+/* ---------- Universo: Vale dos Segredos ---------- */
+.vale{position:relative;border:1px solid rgba(155,109,255,.3);border-radius:14px;overflow:hidden;padding:clamp(40px,7vw,80px);background:radial-gradient(ellipse at 80% 10%,rgba(155,109,255,.22),transparent 55%),linear-gradient(160deg,#1D1230,#120C1E)}
+.vale-quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--silver-bright);max-width:640px;line-height:1.3}
+.vale-quote::before{content:"“";color:var(--violet-soft)}
+.vale-quote::after{content:"”";color:var(--violet-soft)}
+.vale-desc{margin-top:22px;max-width:560px;color:var(--mist)}
+.vale-works{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vale-work{border:1px solid var(--line);border-radius:8px;padding:20px 22px;background:rgba(12,9,19,.5);transition:border-color .3s,transform .3s}
+.vale-work:hover{border-color:rgba(155,109,255,.5);transform:translateY(-3px)}
+.vale-work b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.2rem;color:var(--silver-bright);display:block}
+.vale-work span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft)}
+
+/* ---------- Words / anthologies ---------- */
+.counter-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:56px}
+.counter-strip div{padding:24px 10px;text-align:center;border-right:1px solid var(--line)}
+.counter-strip div:last-child{border-right:0}
+.counter-strip b{display:block;font-family:var(--serif);font-style:italic;font-weight:600;font-size:2.2rem;color:var(--silver-bright);line-height:1}
+.counter-strip span{display:block;margin-top:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.antho-list{columns:2;column-gap:44px;max-width:900px}
+.antho{break-inside:avoid;padding:16px 0;border-bottom:1px solid var(--line)}
+.antho b{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.15rem;color:var(--silver-bright)}
+.antho span{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--mist);margin-top:4px}
+
+/* ---------- Music & Image ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.stage{position:relative;border:1px solid var(--line);border-radius:12px;padding:40px 36px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .35s,border-color .35s}
+.stage:hover{transform:translateY(-4px);border-color:rgba(155,109,255,.5)}
+.stage-music{background:radial-gradient(ellipse at 25% 20%,rgba(155,109,255,.25),transparent 55%),#151020}
+.stage-image{background:radial-gradient(ellipse at 75% 20%,rgba(255,123,156,.16),transparent 55%),#171021}
+.stage h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.9rem;color:var(--silver-bright)}
+.stage p{margin-top:12px;color:var(--mist);font-size:.93rem;max-width:380px}
+.stage .stage-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:10px}
+.stage a{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase}
+.eq{position:absolute;top:34px;left:36px;display:flex;gap:5px;align-items:flex-end;height:34px}
+.eq i{width:4px;background:var(--violet);border-radius:2px;animation:eq 1.1s ease-in-out infinite}
+.eq i:nth-child(1){height:40%;animation-delay:0s}
+.eq i:nth-child(2){height:90%;animation-delay:.15s}
+.eq i:nth-child(3){height:60%;animation-delay:.3s}
+.eq i:nth-child(4){height:100%;animation-delay:.45s}
+.eq i:nth-child(5){height:50%;animation-delay:.6s}
+@keyframes eq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+.frame-dots{position:absolute;top:34px;right:36px;display:flex;gap:6px}
+.frame-dots i{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,123,156,.6)}
+.frame-dots i:first-child{background:rgba(255,123,156,.6)}
+
+/* ---------- Footer ---------- */
+footer{background:#0A0810;border-top:1px solid var(--line);padding:96px 0 46px;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,rgba(155,109,255,.18),transparent 60%);pointer-events:none}
+.foot-grid{position:relative;display:grid;grid-template-columns:1.4fr 1fr;gap:60px}
+footer h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.1;color:var(--silver-bright)}
+footer h2 .am{font-family:var(--grotesk);font-weight:700}
+footer h2 .rz{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--violet-soft)}
+.foot-mail{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:.95rem;letter-spacing:.04em;color:var(--silver-bright);border-bottom:1px solid rgba(155,109,255,.5);padding-bottom:4px}
+.foot-mail:hover{color:var(--violet-soft)}
+.foot-links{display:grid;gap:12px;align-content:start}
+.foot-links a{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.foot-links a:hover{color:var(--silver-bright)}
+.bridge{position:relative;margin-top:70px;padding-top:34px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.bridge p{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--mist)}
+.bridge a{color:var(--violet-soft);font-style:normal}
+.credits{position:relative;margin-top:40px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#4A4560}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .stars i,.eq i,.scroll-hint,.on-air i{animation:none}
+  .panel,.node,.quest,.book,.stage,.medal{transition:none}
+  #loader{display:none}
+}
+@media(max-width:980px){
+  .shelf,.vale-works{grid-template-columns:1fr 1fr}
+  .radio-grid,.duo,.foot-grid{grid-template-columns:1fr}
+  .counter-strip{grid-template-columns:repeat(3,1fr)}
+  .counter-strip div:nth-child(n+4){border-top:1px solid var(--line)}
+  .antho-list{columns:1}
+}
+@media(max-width:760px){
+  .hero{flex-direction:column;height:auto;min-height:100vh}
+  .panel{min-height:46vh}
+  .hero:has(.panel-c:hover) .panel-c,.hero:has(.panel-u:hover) .panel-u{flex:1.25}
+  .seam{left:0;right:0;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,rgba(155,109,255,.5),transparent)}
+  .hero-name{top:50%}
+  .hero-name h1{white-space:normal;font-size:clamp(2.6rem,13vw,4rem)}
+  .shelf,.vale-works{grid-template-columns:1fr}
+  .level,.level:nth-child(even){grid-template-columns:70px 1fr}
+  .level:nth-child(even) .node{order:0}
+  .level:nth-child(even) .quest{order:0;text-align:left}
+  .level:nth-child(even) .medals,.level:nth-child(even) .quest-links{justify-content:flex-start}
+  .node{width:70px;height:70px}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:#120E1B;border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:10px 0 18px;display:none}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%;text-align:center;padding:10px 0}
+  .burger{display:block}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true"><div class="type-line"><span id="typed"></span><span class="caret"></span></div></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="monogram" href="#top"><span class="am">amanda</span>&thinsp;<span class="rz">reznor</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#games" data-i18n="nav.games">Games</a></li>
+      <li><a href="#books" data-i18n="nav.books">Books</a></li>
+      <li><a href="#radio" data-i18n="nav.radio">Radio</a></li>
+      <li><a href="#vale" data-i18n="nav.universe">Universe</a></li>
+      <li><a href="#words" data-i18n="nav.tales">Tales</a></li>
+      <li><a href="#stagezone" data-i18n="nav.stage">Stage</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="flag" id="curFlag">🇬🇧</span><span id="curCode">EN</span><span class="caret"></span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="menu"></div>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ SPLIT HERO ============ -->
+<div class="hero" id="top">
+  <div class="panel panel-c" onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">
+    <div class="panel-inner">
+      <p class="panel-tag" data-i18n="hero.c.tag">The industry</p>
+      <h2 class="panel-title" data-i18n="hero.c.title">Career</h2>
+      <p class="panel-sub" data-i18n="hero.c.sub">Award-winning games, published books, radio and press.</p>
+      <span class="panel-cta" data-i18n="hero.c.cta">Enter</span>
+    </div>
+  </div>
+  <div class="panel panel-u" onclick="document.getElementById('vale').scrollIntoView({behavior:'smooth'})">
+    <div class="stars" id="stars"></div>
+    <div class="panel-inner">
+      <p class="panel-tag" data-i18n="hero.u.tag">The worlds</p>
+      <h2 class="panel-title" data-i18n="hero.u.title">Universe</h2>
+      <p class="panel-sub" data-i18n="hero.u.sub">The Valley of Secrets, dark tales, music and image.</p>
+      <span class="panel-cta" data-i18n="hero.u.cta">Descend</span>
+    </div>
+  </div>
+  <div class="seam"></div>
+  <div class="hero-name">
+    <h1><span class="am">amanda</span> <span class="rz">reznor</span></h1>
+    <p data-i18n="hero.roles">writer · narrative &amp; game designer</p>
+  </div>
+  <div class="scroll-hint">▼</div>
+</div>
+
+<!-- ============ ZONE: CARREIRA ============ -->
+<section id="games" class="zone-c">
+  <div class="wrap">
+    <p class="zone-label" data-i18n="zone.c">Career — the industry</p>
+    <div class="sec-head reveal"><h2 class="h-grotesk" data-i18n="games.title">Games</h2></div>
+    <p class="sec-intro reveal" data-i18n="games.intro">Three worlds shipped as narrative & game designer — follow the trail and collect the achievements.</p>
+
+    <div class="trail" id="trail">
+      <div class="level reveal">
+        <div class="node"><div><b>LVL</b><span>01</span></div></div>
+        <div class="quest">
+          <p class="quest-meta">REVstudio · 2018</p>
+          <h3>Bedtime Fright</h3>
+          <p class="quest-role" data-i18n="games.role.nd">Narrative Designer</p>
+          <p data-i18n="games.1.desc">A psychological tale about the origin of Kiddo's fear of the dark — bilingual script, symbology system and a children's book based on the game's story.</p>
+          <div class="medals">
+            <span class="medal">SBGames 2018 · <span data-i18n="m.finalist">Finalist</span></span>
+            <span class="medal">BIG Festival 2019 · <span data-i18n="m.bestbr">Best Brazilian Game</span></span>
+            <span class="medal">Sesc Game Place 2021</span>
+          </div>
+          <div class="quest-links">
+            <a href="https://revstudio.itch.io/bedtime-fright" target="_blank" rel="noopener">itch.io</a>
+            <a href="https://www.youtube.com/watch?v=h4SMlFGiIbg" target="_blank" rel="noopener" data-i18n="games.trailer">Trailer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="level reveal">
+        <div class="node"><div><b>LVL</b><span>02</span></div></div>
+        <div class="quest">
+          <p class="quest-meta">Vermilion · 2019</p>
+          <h3>Sleeping Dragon</h3>
+          <p class="quest-role" data-i18n="games.role.ngd">Narrative / Game Designer</p>
+          <p data-i18n="games.2.desc">A 3D puzzle-adventure about transformation and the fragmented mind of a dragon-man — full lore, pitch bible, GDD and a ten-chapter book set in the game's universe.</p>
+          <div class="medals">
+            <span class="medal">SBGames 2019 · <span data-i18n="m.finalist">Finalist</span></span>
+            <span class="medal">BIG Festival 2019 · Panorama Brazil</span>
+            <span class="medal">ProAC 2019</span>
+            <span class="medal">Tokyo Game Show 2023</span>
+          </div>
+          <div class="quest-links">
+            <a href="https://www.youtube.com/watch?v=ydvog9UwMPw" target="_blank" rel="noopener">Gameplay</a>
+            <a href="https://www.facebook.com/sleepingdragongame/" target="_blank" rel="noopener" data-i18n="games.site">Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="level reveal">
+        <div class="node"><div><b>LVL</b><span>03</span></div></div>
+        <div class="quest">
+          <p class="quest-meta">Lighthouse · 2022</p>
+          <h3>Down Below</h3>
+          <p class="quest-role" data-i18n="games.role.nd">Narrative Designer</p>
+          <p data-i18n="games.3.desc">Web3 P2E project — bilingual lore, whitepaper and GDD documentation, character design and weekly content for site and marketing.</p>
+          <div class="medals">
+            <span class="medal">Whitepaper · GDD</span>
+            <span class="medal">Web3 / P2E</span>
+          </div>
+          <div class="quest-links">
+            <a href="https://amanda-reznor-britto.gitbook.io/whitepaper.downbelow.io" target="_blank" rel="noopener">Whitepaper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="trail-xp">
+        <span data-i18n="games.xp">Achievements unlocked — SBGames · BIG Festival · ProAC · Tokyo Game Show</span>
+        <div class="xp-bar"><div class="xp-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="books" class="zone-c" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2 class="h-grotesk" data-i18n="books.title">Published Books</h2></div>
+    <div class="shelf">
+      <article class="book reveal">
+        <span class="book-year">Madras Teen · 2015 · 296p</span>
+        <h3>Delenda e o Vale dos Segredos</h3>
+        <span class="book-kind" data-i18n="books.1.kind">Novel · dark fantasy</span>
+        <p data-i18n="books.1.desc">Cláudia Blaise's eighteenth birthday opens a labyrinth of charm, mystery and death — the first gate into the Valley of Secrets.</p>
+        <a href="https://madras.com.br/delenda-e-o-vale-dos-segredos" target="_blank" rel="noopener" data-i18n="books.buy">Where to find ↗</a>
+      </article>
+      <article class="book reveal">
+        <span class="book-year">Lua Nova / Amazon · 2017 · 131p</span>
+        <h3>Noite à Deriva</h3>
+        <span class="book-kind" data-i18n="books.2.kind">Short stories &amp; poems · horror</span>
+        <p data-i18n="books.2.desc">Seven dark tales adrift — steampunk, queer horror and colonial sorcery — with a poem between each story to drift the reader further.</p>
+        <a href="https://www.amazon.com.br/Noite-Deriva-contos-poemas-sombrios-ebook/dp/B071S6R4HN" target="_blank" rel="noopener" data-i18n="books.buy">Where to find ↗</a>
+        <a href="https://lua-nova.netlify.app/" target="_blank" rel="noopener" style="display:block;margin-top:10px" data-i18n="books.luanova">Lua Nova ↗</a>
+      </article>
+      <article class="book reveal">
+        <span class="book-year">Fora da Caixa · 2019 · 224p</span>
+        <h3>Sala de Cirurgia</h3>
+        <span class="book-kind" data-i18n="books.3.kind">Anthology · organizer</span>
+        <p data-i18n="books.3.desc">Organized anthology featuring the photonovel and the short story "O Graal de Barro" — surgery on the strange, in collective form.</p>
+        <a href="https://www.amazon.com.br/Sala-Cirurgia-V%C3%A1rios-Autores/dp/8590689379" target="_blank" rel="noopener" data-i18n="books.buy">Where to find ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="radio" class="zone-c" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2 class="h-grotesk" data-i18n="radio.title">Radio &amp; Media</h2></div>
+    <div class="radio-grid">
+      <div class="radio-card reveal">
+        <span class="on-air"><i></i>ON AIR · 2016—2018</span>
+        <h3>Criador de Mundos</h3>
+        <p data-i18n="radio.desc">Weekly literary show on Rádio Geek — interviews with authors and editors, deep dives from Poe to Clarice Lispector, and the market of fantastic literature in Brazil.</p>
+        <div class="quest-links" style="margin-top:24px">
+          <a href="https://www.youtube.com/playlist?list=PLm0OHtJ62QsRCWecfMubTBg9APOy1jgOP" target="_blank" rel="noopener" data-i18n="radio.watch">Episodes ↗</a>
+        </div>
+      </div>
+      <div class="radio-stats reveal">
+        <div><b>60+</b><span data-i18n="radio.s1">episodes hosted</span></div>
+        <div><b>2</b><span data-i18n="radio.s2">years on air</span></div>
+        <div><b>∞</b><span data-i18n="radio.s3">worlds created</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE: UNIVERSO ============ -->
+<section id="vale" class="zone-u">
+  <div class="wrap">
+    <p class="zone-label" data-i18n="zone.u">Universe — the worlds</p>
+    <div class="sec-head reveal"><h2 class="h-serif" data-i18n="vale.title">The Valley of Secrets</h2></div>
+    <div class="vale reveal">
+      <p class="vale-quote" data-i18n="vale.quote">They shall come to fear the shadows of the day.</p>
+      <p class="vale-desc" data-i18n="vale.desc">The Valley of Secrets is a place — as real as you or me, and as real as what inhabits our imagination. Every story waters the Valley; these are its gates.</p>
+      <div class="vale-works">
+        <div class="vale-work"><b>Delenda</b><span>Madras · 2015</span></div>
+        <a class="vale-work" href="https://www.facebook.com/castelformia" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block"><b>Castelformia e a Ordem de Omnia</b><span data-i18n="vale.wip">In development</span></a>
+        <div class="vale-work"><b>Maré Negra</b><span data-i18n="vale.wip">In development</span></div>
+      </div>
+      <div class="quest-links" style="margin-top:28px;flex-wrap:wrap">
+        <a href="https://valedossegredos.blogspot.com/" target="_blank" rel="noopener" data-i18n="vale.blog">Blog ↗</a>
+        <a href="https://www.instagram.com/vale.dos.segredos/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://www.facebook.com/serievaledossegredos" target="_blank" rel="noopener">Facebook ↗</a>
+        <a href="https://www.facebook.com/watch/?v=1187479394658166" target="_blank" rel="noopener" data-i18n="vale.trailer">Booktrailer ↗</a>
+        <a href="https://www.facebook.com/groups/valedossegredos/" target="_blank" rel="noopener" data-i18n="vale.fanclub">Fan club ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="words" class="zone-u" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2 class="h-serif" data-i18n="words.title">Tales &amp; Poems</h2></div>
+    <div class="counter-strip reveal">
+      <div><b>2</b><span data-i18n="w.books">solo books</span></div>
+      <div><b>25+</b><span data-i18n="w.tales">short stories</span></div>
+      <div><b>50+</b><span data-i18n="w.poems">poems</span></div>
+      <div><b>100+</b><span data-i18n="w.articles">articles</span></div>
+      <div><b>19+</b><span data-i18n="w.anthologies">anthologies</span></div>
+    </div>
+    <div class="antho-list reveal">
+      <div class="antho"><b>SteamPink</b><span>Estronho · 2011 · A Dama dos Corvos</span></div>
+      <div class="antho"><b>VII Demônios — Ira</b><span>Estronho · 2011 · A Lenda de Kauane</span></div>
+      <div class="antho"><b>Quente</b><span>Letra Exótica · 2011 · <span data-i18n="w.first">1st place</span> · O Ato de Antes</span></div>
+      <div class="antho"><b>Piratas: Os Senhores das Águas Sombrias</b><span>Literata · 2012 · O Inferno de Barbanegra</span></div>
+      <div class="antho"><b>Vampiro: Um Livro Colaborativo</b><span>Empíreo · 2017 · O Talismã de Tyet</span></div>
+      <div class="antho"><b>Eu, Monstro</b><span>Editorial Hope · 2019 · Monstro Paradoxal</span></div>
+      <div class="antho"><b>Contos de Tarot</b><span>Insensati · 2020 · A Fuga de Valeriano</span></div>
+      <div class="antho"><b>23 Formas de Morrer</b><span>Amélie · 2020 · Nunca mais Adeline</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="stagezone" class="zone-u" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2 class="h-serif" data-i18n="stage.title">Music &amp; Image</h2></div>
+    <div class="duo">
+      <div class="stage stage-music reveal">
+        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div>
+          <p class="stage-tag" data-i18n="music.tag">Songwriter</p>
+          <h3 data-i18n="music.title">Music</h3>
+          <p data-i18n="music.desc">Over one hundred original compositions — lyric and melody as another door into the Valley.</p>
+          <a href="https://open.spotify.com/artist/7zOleL8rjHZicE8l7tkD2n" target="_blank" rel="noopener" data-i18n="music.cta">Listen ↗</a>
+          <div class="quest-links" style="margin-top:14px;flex-wrap:wrap">
+            <a href="https://www.youtube.com/channel/UC0X3KoV_pK2HJEHPDJExMZA" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.bandlab.com/areznor" target="_blank" rel="noopener">BandLab</a>
+            <a href="https://www.letras.mus.br/amanda-reznor/" target="_blank" rel="noopener">Letras</a>
+          </div>
+        </div>
+      </div>
+      <div class="stage stage-image reveal">
+        <div class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div>
+          <p class="stage-tag" data-i18n="image.tag">Model &amp; Actress</p>
+          <h3 data-i18n="image.title">Image</h3>
+          <p data-i18n="image.desc">Photographic and performance work — the body as narrative, the frame as page.</p>
+          <a href="https://www.instagram.com/amandareznor" target="_blank" rel="noopener" data-i18n="image.cta">Portfolio ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="reveal">
+        <p class="zone-label" data-i18n="foot.eyebrow">Contact</p>
+        <h2 style="margin-top:14px"><span data-i18n="foot.head1">Every world begins with</span> <span class="rz" data-i18n="foot.head2">a word.</span></h2>
+        <a class="foot-mail" href="mailto:ab.murtinho@hotmail.com">ab.murtinho@hotmail.com</a>
+      </div>
+      <div class="foot-links reveal">
+        <a href="https://www.instagram.com/amandareznor" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://www.youtube.com/@AmandaReznor" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://open.spotify.com/artist/7zOleL8rjHZicE8l7tkD2n" target="_blank" rel="noopener">Spotify ↗</a>
+        <a href="https://x.com/AmandaReznor" target="_blank" rel="noopener">X ↗</a>
+        <a href="https://www.facebook.com/AmandaReznor" target="_blank" rel="noopener">Facebook ↗</a>
+        <a href="https://www.linkedin.com/in/amandareznor/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://www.amandareznor.com.br/" target="_blank" rel="noopener">Blog ↗</a>
+        <a href="https://www.youtube.com/@nerdfantasy1058" target="_blank" rel="noopener">Nerd Fantasy ↗</a>
+        <a href="https://lua-nova.netlify.app/" target="_blank" rel="noopener">Lua Nova ↗</a>
+      </div>
+    </div>
+    <div class="bridge reveal">
+      <p><span data-i18n="foot.bridge">In academia and technology, I sign as</span> <a href="amandabritto/" data-i18n="foot.bridge.name">Amanda Britto →</a></p>
+    </div>
+    <p class="credits">© 2026 Amanda Reznor · <span data-i18n="foot.tag">worlds under construction</span></p>
+  </div>
+</footer>
+
+<script>
+/* ============ i18n ============ */
+const LANGS=[
+  {code:'en',flag:'🇬🇧',label:'English'},
+  {code:'pt',flag:'🇧🇷',label:'Português'},
+  {code:'fr',flag:'🇫🇷',label:'Français'},
+  {code:'es',flag:'🇪🇸',label:'Español'},
+  {code:'it',flag:'🇮🇹',label:'Italiano'},
+  {code:'de',flag:'🇩🇪',label:'Deutsch'}
+];
+const I18N={
+ en:{
+  'nav.games':'Games','nav.books':'Books','nav.radio':'Radio','nav.universe':'Universe','nav.tales':'Tales','nav.stage':'Stage','nav.contact':'Contact',
+  'hero.c.tag':'The industry','hero.c.title':'Career','hero.c.sub':'Award-winning games, published books, radio and press.','hero.c.cta':'Enter',
+  'hero.u.tag':'The worlds','hero.u.title':'Universe','hero.u.sub':'The Valley of Secrets, dark tales, music and image.','hero.u.cta':'Descend',
+  'hero.roles':'writer · narrative & game designer',
+  'zone.c':'Career — the industry','zone.u':'Universe — the worlds',
+  'games.title':'Games','games.intro':'Three worlds shipped as narrative & game designer — follow the trail and collect the achievements.',
+  'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Site',
+  'games.1.desc':"A psychological tale about the origin of Kiddo's fear of the dark — bilingual script, symbology system and a children's book based on the game's story.",
+  'games.2.desc':"A 3D puzzle-adventure about transformation and the fragmented mind of a dragon-man — full lore, pitch bible, GDD and a ten-chapter book set in the game's universe.",
+  'games.3.desc':'Web3 P2E project — bilingual lore, whitepaper and GDD documentation, character design and weekly content for site and marketing.',
+  'games.xp':'Achievements unlocked — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finalist','m.bestbr':'Best Brazilian Game',
+  'books.title':'Published Books','books.buy':'Where to find ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Novel · dark fantasy','books.1.desc':"Cláudia Blaise's eighteenth birthday opens a labyrinth of charm, mystery and death — the first gate into the Valley of Secrets.",
+  'books.2.kind':'Short stories & poems · horror','books.2.desc':'Seven dark tales adrift — steampunk, queer horror and colonial sorcery — with a poem between each story to drift the reader further.',
+  'books.3.kind':'Anthology · organizer','books.3.desc':'Organized anthology featuring the photonovel and the short story "O Graal de Barro" — surgery on the strange, in collective form.',
+  'radio.title':'Radio & Media','radio.desc':'Weekly literary show on Rádio Geek — interviews with authors and editors, deep dives from Poe to Clarice Lispector, and the market of fantastic literature in Brazil.',
+  'radio.watch':'Episodes ↗','radio.s1':'episodes hosted','radio.s2':'years on air','radio.s3':'worlds created',
+  'vale.title':'The Valley of Secrets','vale.quote':'They shall come to fear the shadows of the day.',
+  'vale.desc':'The Valley of Secrets is a place — as real as you or me, and as real as what inhabits our imagination. Every story waters the Valley; these are its gates.',
+  'vale.wip':'In development','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
+  'words.title':'Tales & Poems','w.books':'solo books','w.tales':'short stories','w.poems':'poems','w.articles':'articles','w.anthologies':'anthologies','w.first':'1st place',
+  'stage.title':'Music & Image',
+  'music.tag':'Songwriter','music.title':'Music','music.desc':'Over one hundred original compositions — lyric and melody as another door into the Valley.','music.cta':'Listen ↗',
+  'image.tag':'Model & Actress','image.title':'Image','image.desc':'Photographic and performance work — the body as narrative, the frame as page.','image.cta':'Portfolio ↗',
+  'foot.eyebrow':'Contact','foot.head1':'Every world begins with','foot.head2':'a word.',
+  'foot.bridge':'In academia and technology, I sign as','foot.bridge.name':'Amanda Britto →','foot.tag':'worlds under construction'
+ },
+ pt:{
+  'nav.games':'Games','nav.books':'Livros','nav.radio':'Rádio','nav.universe':'Universo','nav.tales':'Contos','nav.stage':'Palco','nav.contact':'Contato',
+  'hero.c.tag':'A indústria','hero.c.title':'Carreira','hero.c.sub':'Jogos premiados, livros publicados, rádio e imprensa.','hero.c.cta':'Entrar',
+  'hero.u.tag':'Os mundos','hero.u.title':'Universo','hero.u.sub':'O Vale dos Segredos, contos sombrios, música e imagem.','hero.u.cta':'Descer',
+  'hero.roles':'escritora · narrative & game designer',
+  'zone.c':'Carreira — a indústria','zone.u':'Universo — os mundos',
+  'games.title':'Games','games.intro':'Três mundos entregues como narrative & game designer — siga a trilha e colecione as conquistas.',
+  'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Site',
+  'games.1.desc':'Uma fábula psicológica sobre a origem do medo de escuro de Kiddo — roteiro bilíngue, sistema de simbologia e livro infantil baseado na história do jogo.',
+  'games.2.desc':'Puzzle-adventure 3D sobre transformação e a consciência fragmentada de um homem-dragão — lore completa, pitch bible, GDD e livro de dez capítulos no universo do jogo.',
+  'games.3.desc':'Projeto Web3 P2E — lore bilíngue, whitepaper e documentação de GDD, concepção de personagens e conteúdo semanal para site e marketing.',
+  'games.xp':'Conquistas desbloqueadas — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finalista','m.bestbr':'Melhor Jogo Brasileiro',
+  'books.title':'Livros Publicados','books.buy':'Onde encontrar ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Romance · fantasia sombria','books.1.desc':'O aniversário de dezoito anos de Cláudia Blaise abre um labirinto de encantos, mistério e morte — o primeiro portal do Vale dos Segredos.',
+  'books.2.kind':'Contos & poemas · horror','books.2.desc':'Sete contos sombrios à deriva — steampunk, horror queer e feitiçaria colonial — com um poema entre cada conto para derivar ainda mais o leitor.',
+  'books.3.kind':'Antologia · organizadora','books.3.desc':'Antologia organizada com a fotonovela e o conto "O Graal de Barro" — uma cirurgia no estranho, em forma coletiva.',
+  'radio.title':'Rádio & Mídia','radio.desc':'Programa literário semanal na Rádio Geek — entrevistas com autores e editores, mergulhos de Poe a Clarice Lispector e o mercado da literatura fantástica no Brasil.',
+  'radio.watch':'Episódios ↗','radio.s1':'programas apresentados','radio.s2':'anos no ar','radio.s3':'mundos criados',
+  'vale.title':'O Vale dos Segredos','vale.quote':'Passarão a temer as sombras do dia.',
+  'vale.desc':'O Vale dos Segredos é um lugar — tão real quanto eu ou você e o que habita o nosso imaginário. Cada história rega o Vale; estes são os seus portais.',
+  'vale.wip':'Em desenvolvimento','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fã-clube ↗',
+  'words.title':'Contos & Poemas','w.books':'livros solo','w.tales':'contos','w.poems':'poemas','w.articles':'artigos','w.anthologies':'antologias','w.first':'1º lugar',
+  'stage.title':'Música & Imagem',
+  'music.tag':'Compositora','music.title':'Música','music.desc':'Mais de cem composições originais — letra e melodia como outra porta de entrada para o Vale.','music.cta':'Ouvir ↗',
+  'image.tag':'Modelo & Atriz','image.title':'Imagem','image.desc':'Trabalhos fotográficos e de atuação — o corpo como narrativa, o enquadramento como página.','image.cta':'Portfólio ↗',
+  'foot.eyebrow':'Contato','foot.head1':'Todo mundo começa com','foot.head2':'uma palavra.',
+  'foot.bridge':'Na academia e na tecnologia, assino como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos em construção'
+ },
+ fr:{
+  'nav.games':'Jeux','nav.books':'Livres','nav.radio':'Radio','nav.universe':'Univers','nav.tales':'Contes','nav.stage':'Scène','nav.contact':'Contact',
+  'hero.c.tag':'L\u2019industrie','hero.c.title':'Carrière','hero.c.sub':'Jeux primés, livres publiés, radio et presse.','hero.c.cta':'Entrer',
+  'hero.u.tag':'Les mondes','hero.u.title':'Univers','hero.u.sub':'La Vallée des Secrets, contes sombres, musique et image.','hero.u.cta':'Descendre',
+  'hero.roles':'écrivaine · narrative & game designer',
+  'zone.c':'Carrière — l\u2019industrie','zone.u':'Univers — les mondes',
+  'games.title':'Jeux','games.intro':'Trois mondes livrés comme narrative & game designer — suivez le sentier et collectionnez les succès.',
+  'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Bande-annonce','games.site':'Site',
+  'games.1.desc':'Un conte psychologique sur l\u2019origine de la peur du noir de Kiddo — scénario bilingue, système de symboles et livre jeunesse tiré de l\u2019histoire du jeu.',
+  'games.2.desc':'Puzzle-aventure 3D sur la transformation et la conscience fragmentée d\u2019un homme-dragon — lore complet, pitch bible, GDD et livre de dix chapitres dans l\u2019univers du jeu.',
+  'games.3.desc':'Projet Web3 P2E — lore bilingue, whitepaper et documentation GDD, conception de personnages et contenu hebdomadaire pour le site et le marketing.',
+  'games.xp':'Succès débloqués — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finaliste','m.bestbr':'Meilleur jeu brésilien',
+  'books.title':'Livres publiés','books.buy':'Où trouver ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Roman · fantasy sombre','books.1.desc':'Le dix-huitième anniversaire de Cláudia Blaise ouvre un labyrinthe de charmes, de mystère et de mort — la première porte de la Vallée des Secrets.',
+  'books.2.kind':'Nouvelles & poèmes · horreur','books.2.desc':'Sept contes sombres à la dérive — steampunk, horreur queer et sorcellerie coloniale — avec un poème entre chaque récit pour faire dériver le lecteur.',
+  'books.3.kind':'Anthologie · organisatrice','books.3.desc':'Anthologie organisée avec le roman-photo et la nouvelle « O Graal de Barro » — une chirurgie de l\u2019étrange, en forme collective.',
+  'radio.title':'Radio & Médias','radio.desc':'Émission littéraire hebdomadaire sur Rádio Geek — entretiens avec auteurs et éditeurs, plongées de Poe à Clarice Lispector et le marché de la littérature fantastique au Brésil.',
+  'radio.watch':'Épisodes ↗','radio.s1':'émissions animées','radio.s2':'ans à l\u2019antenne','radio.s3':'mondes créés',
+  'vale.title':'La Vallée des Secrets','vale.quote':'Ils apprendront à craindre les ombres du jour.',
+  'vale.desc':'La Vallée des Secrets est un lieu — aussi réel que vous et moi, et que ce qui habite notre imaginaire. Chaque histoire irrigue la Vallée ; en voici les portes.',
+  'vale.wip':'En développement','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
+  'words.title':'Contes & Poèmes','w.books':'livres solo','w.tales':'nouvelles','w.poems':'poèmes','w.articles':'articles','w.anthologies':'anthologies','w.first':'1re place',
+  'stage.title':'Musique & Image',
+  'music.tag':'Compositrice','music.title':'Musique','music.desc':'Plus de cent compositions originales — paroles et mélodie comme une autre porte vers la Vallée.','music.cta':'Écouter ↗',
+  'image.tag':'Mannequin & Actrice','image.title':'Image','image.desc':'Travaux photographiques et de jeu — le corps comme récit, le cadre comme page.','image.cta':'Portfolio ↗',
+  'foot.eyebrow':'Contact','foot.head1':'Tout monde commence par','foot.head2':'un mot.',
+  'foot.bridge':'Dans le monde académique et la tech, je signe','foot.bridge.name':'Amanda Britto →','foot.tag':'mondes en construction'
+ },
+ es:{
+  'nav.games':'Juegos','nav.books':'Libros','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Cuentos','nav.stage':'Escenario','nav.contact':'Contacto',
+  'hero.c.tag':'La industria','hero.c.title':'Carrera','hero.c.sub':'Juegos premiados, libros publicados, radio y prensa.','hero.c.cta':'Entrar',
+  'hero.u.tag':'Los mundos','hero.u.title':'Universo','hero.u.sub':'El Valle de los Secretos, cuentos oscuros, música e imagen.','hero.u.cta':'Descender',
+  'hero.roles':'escritora · narrative & game designer',
+  'zone.c':'Carrera — la industria','zone.u':'Universo — los mundos',
+  'games.title':'Juegos','games.intro':'Tres mundos entregados como narrative & game designer — sigue el sendero y colecciona los logros.',
+  'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Tráiler','games.site':'Sitio',
+  'games.1.desc':'Una fábula psicológica sobre el origen del miedo a la oscuridad de Kiddo — guion bilingüe, sistema de simbología y libro infantil basado en la historia del juego.',
+  'games.2.desc':'Puzzle-aventura 3D sobre la transformación y la conciencia fragmentada de un hombre-dragón — lore completo, pitch bible, GDD y libro de diez capítulos en el universo del juego.',
+  'games.3.desc':'Proyecto Web3 P2E — lore bilingüe, whitepaper y documentación GDD, diseño de personajes y contenido semanal para sitio y marketing.',
+  'games.xp':'Logros desbloqueados — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finalista','m.bestbr':'Mejor juego brasileño',
+  'books.title':'Libros publicados','books.buy':'Dónde encontrar ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Novela · fantasía oscura','books.1.desc':'El decimoctavo cumpleaños de Cláudia Blaise abre un laberinto de encantos, misterio y muerte — la primera puerta del Valle de los Secretos.',
+  'books.2.kind':'Cuentos & poemas · horror','books.2.desc':'Siete cuentos oscuros a la deriva — steampunk, horror queer y hechicería colonial — con un poema entre cada relato para hacer derivar al lector.',
+  'books.3.kind':'Antología · organizadora','books.3.desc':'Antología organizada con la fotonovela y el cuento «O Graal de Barro» — una cirugía de lo extraño, en forma colectiva.',
+  'radio.title':'Radio & Medios','radio.desc':'Programa literario semanal en Rádio Geek — entrevistas con autores y editores, inmersiones de Poe a Clarice Lispector y el mercado de la literatura fantástica en Brasil.',
+  'radio.watch':'Episodios ↗','radio.s1':'programas presentados','radio.s2':'años al aire','radio.s3':'mundos creados',
+  'vale.title':'El Valle de los Secretos','vale.quote':'Aprenderán a temer las sombras del día.',
+  'vale.desc':'El Valle de los Secretos es un lugar — tan real como tú o yo, y como lo que habita nuestro imaginario. Cada historia riega el Valle; estas son sus puertas.',
+  'vale.wip':'En desarrollo','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
+  'words.title':'Cuentos & Poemas','w.books':'libros en solitario','w.tales':'cuentos','w.poems':'poemas','w.articles':'artículos','w.anthologies':'antologías','w.first':'1er lugar',
+  'stage.title':'Música & Imagen',
+  'music.tag':'Compositora','music.title':'Música','music.desc':'Más de cien composiciones originales — letra y melodía como otra puerta hacia el Valle.','music.cta':'Escuchar ↗',
+  'image.tag':'Modelo & Actriz','image.title':'Imagen','image.desc':'Trabajos fotográficos y de actuación — el cuerpo como narrativa, el encuadre como página.','image.cta':'Portafolio ↗',
+  'foot.eyebrow':'Contacto','foot.head1':'Todo mundo comienza con','foot.head2':'una palabra.',
+  'foot.bridge':'En la academia y la tecnología, firmo como','foot.bridge.name':'Amanda Britto →','foot.tag':'mundos en construcción'
+ },
+ it:{
+  'nav.games':'Giochi','nav.books':'Libri','nav.radio':'Radio','nav.universe':'Universo','nav.tales':'Racconti','nav.stage':'Palco','nav.contact':'Contatti',
+  'hero.c.tag':'L\u2019industria','hero.c.title':'Carriera','hero.c.sub':'Giochi premiati, libri pubblicati, radio e stampa.','hero.c.cta':'Entra',
+  'hero.u.tag':'I mondi','hero.u.title':'Universo','hero.u.sub':'La Valle dei Segreti, racconti oscuri, musica e immagine.','hero.u.cta':'Scendi',
+  'hero.roles':'scrittrice · narrative & game designer',
+  'zone.c':'Carriera — l\u2019industria','zone.u':'Universo — i mondi',
+  'games.title':'Giochi','games.intro':'Tre mondi consegnati come narrative & game designer — segui il sentiero e colleziona i trofei.',
+  'games.role.nd':'Narrative Designer','games.role.ngd':'Narrative / Game Designer','games.trailer':'Trailer','games.site':'Sito',
+  'games.1.desc':'Una favola psicologica sull\u2019origine della paura del buio di Kiddo — sceneggiatura bilingue, sistema di simboli e libro per bambini basato sulla storia del gioco.',
+  'games.2.desc':'Puzzle-adventure 3D sulla trasformazione e la coscienza frammentata di un uomo-drago — lore completo, pitch bible, GDD e libro di dieci capitoli nell\u2019universo del gioco.',
+  'games.3.desc':'Progetto Web3 P2E — lore bilingue, whitepaper e documentazione GDD, design dei personaggi e contenuti settimanali per sito e marketing.',
+  'games.xp':'Trofei sbloccati — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finalista','m.bestbr':'Miglior gioco brasiliano',
+  'books.title':'Libri pubblicati','books.buy':'Dove trovare ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Romanzo · dark fantasy','books.1.desc':'Il diciottesimo compleanno di Cláudia Blaise apre un labirinto di incanti, mistero e morte — la prima porta della Valle dei Segreti.',
+  'books.2.kind':'Racconti & poesie · horror','books.2.desc':'Sette racconti oscuri alla deriva — steampunk, horror queer e stregoneria coloniale — con una poesia tra ogni racconto per far derivare il lettore.',
+  'books.3.kind':'Antologia · curatrice','books.3.desc':'Antologia curata con il fotoromanzo e il racconto «O Graal de Barro» — una chirurgia dello strano, in forma collettiva.',
+  'radio.title':'Radio & Media','radio.desc':'Programma letterario settimanale su Rádio Geek — interviste con autori ed editori, immersioni da Poe a Clarice Lispector e il mercato della letteratura fantastica in Brasile.',
+  'radio.watch':'Episodi ↗','radio.s1':'puntate condotte','radio.s2':'anni in onda','radio.s3':'mondi creati',
+  'vale.title':'La Valle dei Segreti','vale.quote':'Impareranno a temere le ombre del giorno.',
+  'vale.desc':'La Valle dei Segreti è un luogo — reale quanto te o me, e quanto ciò che abita il nostro immaginario. Ogni storia irriga la Valle; queste sono le sue porte.',
+  'vale.wip':'In sviluppo','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fan club ↗',
+  'words.title':'Racconti & Poesie','w.books':'libri da solista','w.tales':'racconti','w.poems':'poesie','w.articles':'articoli','w.anthologies':'antologie','w.first':'1º posto',
+  'stage.title':'Musica & Immagine',
+  'music.tag':'Compositrice','music.title':'Musica','music.desc':'Oltre cento composizioni originali — testo e melodia come un\u2019altra porta verso la Valle.','music.cta':'Ascolta ↗',
+  'image.tag':'Modella & Attrice','image.title':'Immagine','image.desc':'Lavori fotografici e di recitazione — il corpo come narrazione, l\u2019inquadratura come pagina.','image.cta':'Portfolio ↗',
+  'foot.eyebrow':'Contatti','foot.head1':'Ogni mondo inizia con','foot.head2':'una parola.',
+  'foot.bridge':'Nel mondo accademico e nella tecnologia firmo come','foot.bridge.name':'Amanda Britto →','foot.tag':'mondi in costruzione'
+ },
+ de:{
+  'nav.games':'Spiele','nav.books':'Bücher','nav.radio':'Radio','nav.universe':'Universum','nav.tales':'Erzählungen','nav.stage':'Bühne','nav.contact':'Kontakt',
+  'hero.c.tag':'Die Industrie','hero.c.title':'Karriere','hero.c.sub':'Preisgekrönte Spiele, veröffentlichte Bücher, Radio und Presse.','hero.c.cta':'Eintreten',
+  'hero.u.tag':'Die Welten','hero.u.title':'Universum','hero.u.sub':'Das Tal der Geheimnisse, dunkle Erzählungen, Musik und Bild.','hero.u.cta':'Hinabsteigen',
+  'hero.roles':'Schriftstellerin · Narrative & Game Designerin',
+  'zone.c':'Karriere — die Industrie','zone.u':'Universum — die Welten',
+  'games.title':'Spiele','games.intro':'Drei Welten als Narrative & Game Designerin — folge dem Pfad und sammle die Erfolge.',
+  'games.role.nd':'Narrative Designerin','games.role.ngd':'Narrative / Game Designerin','games.trailer':'Trailer','games.site':'Website',
+  'games.1.desc':'Eine psychologische Fabel über den Ursprung von Kiddos Angst vor der Dunkelheit — zweisprachiges Skript, Symbolsystem und Kinderbuch nach der Geschichte des Spiels.',
+  'games.2.desc':'3D-Puzzle-Adventure über Verwandlung und das fragmentierte Bewusstsein eines Drachenmenschen — vollständige Lore, Pitch Bible, GDD und ein Buch mit zehn Kapiteln im Universum des Spiels.',
+  'games.3.desc':'Web3-P2E-Projekt — zweisprachige Lore, Whitepaper und GDD-Dokumentation, Charakterdesign und wöchentliche Inhalte für Website und Marketing.',
+  'games.xp':'Erfolge freigeschaltet — SBGames · BIG Festival · ProAC · Tokyo Game Show',
+  'm.finalist':'Finalistin','m.bestbr':'Bestes brasilianisches Spiel',
+  'books.title':'Veröffentlichte Bücher','books.buy':'Wo zu finden ↗','books.luanova':'Lua Nova ↗',
+  'books.1.kind':'Roman · Dark Fantasy','books.1.desc':'Cláudia Blaises achtzehnter Geburtstag öffnet ein Labyrinth aus Zauber, Geheimnis und Tod — das erste Tor ins Tal der Geheimnisse.',
+  'books.2.kind':'Erzählungen & Gedichte · Horror','books.2.desc':'Sieben dunkle Erzählungen auf Drift — Steampunk, Queer-Horror und koloniale Hexerei — mit einem Gedicht zwischen jeder Geschichte.',
+  'books.3.kind':'Anthologie · Herausgeberin','books.3.desc':'Herausgegebene Anthologie mit Fotoroman und der Erzählung „O Graal de Barro" — eine Chirurgie des Seltsamen, in kollektiver Form.',
+  'radio.title':'Radio & Medien','radio.desc':'Wöchentliche Literatursendung auf Rádio Geek — Interviews mit Autoren und Verlegern, Vertiefungen von Poe bis Clarice Lispector und der Markt der fantastischen Literatur in Brasilien.',
+  'radio.watch':'Folgen ↗','radio.s1':'moderierte Folgen','radio.s2':'Jahre auf Sendung','radio.s3':'erschaffene Welten',
+  'vale.title':'Das Tal der Geheimnisse','vale.quote':'Sie werden die Schatten des Tages fürchten lernen.',
+  'vale.desc':'Das Tal der Geheimnisse ist ein Ort — so real wie du oder ich, und wie das, was unsere Vorstellung bewohnt. Jede Geschichte bewässert das Tal; dies sind seine Tore.',
+  'vale.wip':'In Entwicklung','vale.blog':'Blog ↗','vale.trailer':'Booktrailer ↗','vale.fanclub':'Fanclub ↗',
+  'words.title':'Erzählungen & Gedichte','w.books':'Solo-Bücher','w.tales':'Erzählungen','w.poems':'Gedichte','w.articles':'Artikel','w.anthologies':'Anthologien','w.first':'1. Platz',
+  'stage.title':'Musik & Bild',
+  'music.tag':'Komponistin','music.title':'Musik','music.desc':'Über hundert Originalkompositionen — Text und Melodie als weiteres Tor ins Tal.','music.cta':'Anhören ↗',
+  'image.tag':'Model & Schauspielerin','image.title':'Bild','image.desc':'Fotografische und schauspielerische Arbeiten — der Körper als Erzählung, der Bildausschnitt als Seite.','image.cta':'Portfolio ↗',
+  'foot.eyebrow':'Kontakt','foot.head1':'Jede Welt beginnt mit','foot.head2':'einem Wort.',
+  'foot.bridge':'In Wissenschaft und Technologie unterschreibe ich als','foot.bridge.name':'Amanda Britto →','foot.tag':'Welten im Bau'
+ }
+};
+
+let LANG='en';
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+function t(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;}
+function applyI18n(){
+  $$('[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
+  document.documentElement.lang=LANG;
+}
+function setLang(code){
+  LANG=code;
+  const meta=LANGS.find(l=>l.code===code);
+  $('#curFlag').textContent=meta.flag; $('#curCode').textContent=code.toUpperCase();
+  $$('#langMenu button').forEach(b=>b.classList.toggle('active',b.dataset.code===code));
+  try{localStorage.setItem('ar_lang',code);}catch(e){}
+  applyI18n();
+}
+const menu=$('#langMenu');
+LANGS.forEach(l=>{
+  const b=document.createElement('button');
+  b.dataset.code=l.code; b.setAttribute('role','menuitem');
+  b.innerHTML=`<span class="flag">${l.flag}</span>${l.label}<small>${l.code.toUpperCase()}</small>`;
+  b.onclick=()=>{setLang(l.code);closeLang();};
+  menu.appendChild(b);
+});
+const langWrap=$('#lang'),langBtn=$('#langBtn');
+function openLang(){langWrap.classList.add('open');langBtn.setAttribute('aria-expanded','true');}
+function closeLang(){langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');}
+langBtn.onclick=e=>{e.stopPropagation();langWrap.classList.contains('open')?closeLang():openLang();};
+document.addEventListener('click',e=>{if(!langWrap.contains(e.target))closeLang();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLang();});
+
+/* ============ Typewriter loader ============ */
+(function(){
+  const loader=$('#loader'),target=$('#typed');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced||!loader){if(loader)loader.classList.add('done');return;}
+  const text='amanda reznor';
+  let i=0;
+  function step(){
+    if(i<=text.length){target.textContent=text.slice(0,i);i++;setTimeout(step,75);}
+    else setTimeout(()=>loader.classList.add('done'),450);
+  }
+  step();
+  loader.addEventListener('click',()=>loader.classList.add('done'));
+  setTimeout(()=>loader.classList.add('done'),4000); /* safety */
+})();
+
+/* ============ Ambient particles (universo panel) ============ */
+(function(){
+  const wrap=$('#stars'); if(!wrap)return;
+  for(let k=0;k<26;k++){
+    const s=document.createElement('i');
+    s.style.left=(Math.random()*100)+'%';
+    s.style.top=(Math.random()*100)+'%';
+    s.style.animationDelay=(-Math.random()*10)+'s';
+    wrap.appendChild(s);
+  }
+})();
+
+/* ============ Init lang ============ */
+(function(){
+  let start='en';
+  try{const sv=localStorage.getItem('ar_lang');if(sv&&LANGS.some(l=>l.code===sv))start=sv;}catch(e){}
+  setLang(start);
+})();
+
+/* ============ Chrome ============ */
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+const burger=$('#burger'),links=$('#navLinks');
+burger.onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+const trail=$('#trail');
+if(trail){new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){trail.classList.add('seen');o.unobserve(trail);}}),{threshold:.2}).observe(trail);}
+</script>
+</body>
+</html>
