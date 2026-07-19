@@ -29,6 +29,10 @@ textarea{min-height:160px;resize:vertical}
 button[type=submit]{justify-self:start;margin-top:8px;padding:14px 28px;border:0;border-radius:2px;background:var(--violet);color:#0C0913;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .25s,transform .25s}
 button[type=submit]:hover{background:var(--violet-soft);transform:translateY(-1px)}
 .hint{margin-top:28px;font-size:.82rem;color:var(--mist)}
+.ok{display:none;margin-top:40px;padding:22px 24px;border:1px solid rgba(155,109,255,.45);border-radius:8px;background:rgba(155,109,255,.1);color:var(--silver-bright)}
+.ok.show{display:block}
+.ok b{display:block;font-family:var(--serif);font-style:italic;font-size:1.35rem;margin-bottom:8px;color:var(--violet-soft)}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
 </style>
 </head>
 <body>
@@ -39,24 +43,26 @@ button[type=submit]:hover{background:var(--violet-soft);transform:translateY(-1p
     </div>
     <h1 data-i18n="title">Get in touch</h1>
     <p class="lead" data-i18n="lead">Insira nome e e-mail para encaminhar a sua mensagem. Seu contato será retornado assim que possível.</p>
-    <form id="contactForm" novalidate>
+    <div class="ok" id="okBox" role="status"><b data-i18n="ok.title">Message sent</b><span data-i18n="ok.body">Thank you — your message was received and will be answered as soon as possible.</span></div>
+    <form id="contactForm" name="contact-reznor" method="POST" action="/contato/?sent=1" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact-reznor">
+      <p class="hp"><label>Don’t fill this out <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <label><span data-i18n="name">Name</span><input type="text" name="name" required autocomplete="name" data-i18n-ph="ph.name" placeholder="Your name"></label>
       <label><span data-i18n="email">Email</span><input type="email" name="email" required autocomplete="email" data-i18n-ph="ph.email" placeholder="you@email.com"></label>
       <label><span data-i18n="message">Message</span><textarea name="message" required data-i18n-ph="ph.message" placeholder="Your message"></textarea></label>
       <button type="submit" data-i18n="send">Send</button>
     </form>
-    <p class="hint" data-i18n="hint">If your email app does not open, copy your message and use the contact options on the main site.</p>
+    <p class="hint" data-i18n="hint">Your message is sent securely through the site — no email app needed.</p>
   </div>
 <script>
-const TO='amandareznor@hotmail.com';
 const LANGS=['en','pt','fr','es','it','de'];
 const I18N={
-  en:{back:'← Amanda Reznor',title:'Get in touch',lead:'Enter your name and email to send your message. Your contact will be returned as soon as possible.',name:'Name',email:'Email',message:'Message',send:'Send',hint:'If your email app does not open, copy your message and use the contact options on the main site.','ph.name':'Your name','ph.email':'you@email.com','ph.message':'Your message',alert:'Please fill in all fields.',subject:'Contact via website — '},
-  pt:{back:'← Amanda Reznor',title:'Entre em contato',lead:'Insira nome e e-mail para encaminhar a sua mensagem. Seu contato será retornado assim que possível.',name:'Nome',email:'E-mail',message:'Mensagem',send:'Enviar',hint:'Se o aplicativo de e-mail não abrir, copie a mensagem e use as opções de contato no site principal.','ph.name':'Seu nome','ph.email':'voce@email.com','ph.message':'Sua mensagem',alert:'Preencha todos os campos.',subject:'Contato pelo site — '},
-  fr:{back:'← Amanda Reznor',title:'Contact',lead:'Indiquez nom et e-mail pour envoyer votre message. Votre contact sera rappelé dès que possible.',name:'Nom',email:'E-mail',message:'Message',send:'Envoyer',hint:'Si l’application ne s’ouvre pas, copiez votre message et utilisez les options de contact du site.','ph.name':'Votre nom','ph.email':'vous@email.com','ph.message':'Votre message',alert:'Veuillez remplir tous les champs.',subject:'Contact via le site — '},
-  es:{back:'← Amanda Reznor',title:'Contacto',lead:'Introduce nombre y correo para enviar tu mensaje. Tu contacto será respondido lo antes posible.',name:'Nombre',email:'Correo',message:'Mensaje',send:'Enviar',hint:'Si no se abre el correo, copia el mensaje y usa las opciones de contacto del sitio.','ph.name':'Tu nombre','ph.email':'tu@email.com','ph.message':'Tu mensaje',alert:'Completa todos los campos.',subject:'Contacto desde el sitio — '},
-  it:{back:'← Amanda Reznor',title:'Contatti',lead:'Inserisci nome e e-mail per inviare il messaggio. Il contatto sarà ricontattato il prima possibile.',name:'Nome',email:'E-mail',message:'Messaggio',send:'Invia',hint:'Se l’app non si apre, copia il messaggio e usa i contatti del sito.','ph.name':'Il tuo nome','ph.email':'tu@email.com','ph.message':'Il tuo messaggio',alert:'Compila tutti i campi.',subject:'Contatto dal sito — '},
-  de:{back:'← Amanda Reznor',title:'Kontakt',lead:'Name und E-Mail eingeben, um die Nachricht zu senden. Dein Kontakt wird so bald wie möglich beantwortet.',name:'Name',email:'E-Mail',message:'Nachricht',send:'Senden',hint:'Wenn die App nicht öffnet, kopiere die Nachricht und nutze die Kontaktoptionen auf der Hauptseite.','ph.name':'Dein Name','ph.email':'du@email.com','ph.message':'Deine Nachricht',alert:'Bitte alle Felder ausfüllen.',subject:'Kontakt über die Website — '}
+  en:{back:'← Amanda Reznor',title:'Get in touch',lead:'Enter your name and email to send your message. Your contact will be returned as soon as possible.',name:'Name',email:'Email',message:'Message',send:'Send',hint:'Your message is sent securely through the site — no email app needed.','ph.name':'Your name','ph.email':'you@email.com','ph.message':'Your message','ok.title':'Message sent','ok.body':'Thank you — your message was received and will be answered as soon as possible.'},
+  pt:{back:'← Amanda Reznor',title:'Entre em contato',lead:'Insira nome e e-mail para encaminhar a sua mensagem. Seu contato será retornado assim que possível.',name:'Nome',email:'E-mail',message:'Mensagem',send:'Enviar',hint:'Sua mensagem é enviada com segurança pelo site — sem abrir aplicativo de e-mail.','ph.name':'Seu nome','ph.email':'voce@email.com','ph.message':'Sua mensagem','ok.title':'Mensagem enviada','ok.body':'Obrigada — sua mensagem foi recebida e será respondida assim que possível.'},
+  fr:{back:'← Amanda Reznor',title:'Contact',lead:'Indiquez nom et e-mail pour envoyer votre message. Votre contact sera rappelé dès que possible.',name:'Nom',email:'E-mail',message:'Message',send:'Envoyer',hint:'Votre message est envoyé via le site — aucune application e-mail n’est nécessaire.','ph.name':'Votre nom','ph.email':'vous@email.com','ph.message':'Votre message','ok.title':'Message envoyé','ok.body':'Merci — votre message a été reçu et recevra une réponse dès que possible.'},
+  es:{back:'← Amanda Reznor',title:'Contacto',lead:'Introduce nombre y correo para enviar tu mensaje. Tu contacto será respondido lo antes posible.',name:'Nombre',email:'Correo',message:'Mensaje',send:'Enviar',hint:'Tu mensaje se envía de forma segura por el sitio — sin abrir una app de correo.','ph.name':'Tu nombre','ph.email':'tu@email.com','ph.message':'Tu mensaje','ok.title':'Mensaje enviado','ok.body':'Gracias — tu mensaje fue recibido y será respondido lo antes posible.'},
+  it:{back:'← Amanda Reznor',title:'Contatti',lead:'Inserisci nome e e-mail per inviare il messaggio. Il contatto sarà ricontattato il prima possibile.',name:'Nome',email:'E-mail',message:'Messaggio',send:'Invia',hint:'Il messaggio viene inviato in modo sicuro dal sito — senza aprire un’app di posta.','ph.name':'Il tuo nome','ph.email':'tu@email.com','ph.message':'Il tuo messaggio','ok.title':'Messaggio inviato','ok.body':'Grazie — il messaggio è stato ricevuto e riceverà risposta al più presto.'},
+  de:{back:'← Amanda Reznor',title:'Kontakt',lead:'Name und E-Mail eingeben, um die Nachricht zu senden. Dein Kontakt wird so bald wie möglich beantwortet.',name:'Name',email:'E-Mail',message:'Nachricht',send:'Senden',hint:'Deine Nachricht wird sicher über die Website gesendet — ohne E-Mail-App.','ph.name':'Dein Name','ph.email':'du@email.com','ph.message':'Deine Nachricht','ok.title':'Nachricht gesendet','ok.body':'Danke — deine Nachricht wurde empfangen und wird so bald wie möglich beantwortet.'}
 };
 let LANG='pt';
 function apply(){
@@ -73,18 +79,11 @@ document.getElementById('langToggle').onclick=()=>{
   try{localStorage.setItem('ar_lang',LANG);}catch(e){}
   apply();
 };
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const d=I18N[LANG]||I18N.en;
-  const fd=new FormData(this);
-  const name=(fd.get('name')||'').toString().trim();
-  const email=(fd.get('email')||'').toString().trim();
-  const message=(fd.get('message')||'').toString().trim();
-  if(!name||!email||!message){alert(d.alert);return;}
-  const subject=encodeURIComponent(d.subject+name);
-  const body=encodeURIComponent('Nome / Name: '+name+'\nE-mail: '+email+'\n\n'+message);
-  window.location.href='mailto:'+TO+'?subject='+subject+'&body='+body;
-});
+if(new URLSearchParams(location.search).get('sent')==='1'){
+  document.getElementById('okBox').classList.add('show');
+  document.getElementById('contactForm').style.display='none';
+  document.querySelector('.hint').style.display='none';
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<title>Résumés — Amanda Britto</title>
+<meta name="description" content="Download Amanda Britto résumés tailored for IT, Education and Games — in English, French and Portuguese.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ice:#F4F4F7;--ink:#1D1B24;--ink-soft:#4A4756;--purple:#4E2E7F;--purple-soft:#6C4BA6;--lilac:#8C86A3;
+  --line:rgba(29,27,36,.14);--card:#FBFBFD;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--ice);color:var(--ink);color-scheme:only light}
+body{font-family:var(--sans);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(78,46,127,.07),transparent 50%),
+    radial-gradient(ellipse at 90% 20%,rgba(140,134,163,.08),transparent 45%),
+    var(--ice)}
+a{color:var(--purple);text-decoration:none}
+a:hover{color:var(--purple-soft)}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 28px 96px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:56px}
+.back{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac)}
+.back:hover{color:var(--purple)}
+.lang-btn{border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;cursor:pointer;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6vw,4rem);line-height:1.05;letter-spacing:.01em}
+.lead{margin-top:16px;max-width:520px;color:var(--ink-soft);font-size:1.05rem}
+.grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:36px 28px 28px;text-align:center;
+  box-shadow:0 18px 44px rgba(29,27,36,.05);transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(78,46,127,.35);box-shadow:0 24px 56px rgba(78,46,127,.1)}
+.icon{width:52px;height:52px;margin:0 auto 18px;display:grid;place-items:center;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,rgba(108,75,166,.2),rgba(78,46,127,.08));color:var(--purple)}
+.icon svg{width:26px;height:26px;display:block}
+.card h2{font-family:var(--serif);font-size:1.55rem;font-weight:600;margin-bottom:8px}
+.card p{font-size:.92rem;color:var(--ink-soft);min-height:2.8em;margin-bottom:26px}
+.langs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:52px;padding:10px 14px;
+  font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:6px;color:var(--purple);background:transparent;transition:all .25s}
+.langs a:hover,.langs a:focus-visible{background:var(--purple);color:#fff;border-color:var(--purple)}
+@media(max-width:900px){.grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="back" href="../index.html" data-i18n="back">← Amanda Britto</a>
+      <button type="button" class="lang-btn" id="langToggle" aria-label="Language">EN</button>
+    </div>
+    <p class="eyebrow" data-i18n="eyebrow">Curriculum</p>
+    <h1 data-i18n="title">Résumés</h1>
+    <p class="lead" data-i18n="lead">Three tailored résumés — IT, Education and Games — each in English, French and Portuguese. Pick a role and a language.</p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h2 data-i18n="ti.title">IT</h2>
+        <p data-i18n="ti.desc">Data analysis, development and technology careers.</p>
+        <div class="langs">
+          <a href="cv-data-analyst-en.pdf" download>EN</a>
+          <a href="cv-data-analyst-fr.pdf" download>FR</a>
+          <a href="cv-data-analyst-pt.pdf" download>PT</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5z"/></svg>
+        </div>
+        <h2 data-i18n="edu.title">Education</h2>
+        <p data-i18n="edu.desc">Teaching, academic coordination and instructional design.</p>
+        <div class="langs">
+          <a href="cv-education-en.pdf" download>EN</a>
+          <a href="cv-education-fr.pdf" download>FR</a>
+          <a href="cv-education-pt.pdf" download>PT</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="20" height="10" rx="2"/><path d="M6 12h.01M10 12h4M18 11v2"/><path d="M9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </div>
+        <h2 data-i18n="games.title">Games</h2>
+        <p data-i18n="games.desc">Narrative design, game development and interactive media.</p>
+        <div class="langs">
+          <a href="cv-games-en.pdf" download>EN</a>
+          <a href="cv-games-fr.pdf" download>FR</a>
+          <a href="cv-games-pt.pdf" download>PT</a>
+        </div>
+      </article>
+    </div>
+  </div>
+<script>
+const LANGS=['en','pt','fr','es','it','de'];
+const I18N={
+  en:{back:'← Amanda Britto',eyebrow:'Curriculum',title:'Résumés',lead:'Three tailored résumés — IT, Education and Games — each in English, French and Portuguese. Pick a role and a language.','ti.title':'IT','ti.desc':'Data analysis, development and technology careers.','edu.title':'Education','edu.desc':'Teaching, academic coordination and instructional design.','games.title':'Games','games.desc':'Narrative design, game development and interactive media.'},
+  pt:{back:'← Amanda Britto',eyebrow:'Currículo',title:'Currículos',lead:'Três currículos sob medida — TI, Educação e Games — cada um em inglês, francês e português. Escolha o perfil e o idioma.','ti.title':'TI','ti.desc':'Análise de dados, desenvolvimento e carreiras em tecnologia.','edu.title':'Educação','edu.desc':'Docência, coordenação acadêmica e design instrucional.','games.title':'Games','games.desc':'Narrative design, desenvolvimento de jogos e mídia interativa.'},
+  fr:{back:'← Amanda Britto',eyebrow:'Curriculum',title:'CV',lead:'Trois CV ciblés — TI, Éducation et Jeux — chacun en anglais, français et portugais. Choisissez un profil et une langue.','ti.title':'TI','ti.desc':'Analyse de données, développement et carrières en technologie.','edu.title':'Éducation','edu.desc':'Enseignement, coordination académique et design pédagogique.','games.title':'Jeux','games.desc':'Narrative design, développement de jeux et médias interactifs.'},
+  es:{back:'← Amanda Britto',eyebrow:'Currículum',title:'Currículos',lead:'Tres currículos a medida — TI, Educación y Games — cada uno en inglés, francés y portugués. Elige un perfil y un idioma.','ti.title':'TI','ti.desc':'Análisis de datos, desarrollo y carreras en tecnología.','edu.title':'Educación','edu.desc':'Docencia, coordinación académica y diseño instruccional.','games.title':'Games','games.desc':'Narrative design, desarrollo de juegos y medios interactivos.'},
+  it:{back:'← Amanda Britto',eyebrow:'Curriculum',title:'Curriculum',lead:'Tre CV mirati — IT, Educazione e Games — ciascuno in inglese, francese e portoghese. Scegli un profilo e una lingua.','ti.title':'IT','ti.desc':'Analisi dati, sviluppo e carriere tecnologiche.','edu.title':'Educazione','edu.desc':'Docenza, coordinamento accademico e instructional design.','games.title':'Games','games.desc':'Narrative design, game development e media interattivi.'},
+  de:{back:'← Amanda Britto',eyebrow:'Lebenslauf',title:'Lebensläufe',lead:'Drei maßgeschneiderte Lebensläufe — IT, Bildung und Games — jeweils auf Englisch, Französisch und Portugiesisch. Rolle und Sprache wählen.','ti.title':'IT','ti.desc':'Datenanalyse, Entwicklung und Technologiekarrieren.','edu.title':'Bildung','edu.desc':'Lehre, akademische Koordination und Instructional Design.','games.title':'Games','games.desc':'Narrative Design, Spieleentwicklung und interaktive Medien.'}
+};
+let LANG='en';
+function apply(){
+  const d=I18N[LANG]||I18N.en;
+  document.documentElement.lang=LANG;
+  document.title=(d.title||'Résumés')+' — Amanda Britto';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k])el.textContent=d[k];});
+  document.getElementById('langToggle').textContent=LANG.toUpperCase();
+}
+try{const s=localStorage.getItem('ab_lang');if(s&&LANGS.includes(s))LANG=s;}catch(e){}
+apply();
+document.getElementById('langToggle').onclick=()=>{
+  LANG=LANGS[(LANGS.indexOf(LANG)+1)%LANGS.length];
+  try{localStorage.setItem('ab_lang',LANG);}catch(e){}
+  apply();
+};
+</script>
+</body>
+</html>

@@ -295,7 +295,7 @@ footer h2 i{color:#B49BE0;font-style:italic}
     <p class="hero-loc">Montréal · QC · Canada&nbsp;&nbsp;/&nbsp;&nbsp;São Paulo · SP · Brazil</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="https://www.linkedin.com/in/amandareznor/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" id="cvBtn" href="cv/amanda-britto-en.pdf" download data-i18n="hero.cv">Download CV</a>
+      <a class="btn btn-ghost" id="cvBtn" href="cv/" data-i18n="hero.cv">Download CV</a>
     </div>
   </div>
   <div class="catalog reveal">
@@ -456,35 +456,11 @@ const BLOG_HOST='amanda-reznor.blogspot.com';
 // Map Blogger labels -> site categories. Add posts with these labels in Blogger.
 const LABEL_MAP={tecnologia:'tech',educacao:'education',pesquisa:'research',dados:'tech',ia:'tech',literatura:'literature'};
 
-/* Local articles (shown ahead of Blogger feed). Empty = only Blogger posts. */
+/* Local articles (shown ahead of Blogger feed). Titles/excerpts via i18n keys. */
 const LOCAL_POSTS=[
-  {
-    title:'Hackathons e game jams: 48 horas, stacks reais e projetos premiados',
-    url:'artigos/hackathons-game-jams.html',
-    date:'2026-07-18',
-    excerpt:'Mimix VR, Kyle’s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis e mais — tecnologias e vitórias nas maratonas de Amanda Reznor Britto.',
-    image:'artigos/img/hackathons.png',
-    category:'tech',
-    local:true
-  },
-  {
-    title:'Na mídia e na mesa: professora, autora, radiolocutora, mediadora',
-    url:'artigos/midias-palestras-mediacao.html',
-    date:'2026-07-17',
-    excerpt:'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek e os canais YouTube — a presença pública entre academia, jogos e literatura.',
-    image:'artigos/img/midias.png',
-    category:'education',
-    local:true
-  },
-  {
-    title:'Delenda revisado, internacional e o mapa de seis livros do Vale',
-    url:'artigos/delenda-internacional.html',
-    date:'2026-07-16',
-    excerpt:'Relançamento em EN, FR e ES, e-book em PT-BR, Castelformia no prelo e a saga reestruturada em seis volumes — da Baixa à Alta Montanha.',
-    image:'artigos/img/delenda.png',
-    category:'literature',
-    local:true
-  }
+  {titleKey:'lp.1.t',excerptKey:'lp.1.e',url:'artigos/hackathons-game-jams.html',date:'2026-07-18',image:'artigos/img/hackathons.png',category:'tech',local:true},
+  {titleKey:'lp.2.t',excerptKey:'lp.2.e',url:'artigos/midias-palestras-mediacao.html',date:'2026-07-17',image:'artigos/img/midias.png',category:'education',local:true},
+  {titleKey:'lp.3.t',excerptKey:'lp.3.e',url:'artigos/delenda-internacional.html',date:'2026-07-16',image:'artigos/img/delenda.png',category:'literature',local:true}
 ];
 
 /* ============ i18n ============ */
@@ -536,6 +512,9 @@ const I18N={
   'writ.all':'Access Blog',
   'filter.all':'All','filter.tech':'Technology','filter.education':'Education','filter.literature':'Literature','filter.research':'Research',
   'post.read':'Read','posts.loading':'Loading latest pieces…','posts.empty':'No pieces in this category yet.','posts.error':'Couldn\u2019t load the blog right now — visit it directly.',
+  'lp.1.t':'Hackathons and game jams: 48 hours, real stacks and award-winning projects','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis and more — technologies and wins from Amanda Reznor Britto\u2019s marathons.',
+  'lp.2.t':'On air and on stage: professor, author, radio host, moderator','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Metaverse, Junta Geek and the YouTube channels — a public presence between academia, games and literature.',
+  'lp.3.t':'Delenda revised, international, and the six-book map of the Valley','lp.3.e':'Relaunch in EN, FR and ES, e-book in PT-BR, Castelformia at press and the saga restructured across six volumes — from Lower to Upper Mountain.',
   'cred.title':'Credentials','cred.prof':'Level 10 · Proficiency','cred.fr':'Francisation Québec','cred.more':'Verified badges on <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Talks & Mediations','talk.1':'Speaker · Metaverse: concepts and technologies · 2022','talk.2':'Moderator · An introductory approach · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Speaker · FAM · 2022','talk.4.t':'Interviews, Podcasts and Talks','talk.4':'Playlist · Academic events','talk.watch':'Watch ↗',
   'foot.eyebrow':'Contact','foot.head':'Shall we build something <i>together</i>?','foot.contact':'Get in touch','foot.bridge':'Beyond academia, I build worlds — fiction, games and art — as <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Top'
@@ -579,6 +558,9 @@ const I18N={
   'writ.all':'Acessar Blog',
   'filter.all':'Todos','filter.tech':'Tecnologia','filter.education':'Educação','filter.literature':'Literatura','filter.research':'Pesquisa',
   'post.read':'Ler','posts.loading':'Carregando os textos mais recentes…','posts.empty':'Ainda não há textos nesta categoria.','posts.error':'Não foi possível carregar o blog agora — acesse-o diretamente.',
+  'lp.1.t':'Hackathons e game jams: 48 horas, stacks reais e projetos premiados','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis e mais — tecnologias e vitórias nas maratonas de Amanda Reznor Britto.',
+  'lp.2.t':'Na mídia e na mesa: professora, autora, radiolocutora, mediadora','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek e os canais YouTube — a presença pública entre academia, jogos e literatura.',
+  'lp.3.t':'Delenda revisado, internacional e o mapa de seis livros do Vale','lp.3.e':'Relançamento em EN, FR e ES, e-book em PT-BR, Castelformia no prelo e a saga reestruturada em seis volumes — da Baixa à Alta Montanha.',
   'cred.title':'Certificações & Credenciais','cred.prof':'Nível 10 · Proficiência','cred.fr':'Francisation Québec','cred.more':'Badges verificáveis no <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Palestras e Mediações','talk.1':'Palestrante · Metaverso: conceitos e tecnologias · 2022','talk.2':'Mediadora · Uma abordagem introdutória · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Palestrante · FAM · 2022','talk.4.t':'Entrevistas, Podcasts e Palestras','talk.4':'Playlist · Eventos Acadêmicos','talk.watch':'Assistir ↗',
   'foot.eyebrow':'Contato','foot.head':'Vamos construir algo <i>juntos</i>?','foot.contact':'Entre em contato','foot.bridge':'Fora da academia, crio mundos — literatura, games e arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Topo'
@@ -622,6 +604,9 @@ const I18N={
   'writ.all':'Accéder au blog',
   'filter.all':'Tous','filter.tech':'Technologie','filter.education':'Éducation','filter.literature':'Littérature','filter.research':'Recherche',
   'post.read':'Lire','posts.loading':'Chargement des derniers textes…','posts.empty':'Aucun texte dans cette catégorie pour l\u2019instant.','posts.error':'Impossible de charger le blog pour le moment — consultez-le directement.',
+  'lp.1.t':'Hackathons et game jams : 48 heures, stacks réels et projets primés','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis et plus — technologies et victoires des marathons d\u2019Amanda Reznor Britto.',
+  'lp.2.t':'Médias et scènes : professeure, auteure, animatrice radio, médiatrice','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Métavers, Junta Geek et les chaînes YouTube — une présence publique entre académie, jeux et littérature.',
+  'lp.3.t':'Delenda révisé, international, et la carte en six livres de la Vallée','lp.3.e':'Relance en EN, FR et ES, e-book en PT-BR, Castelformia sous presse et la saga restructurée en six volumes — de la Basse à la Haute Montagne.',
   'cred.title':'Certifications & Titres','cred.prof':'Niveau 10 · Compétence','cred.fr':'Francisation Québec','cred.more':'Badges vérifiables sur <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Conférences et médiations','talk.1':'Conférencière · Métavers : concepts et technologies · 2022','talk.2':'Modératrice · Une approche introductive · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Conférencière · FAM · 2022','talk.4.t':'Entretiens, podcasts et conférences','talk.4':'Playlist · Événements académiques','talk.watch':'Regarder ↗',
   'foot.eyebrow':'Contact','foot.head':'Et si nous créions quelque chose <i>ensemble</i> ?','foot.contact':'Me contacter','foot.bridge':'En dehors du monde académique, je crée des univers — fiction, jeux et art — sous le nom d\u2019<a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Haut'
@@ -665,6 +650,9 @@ const I18N={
   'writ.all':'Acceder al blog',
   'filter.all':'Todos','filter.tech':'Tecnología','filter.education':'Educación','filter.literature':'Literatura','filter.research':'Investigación',
   'post.read':'Leer','posts.loading':'Cargando los textos más recientes…','posts.empty':'Aún no hay textos en esta categoría.','posts.error':'No se pudo cargar el blog ahora — visítalo directamente.',
+  'lp.1.t':'Hackathons y game jams: 48 horas, stacks reales y proyectos premiados','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis y más — tecnologías y victorias en las maratones de Amanda Reznor Britto.',
+  'lp.2.t':'En los medios y en la mesa: profesora, autora, locutora, mediadora','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek y los canales de YouTube — presencia pública entre academia, juegos y literatura.',
+  'lp.3.t':'Delenda revisado, internacional y el mapa de seis libros del Valle','lp.3.e':'Relanzamiento en EN, FR y ES, e-book en PT-BR, Castelformia en prensa y la saga reestructurada en seis volúmenes — de la Baja a la Alta Montaña.',
   'cred.title':'Certificaciones & Credenciales','cred.prof':'Nivel 10 · Competencia','cred.fr':'Francisation Québec','cred.more':'Insignias verificables en <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Charlas y mediaciones','talk.1':'Ponente · Metaverso: conceptos y tecnologías · 2022','talk.2':'Moderadora · Un enfoque introductorio · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Ponente · FAM · 2022','talk.4.t':'Entrevistas, podcasts y charlas','talk.4':'Playlist · Eventos académicos','talk.watch':'Ver ↗',
   'foot.eyebrow':'Contacto','foot.head':'¿Construimos algo <i>juntos</i>?','foot.contact':'Entre en contacto','foot.bridge':'Fuera del ámbito académico, creo mundos — ficción, videojuegos y arte — como <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inicio'
@@ -708,6 +696,9 @@ const I18N={
   'writ.all':'Accedi al blog',
   'filter.all':'Tutti','filter.tech':'Tecnologia','filter.education':'Educazione','filter.literature':'Letteratura','filter.research':'Ricerca',
   'post.read':'Leggi','posts.loading':'Caricamento dei testi più recenti…','posts.empty':'Ancora nessun testo in questa categoria.','posts.error':'Impossibile caricare il blog ora — visitalo direttamente.',
+  'lp.1.t':'Hackathon e game jam: 48 ore, stack reali e progetti premiati','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis e altro — tecnologie e vittorie nelle maratone di Amanda Reznor Britto.',
+  'lp.2.t':'Nei media e sul palco: docente, autrice, conduttrice radio, moderatrice','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Metaverso, Junta Geek e i canali YouTube — presenza pubblica tra accademia, giochi e letteratura.',
+  'lp.3.t':'Delenda rivisto, internazionale e la mappa in sei libri della Valle','lp.3.e':'Rilancio in EN, FR ed ES, e-book in PT-BR, Castelformia in stampa e la saga ristrutturata in sei volumi — dalla Bassa all\u2019Alta Montagna.',
   'cred.title':'Certificazioni & Titoli','cred.prof':'Livello 10 · Competenza','cred.fr':'Francisation Québec','cred.more':'Badge verificabili su <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Conferenze e mediazioni','talk.1':'Relatrice · Metaverso: concetti e tecnologie · 2022','talk.2':'Moderatrice · Un approccio introduttivo · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Relatrice · FAM · 2022','talk.4.t':'Interviste, podcast e conferenze','talk.4':'Playlist · Eventi accademici','talk.watch':'Guarda ↗',
   'foot.eyebrow':'Contatti','foot.head':'Costruiamo qualcosa <i>insieme</i>?','foot.contact':'Contattami','foot.bridge':'Al di fuori dell\u2019ambito accademico creo mondi — narrativa, videogiochi e arte — come <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Inizio'
@@ -751,6 +742,9 @@ const I18N={
   'writ.all':'Blog öffnen',
   'filter.all':'Alle','filter.tech':'Technologie','filter.education':'Bildung','filter.literature':'Literatur','filter.research':'Forschung',
   'post.read':'Lesen','posts.loading':'Neueste Texte werden geladen…','posts.empty':'Noch keine Texte in dieser Kategorie.','posts.error':'Blog kann gerade nicht geladen werden — bitte direkt besuchen.',
+  'lp.1.t':'Hackathons und Game Jams: 48 Stunden, echte Stacks und preisgekrönte Projekte','lp.1.e':'Mimix VR, Kyle\u2019s Chest, President Simulation Simulator, ForaFake, Symbal, Jarvis und mehr — Technologien und Siege aus den Marathons von Amanda Reznor Britto.',
+  'lp.2.t':'In Medien und auf der Bühne: Dozentin, Autorin, Radiomoderatorin, Moderatorin','lp.2.e':'Criador de Mundos, Impacta Game Hour, Qintess/Metaverse, Junta Geek und die YouTube-Kanäle — öffentliche Präsenz zwischen Akademie, Spielen und Literatur.',
+  'lp.3.t':'Delenda überarbeitet, international und die Sechs-Bücher-Karte des Tals','lp.3.e':'Neuauflage in EN, FR und ES, E-Book in PT-BR, Castelformia im Druck und die Saga in sechs Bänden neu strukturiert — vom Unteren zum Oberen Berg.',
   'cred.title':'Zertifikate & Qualifikationen','cred.prof':'Stufe 10 · Kompetenz','cred.fr':'Francisation Québec','cred.more':'Verifizierbare Badges auf <a href="https://www.credly.com/users/amanda-reznor-britto/" target="_blank" rel="noopener">Credly ↗</a>',
   'talk.title':'Vorträge und Moderationen','talk.1':'Rednerin · Metaverse: Konzepte und Technologien · 2022','talk.2':'Moderatorin · Eine Einführung · 2022','talk.3.t':'Falando de Produção Literária durante o SOMA-FAM','talk.3':'Rednerin · FAM · 2022','talk.4.t':'Interviews, Podcasts und Vorträge','talk.4':'Playlist · Akademische Events','talk.watch':'Ansehen ↗',
   'foot.eyebrow':'Kontakt','foot.head':'Bauen wir etwas <i>gemeinsam</i>?','foot.contact':'Kontakt aufnehmen','foot.bridge':'Außerhalb der Wissenschaft erschaffe ich Welten — Belletristik, Spiele und Kunst — als <a href="../index.html">Amanda Reznor →</a>','to.top':'↑ Nach oben'
@@ -761,15 +755,10 @@ let LANG='en', FILTER='all', POSTS=null, POSTS_ERROR=false;
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 function t(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;}
 
-function updateCvLink(){
-  const a=$('#cvBtn');
-  if(a) a.href=`cv/amanda-britto-${LANG}.pdf`;
-}
 function applyI18n(){
   $$('[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
   $$('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.getAttribute('data-i18n-html')));
   document.documentElement.lang=LANG;
-  updateCvLink();
   renderFilters(); renderPosts();
 }
 function setLang(code){
@@ -809,6 +798,14 @@ function renderFilters(){
 }
 function fmtDate(d){try{return new Date(d).toLocaleDateString(LANG,{year:'numeric',month:'short'});}catch(e){return d;}}
 function stateHtml(txt){return `<div class="posts-state">${txt}</div>`;}
+function postTitle(p){return p.titleKey?t(p.titleKey):(p.title||'—');}
+function postExcerpt(p){return p.excerptKey?t(p.excerptKey):(p.excerpt||'');}
+function postCardHtml(p){
+  const thumb=p.image?`<div class="post-thumb" style="background-image:url('${p.image}')"></div>`:`<div class="post-thumb"></div>`;
+  return `${thumb}<div class="post-body-wrap">
+    <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
+    <h3>${postTitle(p)}</h3><p>${postExcerpt(p)}</p><span class="post-link">${t('post.read')}</span></div>`;
+}
 
 function renderPosts(){
   const wrap=$('#posts');
@@ -821,9 +818,7 @@ function renderPosts(){
       early.forEach(p=>{
         const a=document.createElement('a');
         a.className='post-card'; a.href=p.url;
-        a.innerHTML=`<div class="post-thumb"></div><div class="post-body-wrap">
-          <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
-          <h3>${p.title}</h3><p>${p.excerpt}</p><span class="post-link">${t('post.read')}</span></div>`;
+        a.innerHTML=postCardHtml(p);
         wrap.appendChild(a);
       });
       const sk=document.createElement('div');
@@ -844,10 +839,7 @@ function renderPosts(){
     a.className='post-card';
     a.href=p.url;
     if(!p.local){a.target='_blank'; a.rel='noopener';}
-    const thumb=p.image?`<div class="post-thumb" style="background-image:url('${p.image}')"></div>`:`<div class="post-thumb"></div>`;
-    a.innerHTML=`${thumb}<div class="post-body-wrap">
-      <div class="post-meta"><span class="post-cat">${t('filter.'+p.category)}</span><span class="post-date">${fmtDate(p.date)}</span></div>
-      <h3>${p.title}</h3><p>${p.excerpt}</p><span class="post-link">${t('post.read')}</span></div>`;
+    a.innerHTML=postCardHtml(p);
     wrap.appendChild(a);
   });
 }

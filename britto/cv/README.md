@@ -1,12 +1,11 @@
-# CVs por idioma
+# Currículos (CV)
 
-Coloque aqui os PDFs do currículo. O botão **Baixar CV** aponta para o arquivo da língua selecionada:
+Página de download: [`/britto/cv/`](index.html)
 
-| Língua | Arquivo |
-|--------|---------|
-| EN | `amanda-britto-en.pdf` |
-| PT | `amanda-britto-pt.pdf` |
-| FR | `amanda-britto-fr.pdf` |
-| ES | `amanda-britto-es.pdf` |
-| IT | `amanda-britto-it.pdf` |
-| DE | `amanda-britto-de.pdf` |
+O botão **Baixar CV** na home de Britto abre essa página com três perfis. Em cada um, os botões **EN / FR / PT** baixam o PDF correspondente.
+
+| Perfil | Arquivos |
+|--------|----------|
+| TI | `cv-data-analyst-en.pdf`, `cv-data-analyst-fr.pdf`, `cv-data-analyst-pt.pdf` |
+| Educação | `cv-education-en.pdf`, `cv-education-fr.pdf`, `cv-education-pt.pdf` |
+| Games | `cv-games-en.pdf`, `cv-games-fr.pdf`, `cv-games-pt.pdf` |
